@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,700;1,500&display=swap');
+
+/*
+.login-register {
+    height: 100vh;
+    background-image: url('../Images/ImgLogin.svg'), url('../Images/ImgRegister.svg');
+    background-position: left, right;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 50%, 50%; 
+}
+*/
+
+.logo-sing-in{
+    display: flex;
+    padding: 30px 0px 0px 50px;
+}
+
+.Logo-AquaQA{
+    padding-left: 450px;
+}
+
+.name-empresa{
+    color: #3CC0C9;
+    font-family: Poppins, Bold;
+    padding-left: 15px;
+    font-size: 30px;
+}
+
+.Login-Register{
+    display: flex;
+    justify-content: space-around;
+    padding: 60px 0px 0px 30px;
+}
+
+.form-login h2 {
+    color: #3CC0C9;
+    font-family: Poppins, Bold;
+    font-size: 40px;
+    margin: 0;
+}
+
+.form-login p{
+    color: #959595;
+    font-family: Poppins, Medium;
+}
+
+.bienvenida{
+    margin-left: -18px;
+}
+
+.Datos-Form{
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    margin-left: -55px;
+}
+
+.email{
+    padding-bottom: 15px;
+}
+
+.recuerdame{
+    display: flex;
+}
+
+.recuerdame p{
+    color: #464646;
+    padding-left: 5px;
+}
+
+.btn-login button{
+    width: 300px;
+    height: 50px;
+    background-color: #3CC0C9;
+    border: none;
+    border-radius: 10px;
+    font-family: Poppins, Medium;
+    color: #F8FDFD;
+    font-size: 20px;
+}
+
+.btn-login{
+    margin-left: 50px;
+}
+
+.singUp{
+    display: flex;
+    margin-left: 35px;
+}
+
+/*REGISTER*/
+
+
+.form-register h2 {
+    color: #3CC0C9;
+    font-family: Poppins, Bold;
+    font-size: 40px;
+    margin: 0;
+}
+
+.saludo{
+    margin-left: -25px;
+}
+
+.saludo p{
+    font-family: Poppins, Bold;
+    color: #959595;
+}
+
+.User-Telefono{
+    display: flex;
+    padding-top: 30px;
+    margin-left: -55px;
+}
+
+.tel{
+    padding-left: 15px;
+}
+
+.E-mail{
+    padding-top: 15px;
+    margin-left: -55px;
+}
+
+.contras{
+    display: flex;
+    padding-top: 15px;
+    margin-left: -55px;
+}
+
+.password{
+    padding-right: 15px;
+}
+
+.btn-registrarse button{
+    width: 300px;
+    height: 50px;
+    background-color: #3CC0C9;
+    border: none;
+    border-radius: 10px;
+    font-family: Poppins, Medium;
+    color: #F8FDFD;
+    font-size: 20px;
+}
+
+.btn-registrarse{
+    padding-top: 30px;
+    margin-left: 20px;
+}
+
+.inicioses{
+    margin-left: 20px;
+}
+
+.inicioses p{
+    font-family: Poppins;
+    color: #A5A5A5;
+}
