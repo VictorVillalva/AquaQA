@@ -1,22 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,700;1,500&display=swap');
 
-/*
-.login-register {
-    height: 100vh;
-    background-image: url('../Images/ImgLogin.svg'), url('../Images/ImgRegister.svg');
-    background-position: left, right;
-    background-repeat: no-repeat, no-repeat;
-    background-size: 50%, 50%; 
+
+.Login-Register{
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 0px 0px 80px;
 }
-*/
 
 .logo-sing-in{
     display: flex;
-    padding: 30px 0px 0px 50px;
-}
-
-.Logo-AquaQA{
-    padding-left: 450px;
+    margin-left: -140px;
+    margin-bottom: 70px;
 }
 
 .name-empresa{
@@ -25,18 +19,15 @@
     padding-left: 15px;
     font-size: 30px;
 }
-
-.Login-Register{
-    display: flex;
-    justify-content: space-around;
-    padding: 60px 0px 0px 30px;
-}
-
 .form-login h2 {
     color: #3CC0C9;
     font-family: Poppins, Bold;
     font-size: 40px;
     margin: 0;
+}
+
+.logo-sing-in h2{
+    font-size: 30px;
 }
 
 .form-login p{
@@ -85,17 +76,34 @@
 
 .singUp{
     display: flex;
-    margin-left: 35px;
+    margin-left: -18px;
+}
+
+.hidden{
+    visibility: hidden;
 }
 
 /*REGISTER*/
 
+.form-register{
+    margin-left: 120px;
+}
 
 .form-register h2 {
     color: #3CC0C9;
     font-family: Poppins, Bold;
     font-size: 40px;
     margin: 0;
+}
+
+.logo-sing-up{
+    display: flex;
+    margin-left: -140px;
+    margin-bottom: 70px;
+}
+
+.logo-sing-up h2{
+    font-size: 30px;
 }
 
 .saludo{
@@ -148,11 +156,27 @@
     margin-left: 20px;
 }
 
-.inicioses{
+.inicioSesion{
     margin-left: 20px;
 }
 
-.inicioses p{
+.inicioSesion p{
     font-family: Poppins;
     color: #A5A5A5;
+}
+
+.inicioSesion p button{
+    border: none;
+    background: none;
+    font-family: Poppins;
+}
+
+.singUp p{
+    font-family: Poppins;
+}
+
+.singUp p button{
+    border: none;
+    background: none;
+    font-family: Poppins;
 }

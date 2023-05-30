@@ -14,6 +14,8 @@ import {
     VisibilityOff 
 } from '@mui/icons-material';
 
+import Logo from '../assets/Images/Logo.svg'
+
 export const Register = () => {
 
     const [showPassword, setShowPassword] = useState(false);
@@ -26,7 +28,11 @@ export const Register = () => {
 
     return(
         <>
-            <h2>Crea una cuenta</h2>
+            <div className="logo-sing-up">
+                <img src={Logo} />
+                <h2 className='name-empresa'>AquaQA</h2>
+            </div>
+            <h2 className='creaCuenta'>Crea una cuenta</h2>
             <div className="saludo">
                 <p>Registrate ahora y accede a todos los beneficios</p>
             </div>
@@ -34,14 +40,14 @@ export const Register = () => {
                 <div className="use">
                     <FormControl sx={{ backgroundColor: '#F8FDFD', width: '220px' }}>
                         <TextField
-                            label="Username"
+                            label="Nombre de usuario"
                         />
                     </FormControl>
                 </div>
                 <div className="tel">
                     <FormControl sx={{ backgroundColor: '#F8FDFD', width: '220px' }}>
                         <TextField
-                            label="Telefono"
+                            label="Teléfono"
                         />
                     </FormControl>
                 </div>
@@ -49,7 +55,7 @@ export const Register = () => {
             <div className="E-mail">
                 <FormControl sx={{ backgroundColor: '#F8FDFD', width: '455px' }}>
                     <TextField
-                        label="E-mail"
+                        label="Correo Electrónico"
                     />
                 </FormControl>
             </div>
@@ -102,8 +108,8 @@ export const Register = () => {
             <div className="btn-registrarse">
                 <button>Registrarme</button>
             </div>
-            <div className="inicioses">
-                <p>Si ya tienes una cuenta. <b>Inicia sesión</b></p>
+            <div className="inicioSesion">
+                    <p>Si ya tienes una cuenta. <button id='btn-hide'>Inicia Sesión</button></p>
             </div>
         </>
     )
