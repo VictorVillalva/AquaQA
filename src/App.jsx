@@ -1,10 +1,12 @@
+import UserHome from '../src/pages/UserHome.jsx';
+
 function App() {
 
   return (
     <>
-    <div>Hola mundo en mi rama</div>
+    <UserHome />
     </>
   )
 }
 
-export default App
+export default App;

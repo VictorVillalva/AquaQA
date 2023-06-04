@@ -1,0 +1,28 @@
+.PorcentajeMinerales{
+    background: #FFFFFF;
+    box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    width: 213px;
+    height: 174px;
+    margin-top: 6vh;
+    margin-left: 18vh;
+}
+.tituloServicio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    line-height: 18px;
+    padding-top: 1.8vh;
+}
+.porcentaje{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.6vh;
+    margin-left: 18px;
+}
+.data{
+    font-size: 40px;
+    line-height: 60px;
+    font-weight: bold;
+}

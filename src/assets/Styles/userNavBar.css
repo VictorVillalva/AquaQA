@@ -1,0 +1,26 @@
+.container-navbar-user{
+    width: 128px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+.navbar-horizontal{
+    height: 100vh;
+    display: flex;
+    float: left;
+    flex-direction: column;
+}
+#LogoEmpresaUser{
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+.options-user{
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#Logout{
+    margin-top: 41.3vh;
+    margin-bottom: 5.1vh;
+}

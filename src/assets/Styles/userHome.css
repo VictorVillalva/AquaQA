@@ -1,0 +1,15 @@
+
+.userHomeDiv{
+    background-color: #F8FDFD; 
+    display: flex;
+    flex-direction: row;
+}
+.bienvenida{
+    margin-top: 9.3vh;
+    margin-left: 26.5vh;
+}
+#notification{
+    margin-top: 8.7vh;
+    margin-right: 14.9vh;
+    margin-left: 90vh;
+}
