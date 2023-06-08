@@ -27,7 +27,7 @@ export const LoginRegister = () => {
         containerRef.current.classList.add("right-panel-active"); 
     }
     
-      function signHandler2() {
+    function signHandler2() {
         containerRef.current.classList.remove("right-panel-active");
     }
 
@@ -112,9 +112,9 @@ export const LoginRegister = () => {
                             </div>
                             <div className="confirm-password">
                                 <FormControl sx={{ backgroundColor: '#F8FDFD', width: '220px' }} variant="outlined">
-                                    <InputLabel htmlFor="outlined-adornment-password">Confirmar Contraseña</InputLabel>
+                                    <InputLabel htmlFor="outlined">Confirmar Contraseña</InputLabel>
                                     <OutlinedInput
-                                        id="outlined-adornment-password"
+                                        id="outlined"
                                         type={showPassword ? 'text' : 'password'}
                                         endAdornment={
                                             <InputAdornment position="end">
