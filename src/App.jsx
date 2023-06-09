@@ -1,9 +1,13 @@
+import { LoginRegister } from "./pages/LoginRegister";
+
+
 function App() {
 
   return (
     <>
+      <LoginRegister></LoginRegister>
     </>
   )
 }
 
-export default App
+export default App;
