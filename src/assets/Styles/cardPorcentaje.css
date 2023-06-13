@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
+
+.card{
+    width: 213px;
+    height: 174px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+.textCard{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 18px;
+}
+.contextCard{
+    display: flex;
+    justify-content: left;
+    margin-top: 18px;
+    margin-left: 18px;
+}
+.contextCardData{
+    margin-left:14px;
+    margin-top: 17px;
+    width: 154px;
+}
+.porcentaje{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 60px;
+    color: #A8E3E7;
+}

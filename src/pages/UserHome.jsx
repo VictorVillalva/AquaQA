@@ -1,17 +1,18 @@
-//Cards
-import CardPorcentajeMinerales from '../cards/CardPorcentajeMinerales';
-//Images
-import Notification from '../assets/Images/Notification.svg'
-import UserNavBar from "../components/UserNavBar";
+//Components
+//import UserNavBar from "../components/UserNavBar.jsx";
 
-import '../assets/Styles/userHome.css';
+//Cards
+import CardPorcentajaMinerales from "../cards/CardPorcentajeMinerales.jsx";
+import CardPorcentajeSuminstro from "../cards/CardPorcentajeSuminstro.jsx";
+//Images
 
 const UserHome = () => {
     return (
-        <div className='container userHomeDiv'>
+        <>
+            <CardPorcentajaMinerales />
+            <CardPorcentajeSuminstro /> 
+        </>
 
-            
-        </div>
     )
 }
 
