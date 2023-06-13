@@ -1,0 +1,129 @@
+.cardUser{
+    margin-left: 40%;
+    margin-top: 10%;
+    width: 371px;
+    height: 728px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.user{
+    width: 265px;
+    height: 74px;
+    margin-top: 27px;
+    display: flex;
+    justify-content: space-between;
+}
+.name{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    color: #464646;
+    line-height: 32px;
+}
+.separador{
+    width: 35px;
+    height: 5px;
+    background: #3CC0C9;
+    border-radius: 15px;
+}
+.email{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    color: #626262;
+}
+.photo, .fotoPerfil{
+    border-radius: 100%;
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+}
+.water{
+    width: 265px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.dataWater{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    color: #A5A5A5;
+}
+.graph-analyst,.bar-circular,.graph, .bar-graph, .graph-txt-data{
+    width: 265px;
+}
+.graph-analyst{
+    margin-top: 40px;
+}
+.graph{
+    display: flex;
+    flex-direction: column;
+}
+.graph-txt-data{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.txt-graph{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    color: #464646;
+}
+.txt-data-water{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #959595;
+}
+.txt-minerales{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #959595;
+}
+.bar-graph{
+    background: #FFFFFF;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+    width: 275px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bar-graph-data{
+    height: 180px;
+    width: 250px;
+}
+.circular-progress-bar{
+    margin-top: 40px;
+}
+.bar-circular{
+    display: flex;
+    justify-content: center;
+}
+.circular{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    width: 130px;
+    height: 130px;
+    display: flex;
+}

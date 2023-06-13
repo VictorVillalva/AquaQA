@@ -4,13 +4,13 @@
 //Cards
 import CardPorcentajaMinerales from "../cards/CardPorcentajeMinerales.jsx";
 import CardPorcentajeSuminstro from "../cards/CardPorcentajeSuminstro.jsx";
+import CardUser from "../cards/CardUser.jsx";
 //Images
 
 const UserHome = () => {
     return (
         <>
-            <CardPorcentajaMinerales />
-            <CardPorcentajeSuminstro /> 
+         <CardUser />
         </>
 
     )
