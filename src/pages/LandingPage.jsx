@@ -5,6 +5,8 @@ import img3 from "../assets/Images/Imagen3.png"
 import iconInicio from "../assets/Images/CircledPlay.svg"
 import iconSaber from "../assets/Images/Add.svg"
 import '../assets/Styles/LandingPage.css'
+import { CardLandingPage } from "../components/CardLandingPage"
+import { Nosotros } from "../components/Nosotros"
 
 export const LandingPage = () => {
     return (
@@ -44,9 +46,12 @@ export const LandingPage = () => {
                         <div className="image3">
                             <img className="img3" src={img3} />
                         </div>
+                        <div className="circulo"></div>
                     </div>
                 </div>
             </div>
+            <CardLandingPage></CardLandingPage>
+            <Nosotros></Nosotros>
         </>
     )
 }

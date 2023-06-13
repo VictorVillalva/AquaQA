@@ -157,3 +157,15 @@
     transition: all .3s ease-in-out;
     cursor: pointer;
 }
+
+.circulo{
+    position: absolute;
+    top: 42%;
+    right: 15%;
+    width: 53vh;
+    height: 54vh;
+    border-radius: 100%;
+    background-color: rgba(83, 202, 210, 0.2);
+    filter: blur(6vh);
+    z-index: -100;
+}

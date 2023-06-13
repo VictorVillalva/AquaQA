@@ -1,0 +1,67 @@
+.nosotros-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.seccion-der-nosotros h3{
+    font-family: Poppins;
+    font-weight: lighter;
+    font-size: 4vh;
+    color: #3CC0C9;
+    margin-top: 3vh;
+    margin-bottom: 2vh;
+}
+
+.seccion-der-nosotros h2{
+    font-family: Poppins;
+    font-size: 3.8vh;
+    color: #1E1E1E;
+    margin: 0;
+}
+
+.seccion-der-nosotros p{
+    font-family: Poppins;
+    font-weight: lighter;
+    font-size: 2vh;
+    color: #464646;
+    line-height: 2.5vh;
+}
+
+.seccion-izq-nosotros{
+    padding-right: 10vh;
+}
+
+.seccion-izq-nosotros img{
+    width: 65vh;
+    margin-left: -6vh;
+}
+
+.subsecciones{
+    display: flex;
+    font-family: Poppins;
+    font-size: 2vh;
+    color: #464646;
+}
+
+.subsecciones img{
+    width: 4vh;
+}
+
+.subsecciones h4{
+    margin: 2vh;
+    margin-left: .8vh;
+}
+
+.caja-sec-izq{
+    position: absolute;
+    left: 0%;
+    top: 15%;
+    width: 62vh;
+    height: 65vh;
+    border-radius: 1vh;
+    background-color: #A8E3E7;
+    z-index: -50;
+}
+
