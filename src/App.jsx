@@ -1,11 +1,14 @@
-import { LoginRegister } from "./pages/LoginRegister";
+/*import { LoginRegister } from "./pages/LoginRegister";*/
+
+import { LandingPage } from "./pages/LandingPage";
 
 
 function App() {
 
   return (
     <>
-      <LoginRegister></LoginRegister>
+      {/*<LoginRegister></LoginRegister>*/}
+      <LandingPage></LandingPage>
     </>
   )
 }

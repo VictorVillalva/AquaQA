@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,700;1,500&display=swap');
+
+header{
+    width: 100%;
+    height: 20%;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2%;
+}
+
+.logo{
+    margin: 0;
+}
+
+.logo img{
+    width: 5.4vh;
+}
+
+.secciones{
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.secciones h2 a, .secciones h2{
+    margin: 0;
+    font-family: Poppins;
+    font-weight: lighter;
+    color: #A5A5A5;
+    font-size: 2.3vh;
+    text-decoration: none;
+}
+
+.seccion{
+    padding: 0vh 4vh 0vh 4vh;
+}
+
+.btn-comenzar{
+    display: flex;
+    align-items: center;
+    background-color: none;
+}
+
+.btn-comenzar button{
+    background-color: white;
+    border: solid .25vh #3CC0C9;
+    border-radius: 5vh;
+    color: #3CC0C9;
+    font-family: Poppins;
+    width: 16vh;
+    height: 4.5vh;
+    font-size: 2.2vh;
+}
+
+.btn-comenzar:hover{
+    transform: scale(1.07);
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+

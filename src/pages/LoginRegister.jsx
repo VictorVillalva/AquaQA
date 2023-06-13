@@ -66,14 +66,14 @@ export const LoginRegister = () => {
                         </div>
                         <div className="User-Telefono">
                             <div className="use">
-                                <FormControl sx={{ backgroundColor: '#F8FDFD', width: '220px' }}>
+                                <FormControl sx={{ backgroundColor: '#F8FDFD', width: '29.6vh' }}>
                                     <TextField
                                         label="Nombre de usuario"
                                     />
                                 </FormControl>
                             </div>
                             <div className="tel">
-                                <FormControl sx={{ backgroundColor: '#F8FDFD', width: '220px' }}>
+                                <FormControl sx={{ backgroundColor: '#F8FDFD', width: '29.6vh' }}>
                                     <TextField
                                         label="Teléfono"
                                     />
@@ -81,7 +81,7 @@ export const LoginRegister = () => {
                             </div>
                         </div>
                         <div className="E-mail">
-                            <FormControl sx={{ backgroundColor: '#F8FDFD', width: '455px' }}>
+                            <FormControl sx={{ backgroundColor: '#F8FDFD', width: '61.2vh' }}>
                                 <TextField
                                     label="Correo Electrónico"
                                 />
@@ -89,7 +89,7 @@ export const LoginRegister = () => {
                         </div>
                         <div className="contras">
                             <div className="password">
-                                <FormControl sx={{ backgroundColor: '#F8FDFD', width: '220px' }} variant="outlined">
+                                <FormControl sx={{ backgroundColor: '#F8FDFD', width: '29.6vh' }} variant="outlined">
                                     <InputLabel htmlFor="outlined-adornment-password">Contraseña</InputLabel>
                                     <OutlinedInput
                                         id="outlined-adornment-password"
@@ -111,7 +111,7 @@ export const LoginRegister = () => {
                                 </FormControl>
                             </div>
                             <div className="confirm-password">
-                                <FormControl sx={{ backgroundColor: '#F8FDFD', width: '220px' }} variant="outlined">
+                                <FormControl sx={{ backgroundColor: '#F8FDFD', width: '29.6vh' }} variant="outlined">
                                     <InputLabel htmlFor="outlined">Confirmar Contraseña</InputLabel>
                                     <OutlinedInput
                                         id="outlined"

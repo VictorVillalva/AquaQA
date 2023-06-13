@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,700;1,500&display=swap');
+
+.contenedor-contenido{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.sec-Izquierda{
+    display: flex;
+    align-self: center;
+    margin-top: -3%;
+}
+
+.info{
+    color: #3CC0C9;
+    font-family: Poppins;
+    font-size: 7vh;
+    margin: 0;
+    padding-bottom: 1vh;
+}
+
+.info2{
+    color: #A8E3E7;
+    font-family: Poppins;
+    font-size: 7vh;
+    margin: 0;
+    padding-bottom: 1vh;
+}
+
+.info3{
+    color: #464646;
+    font-family: Poppins;
+    font-weight: lighter;
+    margin: 0;
+    padding-bottom: 3vh;
+    font-size: 2.2vh;
+}
+
+.btns{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 4VH;
+}
+
+.btn-saber-mas{
+    padding-left: 2vh;
+}
+
+.inic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Poppins;
+    font-weight: lighter;
+    font-size: 2.2vh;
+    color: #F8FDFD;
+    background-color: #3CC0C9;
+    border: none;
+    border-radius: 3vh;
+    width: 20vh;
+    height: 5.5vh;
+}
+
+.icon-inic{
+    padding-left: 1vh;
+    width: 3vh;
+}
+
+.masSaber{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Poppins;
+    font-weight: lighter;
+    font-size: 2vh;
+    color: #3CC0C9;
+    background-color: white;
+    border: solid .25vh #3CC0C9;
+    border-radius: 3vh;
+    width: 20vh;
+    height: 5.8vh;
+}
+
+.icon-saber{
+    padding-left: .5vh;
+    width: 3vh;
+}
+
+.imagenes img{
+    width: 22vh;
+}
+
+.imagenes{
+    display: flex;
+}
+
+.sec-Derecha{
+    margin-top: 5%;
+}
+
+.img2{
+    padding: 0vh 1.5vh 0vh 1.5vh;
+    padding-top: 10vh;
+}
+
+.info4{
+    display: flex;
+    justify-content: center;
+}
+
+.info4 h3{
+    margin: 0;
+    text-align: center;
+    color: #3CC0C9;
+    font-family: Poppins;
+    font-size: 3vh;
+}
+
+.info4 h4{
+    margin: 0;
+    text-align: center;
+    color: #A8E3E7;
+    font-family: Poppins;
+    font-size: 2vh;
+}
+
+.inf1{
+    padding-right: 4vh;
+}
+
+.inf2{
+    padding: 0vh 8vh 0vh 8vh;
+}
+
+.inf3{
+    padding-left: 4vh;
+}
+
+.divider1{
+    width: .04vh;
+    background-color: #464646;
+}
+
+.divider2{
+    width: .04vh;
+    background-color: #464646;
+}
+
+.inic:hover{
+    transform: scale(1.07);
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+
+.masSaber:hover{
+    transform: scale(1.07);
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
