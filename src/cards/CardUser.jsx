@@ -6,23 +6,14 @@ import forward from '../assets/Images/Forward.svg';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-import {Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend} from 'chart.js';
-import {Bar} from 'react-chartjs-2';
 
-ChartJS.register(
-    BarElement,
-    CategoryScale,
-    LinearScale,
-    Tooltip,
-    Legend
-)
 
 const CardUser = () => {
     //Configuracion de grafica barras
     const dataWater={
         labels: ['Lun','Mar','Mie','Jue','Vie','Sab','Dom'],
         datasets:[{
-            label: 'Sumistro',
+            label: 'Sumistro de agua',
             data: [50, 20, 30, 20, 60, 20, 90],
             backgroundColor: '#3CC0C9',
             borderColor: '#',
