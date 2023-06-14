@@ -7,6 +7,7 @@ import iconSaber from "../assets/Images/Add.svg"
 import '../assets/Styles/LandingPage.css'
 import { CardLandingPage } from "../components/CardLandingPage"
 import { Nosotros } from "../components/Nosotros"
+import { Servicios } from "../components/Servicios"
 
 export const LandingPage = () => {
     return (
@@ -52,6 +53,7 @@ export const LandingPage = () => {
             </div>
             <CardLandingPage></CardLandingPage>
             <Nosotros></Nosotros>
+            <Servicios></Servicios>
         </>
     )
 }

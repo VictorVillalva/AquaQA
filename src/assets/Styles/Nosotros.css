@@ -8,7 +8,7 @@
 .seccion-der-nosotros h3{
     font-family: Poppins;
     font-weight: lighter;
-    font-size: 4vh;
+    font-size: 3vh;
     color: #3CC0C9;
     margin-top: 3vh;
     margin-bottom: 2vh;
@@ -63,5 +63,24 @@
     border-radius: 1vh;
     background-color: #A8E3E7;
     z-index: -50;
+}
+
+.sub-sec-nosotros{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sub-sec-der-nosotros{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 700;
+    width: 24vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.txt-clientes-satisfechos{
+    padding-left: 1vh;
 }
 

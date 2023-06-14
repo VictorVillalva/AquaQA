@@ -3,7 +3,12 @@ import Checkmark from '../assets/Images/Checkmark.svg'
 
 import '../assets/Styles/Nosotros.css'
 
+//Configuracion Grafica Circular
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+
 export const Nosotros = () => {
+    const satisfaccion = 90;
     return(
         <>
             <div className="nosotros-container">
@@ -36,7 +41,18 @@ export const Nosotros = () => {
                             </div>
                         </div>
                         <div className="sub-sec-der-nosotros">
-                            
+                            <CircularProgressbar 
+                                value={satisfaccion} 
+                                text={`${satisfaccion}%`} 
+                                strokeWidth={12}
+                                styles={buildStyles({
+                                    textColor: '#A8E3E7',
+                                    textSize: '26px',
+                                    pathColor: '#3CC0C9',
+                                    trailColor: '#F2F2F2'
+                                })}
+                            />
+                            <p className='txt-clientes-satisfechos'>Clientes satisfechos</p>
                         </div>
                     </div>
                 </div>
