@@ -1,15 +1,34 @@
 import { Header } from "../components/Header"
+import { CardLandingPage } from "../components/CardLandingPage"
+import { Nosotros } from "../components/Nosotros"
+import { Servicios } from "../components/Servicios"
+
 import img1 from "../assets/Images/Imagen1.png"
 import img2 from "../assets/Images/Imagen2.png"
 import img3 from "../assets/Images/Imagen3.png"
 import iconInicio from "../assets/Images/CircledPlay.svg"
 import iconSaber from "../assets/Images/Add.svg"
+
 import '../assets/Styles/LandingPage.css'
-import { CardLandingPage } from "../components/CardLandingPage"
-import { Nosotros } from "../components/Nosotros"
-import { Servicios } from "../components/Servicios"
+import { Footer } from "../components/Footer"
+
+
 
 export const LandingPage = () => {
+
+    const scrollToSection = (sectionId) => {
+        const section = document.querySelector(sectionId);
+        if (section) {
+          const sectionPosition = section.getBoundingClientRect().top;
+          const offsetPosition = sectionPosition - 110;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+          });
+        }
+      };
+
+
     return (
         <>
             <Header></Header>
@@ -24,7 +43,7 @@ export const LandingPage = () => {
                                 <button className="inic">Iniciar<img className="icon-inic" src={iconInicio} /></button>
                             </div>
                             <div className="btn-saber-mas">
-                                <button className="masSaber">Saber más <img className="icon-saber" src={iconSaber} /></button>
+                                <button onClick={() => scrollToSection('#Nosotros')} className="masSaber">Saber más <img className="icon-saber" src={iconSaber} /></button>
                             </div>
                         </div>
                         <div className="info4">
@@ -54,6 +73,7 @@ export const LandingPage = () => {
             <CardLandingPage></CardLandingPage>
             <Nosotros></Nosotros>
             <Servicios></Servicios>
+            <Footer></Footer>
         </>
     )
 }

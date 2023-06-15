@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,700;1,500&display=swap');
+
+.container-footer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.footer-top{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #3CC0C9;
+    width: 100%;
+    height: 30vh;
+}
+
+.content-footer-top{
+    display: flex;
+}
+
+.content-footer-top h2, .content-footer-top h4, .content-footer-top p{
+    margin: 0;
+}
+
+.content-footer-top h4{
+    font-family: Poppins;
+    color: #FFFFFF;
+    font-size: 2.2vh;
+    font-weight: lighter;
+}
+
+.content-footer-top p{
+    font-family: Poppins;
+    font-weight: lighter;
+    font-size: 1.5vh;
+    color: #FFFFFF;
+    margin-top: .5vh;
+}
+
+.second-sub-footer{
+    font-weight: lighter;
+}
+
+.content-footer-top h2{
+    display: flex;
+    font-size: 4vh;
+    font-family: Poppins;
+    color: #FFFFFF;
+}
+
+.content-footer-top img{
+    width: 4.5vh;
+}
+
+.tit-footer{
+    padding-right: 4vh;
+}
+
+.correo-footer, .tel-footer, .ubi-footer{
+    padding-right: 2vh;
+    padding-left: 1.5vh;
+}
+
+.footer-bottom{
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 20vh;
+}
+
+.content-footer-bottom{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 6vh;
+}
+
+.logo-footer{
+    display: flex;
+}
+
+.logo-footer h2{
+    font-family: Poppins;
+    font-size: 3.2vh;
+    color: #3CC0C9;
+}
+
+.logo-footer img{
+    padding-right: 1vh;
+    width: 5vh;
+}
+
+.copyright-footer{
+    margin-top: .5vh;
+}
+
+.copyright-footer h4{
+    font-family: Poppins;
+    font-size: 2vh;
+    font-weight: lighter;
+    color: #A5A5A5;
+}

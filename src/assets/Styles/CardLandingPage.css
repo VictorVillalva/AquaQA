@@ -1,5 +1,6 @@
 .all-content{
-    margin-left: 22vh;
+    display: flex;
+    justify-content: center;
 }
 
 .card-container{
@@ -7,7 +8,7 @@
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
-    width: 135vh;
+    width: 140vh;
     height: 26vh;
     background-color: white;
     border-radius: 2vh;

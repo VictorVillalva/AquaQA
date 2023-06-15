@@ -1,17 +1,15 @@
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import Image2 from '../assets/Images/Imagen-2.png'
 import Checkmark from '../assets/Images/Checkmark.svg'
 
 import '../assets/Styles/Nosotros.css'
-
-//Configuracion Grafica Circular
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 export const Nosotros = () => {
     const satisfaccion = 90;
     return(
         <>
-            <div className="nosotros-container">
+            <div className="nosotros-container" id='Nosotros'>
                 <div className="seccion-izq-nosotros">
                     <div className="caja-sec-izq"></div>
                     <img src={Image2}/>
