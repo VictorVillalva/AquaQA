@@ -11,6 +11,7 @@ import iconSaber from "../assets/Images/Add.svg"
 
 import '../assets/Styles/LandingPage.css'
 import { Footer } from "../components/Footer"
+import { Elegirnos } from "../components/Elegirnos"
 
 
 
@@ -73,6 +74,7 @@ export const LandingPage = () => {
             <CardLandingPage></CardLandingPage>
             <Nosotros></Nosotros>
             <Servicios></Servicios>
+            <Elegirnos></Elegirnos>
             <Footer></Footer>
         </>
     )

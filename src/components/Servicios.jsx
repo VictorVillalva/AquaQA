@@ -4,7 +4,7 @@ import '../assets/Styles/Servicios.css'
 export const Servicios = () => {
     return(
         <>
-            <div className="servicios-contenedor">
+            <div className="servicios-contenedor" id='Servicios'>
                 <div className="servicios">
                     <div className="seccion-top">
                         <h3>Nuestros Servicios</h3>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,700;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
 
 .container-footer{
     display: flex;
@@ -23,24 +23,25 @@
     margin: 0;
 }
 
+.second-sub-footer{
+    font-weight: 400;
+}
+
 .content-footer-top h4{
     font-family: Poppins;
     color: #FFFFFF;
-    font-size: 2.2vh;
-    font-weight: lighter;
+    font-size: 2vh;
+    font-weight: SemiBold;
 }
 
 .content-footer-top p{
     font-family: Poppins;
-    font-weight: lighter;
+    font-weight: 400;
     font-size: 1.5vh;
     color: #FFFFFF;
     margin-top: .5vh;
 }
 
-.second-sub-footer{
-    font-weight: lighter;
-}
 
 .content-footer-top h2{
     display: flex;
@@ -96,6 +97,6 @@
 .copyright-footer h4{
     font-family: Poppins;
     font-size: 2vh;
-    font-weight: lighter;
+    font-weight: 400;
     color: #A5A5A5;
 }

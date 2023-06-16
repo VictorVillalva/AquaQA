@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
+
 .all-content{
     display: flex;
     justify-content: center;
@@ -25,7 +27,7 @@
     font-family: Poppins;
     color: #464646;
     font-size: 1.8vh;
-    font-weight: lighter;
+    font-weight: 500;
     margin-top: -.6vh;
 }
 .certificacion, .costo, .amigable{

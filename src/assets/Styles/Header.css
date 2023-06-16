@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,700;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
 
 header{
     width: 100%;
@@ -26,7 +26,7 @@ header{
 .secciones h2 a, .secciones h2{
     margin: 0;
     font-family: Poppins;
-    font-weight: lighter;
+    font-weight: 500;
     color: #A5A5A5;
     font-size: 2.3vh;
     text-decoration: none;
@@ -48,6 +48,7 @@ header{
     border-radius: 5vh;
     color: #3CC0C9;
     font-family: Poppins;
+    font-weight: 500;
     width: 16vh;
     height: 4.5vh;
     font-size: 2.2vh;

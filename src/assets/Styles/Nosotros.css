@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
+
 .nosotros-container{
     position: relative;
     display: flex;
@@ -7,7 +9,7 @@
 
 .seccion-der-nosotros h3{
     font-family: Poppins;
-    font-weight: lighter;
+    font-weight: 500;
     font-size: 3vh;
     color: #3CC0C9;
     margin-top: 3vh;
@@ -16,6 +18,7 @@
 
 .seccion-der-nosotros h2{
     font-family: Poppins;
+    font-weight: 700;
     font-size: 3.6vh;
     color: #1E1E1E;
     margin: 0;
@@ -23,10 +26,10 @@
 
 .seccion-der-nosotros p{
     font-family: Poppins;
-    font-weight: lighter;
+    font-weight: 500;
     font-size: 2vh;
     color: #464646;
-    line-height: 2.5vh;
+    line-height: 3vh;
 }
 
 .seccion-izq-nosotros{
