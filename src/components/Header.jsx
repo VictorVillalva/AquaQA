@@ -1,8 +1,15 @@
+import {NavLink, useNavigate} from 'react-router-dom'
 import Logo from '../assets/Images/Logo.svg'
 
 import '../assets/Styles/Header.css'
 
 export const Header = () => {
+
+    const navigate = useNavigate();
+
+    const handleNavigateHome = () =>{
+      navigate('/')
+    }
 
     const scrollToSectionNosotros = (sectionId) => {
         const section = document.querySelector(sectionId);
@@ -45,8 +52,8 @@ export const Header = () => {
     return(
         <>
             <header className="header">
-                <div className="logo">
-                    <img src={Logo} alt="" />
+                <div className="logo-header">
+                    <button onClick={handleNavigateHome}><img src={Logo}/></button>
                 </div>
                 <div className="secciones">
                     <h2 className='seccion'><a href="" onClick={handleClick}>Inicio</a></h2>
@@ -54,7 +61,7 @@ export const Header = () => {
                     <h2 className='seccion'><a href="" onClick={handleClickNosotros}>Nosotros</a></h2>
                 </div>
                 <div className="btn-comenzar">
-                    <button>Comenzar</button>
+                    <NavLink className='btn-comen' to='/login'>Comenzar</NavLink>
                 </div>
             </header>
         </>

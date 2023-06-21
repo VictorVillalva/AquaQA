@@ -1,15 +1,17 @@
-/*import { LoginRegister } from "./pages/LoginRegister";*/
-
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { LoginRegister } from "./pages/LoginRegister";
 import { LandingPage } from "./pages/LandingPage";
-
-
 
 function App() {
 
   return (
     <>
-      {/*<LoginRegister></LoginRegister>*/}
-      <LandingPage></LandingPage>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage/>}/>
+          <Route path="/login" element={<LoginRegister/>}/>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }

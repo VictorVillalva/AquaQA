@@ -9,11 +9,18 @@ header{
     margin-top: 2%;
 }
 
-.logo{
+.logo-header{
     margin: 0;
 }
 
-.logo img{
+.logo-header button{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.logo-header img{
+    padding-top: 1vh;
     width: 5.4vh;
 }
 
@@ -38,11 +45,14 @@ header{
 
 .btn-comenzar{
     display: flex;
+    justify-content: center;
     align-items: center;
-    background-color: none;
 }
 
-.btn-comenzar button{
+.btn-comen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: white;
     border: solid .25vh #3CC0C9;
     border-radius: 5vh;
@@ -52,6 +62,7 @@ header{
     width: 16vh;
     height: 4.5vh;
     font-size: 2.2vh;
+    text-decoration: none;
 }
 
 .btn-comenzar:hover{

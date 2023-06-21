@@ -60,9 +60,9 @@
 .caja-sec-izq{
     position: absolute;
     left: 0%;
-    top: 15%;
+    top: 14%;
     width: 62vh;
-    height: 65vh;
+    height: 65.25vh;
     border-radius: 0vh 1vh 1vh 0vh;
     background-color: #A8E3E7;
     z-index: -50;

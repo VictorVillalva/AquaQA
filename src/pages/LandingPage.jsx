@@ -12,6 +12,7 @@ import iconSaber from "../assets/Images/Add.svg"
 import '../assets/Styles/LandingPage.css'
 import { Footer } from "../components/Footer"
 import { Elegirnos } from "../components/Elegirnos"
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -29,6 +30,12 @@ export const LandingPage = () => {
         }
       };
 
+      const Login = useNavigate()
+      
+      const handleNavigateLogin = () =>{
+        Login('/login')
+      }
+
 
     return (
         <>
@@ -41,7 +48,7 @@ export const LandingPage = () => {
                         <h4 className="info3">Invierte en calidad para un mundo <br /> radiante</h4>
                         <div className="btns">
                             <div className="btn-iniciar">
-                                <button className="inic">Iniciar<img className="icon-inic" src={iconInicio} /></button>
+                                <button className="inic" onClick={handleNavigateLogin}>Iniciar<img className="icon-inic" src={iconInicio} /></button>
                             </div>
                             <div className="btn-saber-mas">
                                 <button onClick={() => scrollToSection('#Nosotros')} className="masSaber">Saber más <img className="icon-saber" src={iconSaber} /></button>
