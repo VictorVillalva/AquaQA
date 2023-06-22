@@ -5,7 +5,9 @@ export const HomeUser = () =>{
     return(
         <>
             <div className="container-home-user">
-                <UserNavBar></UserNavBar>
+                <div className="container navbarUser"> 
+                    <UserNavBar></UserNavBar>
+                </div>
                 <div className="content-userhome">
                     <h2 className="userBienvenida">Bienvenido<h2 className="nameUser">Victor Villalva</h2> </h2>
                 </div>

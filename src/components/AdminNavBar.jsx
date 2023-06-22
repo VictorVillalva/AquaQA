@@ -2,21 +2,21 @@ import Logo from '../assets/Images/Logo.svg';
 import logout from '../assets/Images/Logout.svg';
 import User from '../assets/Images/UserAdmin.svg'
 import Sensor from '../assets/Images/SensorAdmin.svg'
-
-import '../assets/Styles/userNavBar.css'
+import { NavLink } from 'react-router-dom';
+import '../assets/Styles/AdminNavBar.css'
 
 export const AdminNavBar = () => {
     return(
         <>
             <div className="row">
                 <div className="col nav">
-                    <a href=""><img src={Logo} alt="Logo" id='LogoAQA' /></a>
+                    <NavLink to={'/'}><img src={Logo} alt="Logo" id='LogoAQA' /></NavLink>
                 </div>
             </div>
             <div className="row">
                 <div className="col optionsUser nav">
-                    <a href=""><img src={User} alt="Home" className='options' /></a>
-                    <a href=""><img src={Sensor} alt="Settings" className='options' /></a>
+                    <NavLink to={'/users'}><img src={User} alt="Home" className='options' /></NavLink>
+                    <NavLink to={'/sensores'}><img src={Sensor} alt="Settings" className='options' /></NavLink>
                 </div>
             </div>
             <div className="row">
