@@ -1,8 +1,10 @@
+import { NavLink } from 'react-router-dom';
+
 import Logo from '../assets/Images/Logo.svg';
 import logout from '../assets/Images/Logout.svg';
 import User from '../assets/Images/UserAdmin.svg'
 import Sensor from '../assets/Images/SensorAdmin.svg'
-import { NavLink } from 'react-router-dom';
+
 import '../assets/Styles/AdminNavBar.css'
 
 export const AdminNavBar = () => {

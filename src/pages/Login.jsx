@@ -1,20 +1,26 @@
 
 import { useState } from 'react'
-import "../assets/Styles/Login.css"
-import TextField from '@mui/material/TextField';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputAdornment from '@mui/material/InputAdornment';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import IconButton from '@mui/material/IconButton';
-import Logo from '../assets/Images/Logo.svg'
 import { useNavigate } from 'react-router-dom';
+
+import { TextField,
+        FormControl,
+        InputLabel,
+        OutlinedInput,
+        InputAdornment,
+        IconButton
+ } from '@mui/material';
+
+import { Visibility,
+        VisibilityOff
+} from '@mui/icons-material';
+
 import { styled } from '@mui/system';
 
+import Logo from '../assets/Images/Logo.svg'
+import "../assets/Styles/Login.css"
 
-export const LoginRegister = () => {
+
+export const Login = () => {
 
     const navigate = useNavigate();
 

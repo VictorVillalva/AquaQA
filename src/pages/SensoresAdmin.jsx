@@ -5,7 +5,7 @@ import '../assets/Styles/UsersAdmin.css'
 export const SensoresAdmin = () =>{
 
     return(
-        <>
+        
             <div className="container-admin">
                 <div className="container NavBarAdmin"> 
                     <AdminNavBar></AdminNavBar>
@@ -14,6 +14,6 @@ export const SensoresAdmin = () =>{
                     <TableSensor></TableSensor>
                 </div>
             </div>
-        </>
+        
     )
 }
