@@ -4,13 +4,14 @@ import Settings from '../assets/Images/Settings.svg';
 import logout from '../assets/Images/Logout.svg';
 //CSS
 import '../assets/Styles/userNavBar.css';
+import { NavLink } from 'react-router-dom';
 
 const UserNavBar = () => {
     return (
         <>
             <div className="row">
                 <div className="col nav">
-                    <a href=""><img src={Logo} alt="Logo" id='LogoAQA' /></a>
+                    <NavLink to={'/home'}><img src={Logo} alt="Logo" id='LogoAQA' /></NavLink>
                 </div>
             </div>
             <div className="row">

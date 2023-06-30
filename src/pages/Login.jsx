@@ -77,13 +77,13 @@ export const Login = () => {
                                                 onMouseDown={handleMouseDownPassword}
                                                 edge="end"
                                             >
-                                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                {showPassword ? <Visibility /> : <VisibilityOff />}
                                             </IconButton>
                                         </InputAdornment>
                                     }
                                     label="Password"
                                 />
-                            </HeightFormControl>
+                            </HeightFormControl> 
                         </div>
                         <div className="recuerdame">
                             <input type="checkbox" />
