@@ -11,9 +11,10 @@
 	padding-left: 5vh;
 }
 
-.logo button{
+.logo a{
 	display: flex;
 	border: none;
+	text-decoration: none;
 	background: none;
 	cursor: pointer;
 }
@@ -93,6 +94,7 @@
 	font-family: Poppins;
 	font-weight: 500;
 	font-size: 3vh;
+	text-align: center;
 	color: #F8FDFD;
 	border: none;
 	background-color: #3CC0C9;
@@ -115,3 +117,7 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
+.custom-swal {
+	font-family: Poppins;
+  }

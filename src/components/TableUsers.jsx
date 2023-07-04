@@ -1,9 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-/*import { styled } from '@mui/system';*/
 import AddUser from '../assets/Images/AddUser.svg'
 import AddUserWhite from '../assets/Images/AddUserWhite.svg'
 import {
@@ -11,12 +10,14 @@ import {
     InputLabel,
     OutlinedInput,
     InputAdornment,
-    IconButton
+    IconButton,
+    TextField
 } from '@mui/material';
 
 import { Visibility,
     VisibilityOff
 } from '@mui/icons-material';
+import { axiosInstance } from '../Helpers/axiosInstance';
 
 
 export const TableUsers = () => {
@@ -69,13 +70,20 @@ export const TableUsers = () => {
         event.preventDefault();
     };
 
-    /*const HeightFormControl = styled(FormControl)(() => ({
-        '& .MuiInputBase-input': {
-          height: '3vh'
-        },
-      }));*/
-        
+    const [user, setUser] = useState([])
 
+    useEffect(() => {
+        axiosInstance
+          .get('user')
+          .then(({ data }) => {
+            console.log(data);
+            setUser(data.data);
+          })
+          .catch(err => {
+            console.log(err.message);
+          });
+      }, []);
+ 
     return(
         <>  
             <div className="head-add">
@@ -98,15 +106,21 @@ export const TableUsers = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><a onClick={handleClickInfo} className='infoSensores'>Victor Villalva</a> </td>
-                            <td>Victor@gmail.com</td>
-                            <td>9612345678</td>
-                            <td className="btns-admin">
-                                <button className="btn-del" onClick={handleClickOpen}>Eliminar</button>
-                            </td>
-                        </tr>
+
+                        {user.map(users => (
+                            <>
+                                <tr>
+                                    <td key={users.id}>{users.id}</td>
+                                    <td><a onClick={handleClickInfo} className='infoSensores'>{users.name} {users.lastname}</a></td>
+                                    <td>{users.email}</td>
+                                    <td>{users.phoneNumber}</td>
+                                    <td className="btns-admin">
+                                        <button className="btn-del" onClick={handleClickOpen}>Eliminar</button>
+                                    </td>
+                                </tr>
+                            </>      
+                        ))}
+
                     </tbody>
                 </table>
             </div>
@@ -144,7 +158,7 @@ export const TableUsers = () => {
                 </DialogContent>
                 <DialogActions>
                     <button className="btn-cancelar" onClick={handleClose}>Cancelar</button>
-                    <button className="btn-Eliminar" onClick={handleClose} autoFocus>Eliminar</button>
+                    <button className="btn-Eliminar" onClick={handleClose}>Eliminar</button>
                 </DialogActions>
             </Dialog>
             <Dialog
@@ -181,7 +195,6 @@ export const TableUsers = () => {
                 </DialogActions>
             </Dialog>
             <Dialog
-                className='sensores-info'
                 sx={{ width: '80vh', marginLeft: '26%' }}
                 open={addUser}
                 onClose={handleClose}
@@ -191,7 +204,35 @@ export const TableUsers = () => {
                 <DialogTitle id="alert-dialog-title" sx={{ fontFamily: 'Poppins', fontWeight: '700', fontSize: '3vh' }}>
                     {"Agregar un nuevo usuario"}
                 </DialogTitle>
-                <DialogContent sx={{ fontFamily: 'Poppins'}}>
+                <DialogContent sx={{fontFamily: 'Poppins',}}>
+                    <div className="name-phoneNumber">
+                        <TextField sx={{paddingRight:'1.5vh'}} label="Nombre" variant="outlined" />
+                        <TextField label="Apellido" variant="outlined" />
+                    </div>
+                    <div className="passwords">
+                        <FormControl sx={{width:'28.6vh', paddingRight:'1.5vh'}} variant="outlined">
+                            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                            <OutlinedInput
+                                id="outlined-adornment-password"
+                                type={showPassword ? 'text' : 'password'}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={handleMouseDownPassword}
+                                            edge="end"
+                                        >
+                                            {showPassword ? <Visibility /> : <VisibilityOff />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                                label="Password"
+                            />
+                        </FormControl>
+                        <TextField label="Teléfono" variant="outlined" />
+                    </div>
+                    
                 </DialogContent>
                 <DialogActions>
                     <button className="btn-cancelar" onClick={handleClickCloseAddUser}>Cancelar</button>

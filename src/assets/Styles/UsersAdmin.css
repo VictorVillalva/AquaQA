@@ -3,6 +3,7 @@
 .container-admin{
     display: flex;
     background-color: #F8FDFD;
+    width: 100%;
 }
 
 .content-admin{
@@ -159,4 +160,15 @@ td{
     color: #464646;
     font-size: 2vh;
     text-align: center;
+}
+
+.name-phoneNumber{
+    display: flex;
+    justify-content: center;
+    padding: 1vh 0vh 0vh 0vh;
+}
+
+.passwords{
+    display: flex;
+    padding-top: 1vh;
 }

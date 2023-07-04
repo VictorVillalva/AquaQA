@@ -15,7 +15,7 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/home" element={<HomeUser/>}/>
           <Route path="/users" element={<UsersAdmin/>}/>
-          <Route path="/cambiocontraseña" element={<CambioContraseña/>}/>
+          <Route path="/contraseña" element={<CambioContraseña/>}/>
         </Routes>
       </BrowserRouter>
     </>

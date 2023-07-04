@@ -1,6 +1,6 @@
 
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { TextField,
         FormControl,
@@ -14,60 +14,99 @@ import { Visibility,
         VisibilityOff
 } from '@mui/icons-material';
 
-import { styled } from '@mui/system';
-
+import Swal from 'sweetalert2';
 import Logo from '../assets/Images/Logo.svg'
 import "../assets/Styles/Login.css"
 
 
-export const Login = () => {
+export const Login = () => {    
+    const [showPassword, setShowPassword] = useState(false);
+    const [isFormValid, setIsFormValid] = useState(false);
+    const navigate=useNavigate()
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const [email, setEmail]=useState()
+    const [password, setPassword]=useState()
 
-    const navigate = useNavigate();
-
-    const handleClickNavigateHome = () =>{
-        navigate('/')
+    const handleChangeEmail=(e)=>{
+        setEmail(e.target.value)
     }
 
-
-    const [showPassword, setShowPassword] = useState(false);
-
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const handleChangePass=(e)=>{
+        setPassword(e.target.value)
+    }
 
     const handleMouseDownPassword = (event) => {
     event.preventDefault();
     };
 
-    const HeightTextField = styled(TextField)(() => ({
-        '& .MuiInputBase-input': {
-          height: '3vh'
-        },
-      }));
+    const validateForm = () => {
+        setIsFormValid(email && password);
+      };
+      
+      useEffect(() => {
+        validateForm();
+      }, [email, password]);
 
-    const HeightFormControl = styled(FormControl)(() => ({
-        '& .MuiInputBase-input': {
-          height: '3vh'
-        },
-      }));
- 
+    const handleSubmit =(event)=>{
+        event.preventDefault();
+        if(isFormValid) {
+        let Options ={
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        }
+        console.log(Options)
+        fetch('http://localhost:8080/api/login', Options)
+          .then(data => {
+            
+            data!=null? navigate("/home"): alert("alert")
+            console.log(data);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+        } else {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Campos incompletos',
+                text: 'Por favor, completa todos los campos.',
+                customClass: {
+                    container: 'custom-swal',
+                  },
+              });
+        }
 
+    }
     return(
-        
-            <div className="container-login">
+            <form className="container-login">
                 <div className="logo">
-                    <button onClick={handleClickNavigateHome}><img src={Logo}/><h2>AquaQA</h2></button>
+                    <NavLink to={'/'}><img src={Logo}/><h2>AquaQA</h2></NavLink>
                 </div>
                 <div className="sec-izq-log">
                     <div className="log-container">
                         <h1>Iniciar sesión</h1>
                         <h4>Bienvenido, por favor ingrese sus datos</h4>
                         <div className="name-user">
-                            <HeightTextField sx={{ m:'0', width:'55vh',backgroundColor:'#F8FDFD' }} id="outlined-basic" label="Correo Electrónico" variant="outlined" />     
+                        <TextField sx={{ m: '0', width: '55vh', backgroundColor: '#F8FDFD' }} 
+                                    id="outlined-basic" 
+                                    label="Correo Electrónico" 
+                                    variant="outlined"
+                                    value={email || ''}
+                                    onChange={handleChangeEmail}
+                                    />     
                         </div>
                         <div className="password-user">
-                            <HeightFormControl sx={{ m:'0', width: '55vh', backgroundColor:'#F8FDFD',}} variant="outlined">
+                            <FormControl sx={{ m:'0', width: '55vh', backgroundColor:'#F8FDFD',}} variant="outlined">
                                 <InputLabel htmlFor="outlined-adornment-password">Contraseña</InputLabel>
                                 <OutlinedInput
                                     id="outlined-adornment-password"
+                                    value={password || ''}
+                                    onChange={handleChangePass}
                                     type={showPassword ? 'text' : 'password'}
                                     endAdornment={
                                         <InputAdornment position="end">
@@ -83,20 +122,18 @@ export const Login = () => {
                                     }
                                     label="Password"
                                 />
-                            </HeightFormControl> 
+                            </FormControl> 
                         </div>
                         <div className="recuerdame">
                             <input type="checkbox" />
                             <p>Recuerdame</p>
                         </div>
                         <div className="btn-iniciar-sesion">
-                            <button>Iniciar sesión</button>
+                            <button type="submit" onClick={handleSubmit} >Iniciar Sesión</button>
                         </div>
                     </div>
                 </div>
-                <div className="sec-der-login">
-                </div>
-            </div>
-        
+                <div className="sec-der-login"/>
+            </form>
     )
 }
