@@ -5,6 +5,7 @@ import forward from '../assets/Images/Forward.svg';
 
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import {Bar} from 'react-chartjs-2';
 
 
 

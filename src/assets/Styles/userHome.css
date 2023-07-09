@@ -1,16 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
-
-.userHomeDiv{
-    background-color: #F8FDFD; 
+.HomeUserPrincipal{
+    background: #F8FDFD;
+}
+.principalData{
+    height: 100%;
+}
+.welcomeUser{
+    color: #53C8CF;
+    font-size: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.nameUser{
+    color: #464646;
+    font-size: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.cardsPorcentajes{
     display: flex;
     flex-direction: row;
-}
-.bienvenida{
-    margin-top: 9.3vh;
-    margin-left: 26.5vh;
-}
-#notification{
-    margin-top: 8.7vh;
-    margin-right: 14.9vh;
-    margin-left: 90vh;
+    justify-content: space-between;
 }
