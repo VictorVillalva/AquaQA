@@ -5,19 +5,21 @@ export const authSlice = createSlice({
   initialState: {
     token: null,
     isAuthenticathed: false,
+    currentUser:null
   },
   reducers: {
     login: (state, action) => {
       state.token = action.payload.token;
       state.isAuthenticathed = true;
-    },
-    addUser: (state, action) => {
-      state.user = action.payload.rol;
+      state.currentUser = action.payload.rol
+      console.log(state.currentUser)
     },
     logout: (state /* action */) => {
       localStorage.removeItem('token');
+      localStorage.removeItem('rol');
       state.token = null;
       state.isAuthenticathed = false;
+      state.currentUser=null
     },
   },
 });

@@ -14,7 +14,7 @@ import { Visibility,
 
 import Swal from 'sweetalert2';
 import Logo from '../assets/Images/Logo.svg'
-import { setTokens } from '../Helpers/auth';
+import { setRol, setTokens } from '../Helpers/auth';
 import "../assets/Styles/Login.css"
 import axios from 'axios';
 import { login } from '../Store/slices/AuthSlice';
@@ -63,13 +63,15 @@ export const Login = () => {
             const { data } = resp;
             console.log(data)
             setTokens(data.data.token);
+            setRol(data.data.rol)
             dispatch(
                 login({
                     token:data.data.token,
+                    currentUser:data.data.rol,
                     status: resp.success
                 })
             )
-          
+            console.log(data.data.rol)
           }) 
           .catch(({ response }) => {
             console.log(response.message);

@@ -3,9 +3,11 @@ import { useSelector } from "react-redux"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PublicRoutes from "./PublicRouter";
 import { Login } from "../pages/Login";
-import PrivateRoutes from "./PrivateRouter";
 import UserRouter from "./UserRouter";
 import { LandingPage } from "../pages/LandingPage";
+import PrivateRoutesAdmi from "./PrivateRouterAdmi";
+import { UsersAdmin } from "../pages/UsersAdmin";
+import PrivateRoutesUser from "./PrivateRouterUser";
 
 
 const AppRouter =()=>{
@@ -24,7 +26,6 @@ const AppRouter =()=>{
                     </PublicRoutes>
                 }
                 />
-
                 <Route
                 path="/landing"
                 element={
@@ -33,14 +34,22 @@ const AppRouter =()=>{
                     </PublicRoutes>
                 }
                 />
-
-                
                 <Route
-                path="/*"
+                exact path="/*"
                 element={
-                    <PrivateRoutes>
+                    <PrivateRoutesUser>
                         <UserRouter/>
-                    </PrivateRoutes>
+                    </PrivateRoutesUser>
+                }
+                />
+                <Route
+                exact path="/users"
+                element={
+                   <PrivateRoutesAdmi>
+                  <UsersAdmin></UsersAdmin>
+                    
+                   </PrivateRoutesAdmi>
+
                 }
                 />
 

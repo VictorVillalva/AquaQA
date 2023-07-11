@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux"
 import { login } from "../Store/slices/AuthSlice";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { HomeUser } from "../pages/HomeUser";
-import { CambioContraseña } from "../pages/CambioContraseña";
+import { UsersAdmin } from "../pages/UsersAdmin";
 
 
-const UserRouter =()=>{
+
+const AdmiRouter =()=>{
     const dispatch = useDispatch();
     const token= localStorage.getItem('token')
     const rol = localStorage.getItem('rol')
@@ -18,12 +18,12 @@ const UserRouter =()=>{
     return(
         <>
         <Routes>
-            <Route path="/home" element={<HomeUser/>} />
-            <Route path="/contraseña" element={<CambioContraseña/>}/>
-            <Route path="/" element={<Navigate to={'/home'}/>}/>
+            <Route path="/users" element={<UsersAdmin/>} />
+           
+            <Route path="/" element={<Navigate to={'/users'}/>}/>
         </Routes>
         </>
     )
 }
 
-export default UserRouter
+export default AdmiRouter

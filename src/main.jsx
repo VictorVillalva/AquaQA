@@ -9,8 +9,7 @@ import { storee } from './Store/storee'
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <Provider store={storee}>
- <App></App>
+            <App></App>
         </Provider>
-      
     </React.StrictMode>
 )

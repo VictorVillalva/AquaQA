@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { logout } from '../Store/slices/AuthSlice';
-import { deleteToken } from '../Helpers/auth';
+import { deleteRol, deleteToken } from '../Helpers/auth';
 
 
 const UserNavBar = () => {
@@ -18,6 +18,8 @@ const UserNavBar = () => {
     const HandleLogOut = () =>{
         dispatch(logout())
         deleteToken()
+        deleteRol()
+
     }
     
     return (
