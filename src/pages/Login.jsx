@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { TextField,
         FormControl,
         InputLabel,
@@ -15,13 +15,15 @@ import { Visibility,
 import Swal from 'sweetalert2';
 import Logo from '../assets/Images/Logo.svg'
 import { setTokens } from '../Helpers/auth';
-import { axiosInstance } from '../Helpers/axiosInstance';
 import "../assets/Styles/Login.css"
+import axios from 'axios';
+import { login } from '../Store/slices/AuthSlice';
+import { useDispatch } from 'react-redux';
 
 
 export const Login = () => {    
     const [showPassword, setShowPassword] = useState(false);
-    const navigate= useNavigate()
+    const dispatch= useDispatch()
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const [email, setEmail]=useState()
     const [password, setPassword]=useState()
@@ -38,7 +40,7 @@ export const Login = () => {
         e.preventDefault();
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         if (!email || !password) {
             Swal.fire({
@@ -56,17 +58,22 @@ export const Login = () => {
             password: password
         }
         console.log(dataUser)
-        axiosInstance
-        .post("user/sign-in", dataUser)
-            .then((resp) => {
-                const { data } = resp;
-                setTokens(data.data);
-                data.success!=null? navigate("/home"): alert("Error contraseña incorrecta o campos vacios")
-                console.log(data) 
-            })
-            .catch(({response}) => {
-                console.log(response.message)
-            })
+        axios.post("http://localhost:8080/api/user/sign-in", dataUser)
+        .then((resp) => {     
+            const { data } = resp;
+            console.log(data)
+            setTokens(data.data.token);
+            dispatch(
+                login({
+                    token:data.data.token,
+                    status: resp.success
+                })
+            )
+          
+          }) 
+          .catch(({ response }) => {
+            console.log(response.message);
+          });
         }
 
     return(
