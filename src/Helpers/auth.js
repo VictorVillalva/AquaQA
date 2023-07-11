@@ -1,8 +1,8 @@
 export const deleteToken = () => {
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem('token');
   };
   
-  export const setTokens = accessToken => {
-    localStorage.setItem('accessToken', accessToken);
+export const setTokens = token => {
+    localStorage.setItem('token', token);
   };
   

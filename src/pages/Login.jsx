@@ -1,7 +1,5 @@
-
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-
 import { TextField,
         FormControl,
         InputLabel,
@@ -16,13 +14,14 @@ import { Visibility,
 
 import Swal from 'sweetalert2';
 import Logo from '../assets/Images/Logo.svg'
+import { setTokens } from '../Helpers/auth';
+import { axiosInstance } from '../Helpers/axiosInstance';
 import "../assets/Styles/Login.css"
 
 
 export const Login = () => {    
     const [showPassword, setShowPassword] = useState(false);
-    const [isFormValid, setIsFormValid] = useState(false);
-    const navigate=useNavigate()
+    const navigate= useNavigate()
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const [email, setEmail]=useState()
     const [password, setPassword]=useState()
@@ -35,59 +34,47 @@ export const Login = () => {
         setPassword(e.target.value)
     }
 
-    const handleMouseDownPassword = (event) => {
-    event.preventDefault();
+    const handleMouseDownPassword = (e) => {
+        e.preventDefault();
     };
 
-    const validateForm = () => {
-        setIsFormValid(email && password);
-      };
-      
-      useEffect(() => {
-        validateForm();
-      }, [email, password]);
-
-    const handleSubmit =(event)=>{
-        event.preventDefault();
-        if(isFormValid) {
-        let Options ={
-            method: "POST",
-            headers:{
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!email || !password) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Por favor, completa todos los campos',
+              customClass: {
+                container: 'custom-swal',
+              },
+            });
+            return;
+          }
+        const dataUser = {
+            email: email,
+            password: password
+        }
+        console.log(dataUser)
+        axiosInstance
+        .post("user/sign-in", dataUser)
+            .then((resp) => {
+                const { data } = resp;
+                setTokens(data.data);
+                data.success!=null? navigate("/home"): alert("Error contraseña incorrecta o campos vacios")
+                console.log(data) 
+            })
+            .catch(({response}) => {
+                console.log(response.message)
             })
         }
-        console.log(Options)
-        fetch('http://localhost:8080/api/login', Options)
-          .then(data => {
-            
-            data!=null? navigate("/home"): alert("alert")
-            console.log(data);
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
-        } else {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Campos incompletos',
-                text: 'Por favor, completa todos los campos.',
-                customClass: {
-                    container: 'custom-swal',
-                  },
-              });
-        }
 
-    }
     return(
             <form className="container-login">
-                <div className="logo">
-                    <NavLink to={'/'}><img src={Logo}/><h2>AquaQA</h2></NavLink>
-                </div>
                 <div className="sec-izq-log">
+                    <div className="logo">
+                        <NavLink to={'/'}><img src={Logo}/><h2>AquaQA</h2></NavLink>
+                    </div>
                     <div className="log-container">
                         <h1>Iniciar sesión</h1>
                         <h4>Bienvenido, por favor ingrese sus datos</h4>
@@ -124,12 +111,8 @@ export const Login = () => {
                                 />
                             </FormControl> 
                         </div>
-                        <div className="recuerdame">
-                            <input type="checkbox" />
-                            <p>Recuerdame</p>
-                        </div>
                         <div className="btn-iniciar-sesion">
-                            <button type="submit" onClick={handleSubmit} >Iniciar Sesión</button>
+                            <button type="submit" onClick={handleSubmit}>Iniciar Sesión</button>
                         </div>
                     </div>
                 </div>

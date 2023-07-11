@@ -5,6 +5,7 @@ import logout from '../assets/Images/Logout.svg';
 //CSS
 import '../assets/Styles/userNavBar.css';
 import { NavLink } from 'react-router-dom';
+import { deleteToken } from '../Helpers/auth';
 
 const UserNavBar = () => {
     return (
@@ -22,7 +23,7 @@ const UserNavBar = () => {
             </div>
             <div className="row">
                 <div className="col nav">
-                    <a href=""><img src={logout} alt="" id='Logout' /></a>
+                    <a onClick={deleteToken()} href=""><img src={logout} alt="" id='Logout' /></a>
                 </div>
             </div>
         </>

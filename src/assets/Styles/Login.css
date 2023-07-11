@@ -2,13 +2,13 @@
 
 .container-login{
 	display: flex;
+	justify-content: space-between;
 }
 
 .logo{
 	display: flex;
-	justify-self: flex-start;
+	padding-left: 4vh;
 	padding-top: 4vh;
-	padding-left: 5vh;
 }
 
 .logo a{
@@ -21,7 +21,6 @@
 
 .logo img{
 	width: 5.6vh;
-	height: 5.6vh;
 }
 
 .logo h2{
@@ -36,13 +35,13 @@
 
 .sec-izq-log{
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
 }
 
 .log-container{
-	margin-top: 42%;
-	margin-left: -50%;
 	text-align: center;
+	padding-left: 18vh;
+	padding-top: 15vh;
 }
 
 .log-container h1{
@@ -68,7 +67,7 @@
 }
 
 .password-user{
-	padding-bottom: 2vh;
+	padding-bottom: 4vh;
 }
 
 .recuerdame{
@@ -120,4 +119,4 @@
 
 .custom-swal {
 	font-family: Poppins;
-  }
+}

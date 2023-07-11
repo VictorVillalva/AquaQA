@@ -27,7 +27,7 @@ export const Inicio = () =>{
       };
 
     return(
-        <div className="contenedor-contenido">
+        <div className="contenedor-inicio">
             <div className="sec-Izquierda">
                 <div className="content">
                     <h2 className="info">Agua limpia,</h2>
@@ -37,16 +37,16 @@ export const Inicio = () =>{
                         <div className="btn-iniciar">
                             <button className="inic" onClick={handleNavigateLogin}>Iniciar<img className="icon-inic" src={iconInicio} /></button>
                         </div>
-                        <div className="btn-saber-mas">
+                        <div className="btn-saberMas">
                             <button onClick={() => scrollToSection('#Nosotros')} className="masSaber">Saber más <img className="icon-saber" src={iconSaber} /></button>
                         </div>
                     </div>
                     <div className="info4">
-                        <h3 className="inf1">80+<br /><h4>Zonas</h4></h3>
-                        <div className="divider1"></div>
-                        <h3 className="inf2">2000+<br /><h4>Personas</h4></h3>
-                        <div className="divider2"></div>
-                        <h3 className="inf3">10+<br /><h4>Estados</h4></h3>
+                        <h3 className="inf1">80+ <h3 className="sub">Zonas</h3></h3>
+                        <div className="divider1"/>
+                        <h3 className="inf2">2000+ <h3 className="sub">Personas</h3></h3>
+                        <div className="divider1"/>
+                        <h3 className="inf3">10+ <h3 className="sub">Estados</h3></h3>
                     </div>
                 </div>
             </div>

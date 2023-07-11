@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
 
-.contenedor-contenido{
+.contenedor-inicio{
     display: flex;
     justify-content: space-evenly;
 }
@@ -43,11 +43,11 @@
     padding-bottom: 4VH;
 }
 
-.btn-saber-mas{
+.btn-saberMas{
     padding-left: 2vh;
 }
 
-.inic{
+.btn-iniciar button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,7 +67,7 @@
     width: 3vh;
 }
 
-.masSaber{
+.btn-saberMas button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,21 +82,21 @@
     height: 5.8vh;
 }
 
+.sec-Derecha{
+    padding-top: 5%;
+}
+
 .icon-saber{
     padding-left: .5vh;
     width: 3vh;
-}
-
-.imagenes img{
-    width: 22vh;
 }
 
 .imagenes{
     display: flex;
 }
 
-.sec-Derecha{
-    margin-top: 5%;
+.imagenes img{
+    width: 22vh;
 }
 
 .img2{
@@ -139,12 +139,7 @@
 
 .divider1{
     width: .04vh;
-    background-color: #464646;
-}
-
-.divider2{
-    width: .04vh;
-    background-color: #464646;
+    background-color: #46464630;
 }
 
 .inic:hover{
@@ -169,4 +164,9 @@
     background-color: rgba(83, 202, 210, 0.2);
     filter: blur(6vh);
     z-index: -100;
+}
+
+ h3 .sub{
+    color: #A8E3E7;
+    font-size: 2.1vh;
 }

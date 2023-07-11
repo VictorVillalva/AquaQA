@@ -12,7 +12,7 @@ export const AdminNavBar = () => {
         <>
             <div className="row">
                 <div className="col nav">
-                    <NavLink to={'/home'}><img src={Logo} alt="Logo" id='LogoAQA' /></NavLink>
+                    <NavLink><img src={Logo} alt="Logo" id='LogoAQA' /></NavLink>
                 </div>
             </div>
             <div className="row">

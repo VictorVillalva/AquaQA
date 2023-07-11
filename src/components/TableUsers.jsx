@@ -106,7 +106,6 @@ export const TableUsers = () => {
                         </tr>
                     </thead>
                     <tbody>
-
                         {user.map(users => (
                             <>
                                 <tr>
@@ -117,13 +116,15 @@ export const TableUsers = () => {
                                     <td className="btns-admin">
                                         <button className="btn-del" onClick={handleClickOpen}>Eliminar</button>
                                     </td>
-                                </tr>
+                                </tr>   
                             </>      
                         ))}
-
                     </tbody>
                 </table>
             </div>
+
+
+            
             <Dialog
                 sx={{ width: '80vh', marginLeft: '30%'}}
                 open={open}
@@ -161,6 +162,10 @@ export const TableUsers = () => {
                     <button className="btn-Eliminar" onClick={handleClose}>Eliminar</button>
                 </DialogActions>
             </Dialog>
+
+
+
+
             <Dialog
                 className='sensores-info'
                 sx={{ width: '80vh', marginLeft: '26%' }}
@@ -195,6 +200,7 @@ export const TableUsers = () => {
                 </DialogActions>
             </Dialog>
             <Dialog
+                className='dialog-addUser'
                 sx={{ width: '80vh', marginLeft: '26%' }}
                 open={addUser}
                 onClose={handleClose}
@@ -206,12 +212,15 @@ export const TableUsers = () => {
                 </DialogTitle>
                 <DialogContent sx={{fontFamily: 'Poppins',}}>
                     <div className="name-phoneNumber">
-                        <TextField sx={{paddingRight:'1.5vh'}} label="Nombre" variant="outlined" />
-                        <TextField label="Apellido" variant="outlined" />
+                        <TextField sx={{paddingRight:'1.5vh', backgroundColor:'#F8FDFD'}} label="Nombre" variant="outlined" />
+                        <TextField sx={{background:'#F8FDFD'}} label="Apellido" variant="outlined" />
+                    </div>
+                    <div className="email">
+                        <TextField sx={{background:'#F8FDFD', width:'58.7vh'}} label="E-mail" variant="outlined" />
                     </div>
                     <div className="passwords">
-                        <FormControl sx={{width:'28.6vh', paddingRight:'1.5vh'}} variant="outlined">
-                            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                        <FormControl sx={{width:'28.6vh', paddingRight:'1.5vh', background:'#F8FDFD'}} variant="outlined">
+                            <InputLabel htmlFor="outlined-adornment-password">Contraseña</InputLabel>
                             <OutlinedInput
                                 id="outlined-adornment-password"
                                 type={showPassword ? 'text' : 'password'}
@@ -230,13 +239,13 @@ export const TableUsers = () => {
                                 label="Password"
                             />
                         </FormControl>
-                        <TextField label="Teléfono" variant="outlined" />
+                        <TextField sx={{background:'#F8FDFD'}} label="Teléfono" variant="outlined" />
                     </div>
                     
                 </DialogContent>
                 <DialogActions>
                     <button className="btn-cancelar" onClick={handleClickCloseAddUser}>Cancelar</button>
-                    <button className="btn-cancelar" onClick={handleClickCloseAddUser}>Aceptar</button>
+                    <button className="btn-crear" onClick={handleClickCloseAddUser}>Crear</button>
                 </DialogActions>
             </Dialog>
         </>
