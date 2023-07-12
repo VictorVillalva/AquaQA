@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
+
+.container-login{
+	display: flex;
+	justify-content: space-between;
+}
+
+.logo{
+	display: flex;
+	padding-left: 4vh;
+	padding-top: 4vh;
+}
+
+.logo a{
+	display: flex;
+	border: none;
+	text-decoration: none;
+	background: none;
+	cursor: pointer;
+}
+
+.logo img{
+	width: 5.6vh;
+}
+
+.logo h2{
+	font-family: Poppins;
+	font-weight: 600;
+	color: #3CC0C9;
+	padding-left: 2vh;
+	font-size: 4vh;
+	margin: 0;
+	padding-top: .4vh;
+}
+
+.sec-izq-log{
+	display: flex;
+	flex-direction: column;
+}
+
+.log-container{
+	text-align: center;
+	padding-left: 18vh;
+	padding-top: 15vh;
+}
+
+.log-container h1{
+	font-family: Poppins;
+	color: #3CC0C9;
+	font-weight: 700;
+	font-size: 6vh;
+	margin: 0;
+	padding-bottom: 1vh;
+}
+
+.log-container h4{
+	font-family: Poppins;
+	color: #959595;
+	font-weight: 600;
+	font-size: 2.2vh;
+	margin: 0;
+	padding-bottom: 5vh;
+}
+
+.name-user{
+	padding-bottom: 3vh;
+}
+
+.password-user{
+	padding-bottom: 4vh;
+}
+
+.recuerdame{
+	display: flex;
+	justify-content: flex-start;
+	padding-bottom: 1.6vh;
+}
+
+.recuerdame p{
+	font-family: Poppins;
+	font-weight: 500;
+	font-size: 2vh;
+	padding-left: 1.4vh;
+	color: #464646;
+}
+
+.recuerdame input{
+	width: 2vh;
+	background-color: #F8FDFD;
+}
+
+.btn-iniciar-sesion button{
+	font-family: Poppins;
+	font-weight: 500;
+	font-size: 3vh;
+	text-align: center;
+	color: #F8FDFD;
+	border: none;
+	background-color: #3CC0C9;
+	width: 44vh;
+	height: 7vh;
+	border-radius: 1.3vh;
+	box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1); 
+}
+
+.btn-iniciar-sesion button:hover{
+	transform: scale(1.02);
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+
+.sec-der-login {
+	width: 50.8%;
+	background-image: url('../Images//ImgLogin.svg');
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.custom-swal {
+	font-family: Poppins;
+}

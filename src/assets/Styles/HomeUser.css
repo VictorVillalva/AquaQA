@@ -1,0 +1,28 @@
+.container-home-user{
+    display: flex;
+    background-color: #F8FDFD;
+}
+
+.content-userhome{
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+.userBienvenida{
+    display: flex;
+    margin: 0;
+    font-size: 4vh;
+    font-family: Poppins;
+    font-weight: 500;
+    color: #53C8CF;
+}
+
+.nameUser{
+    font-family: Poppins;
+    display: flex;
+    margin: 0;
+    font-size: 4vh;
+    font-weight: 600;
+    color: #464646;
+    padding-left: 1vh;
+}

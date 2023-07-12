@@ -1,0 +1,99 @@
+.container-cambio-contra{
+    display: flex;
+}
+
+.content-cambio{
+    width: 100%;
+    background-color: #F8FDFD;
+}
+
+.form-contenido{
+    display: flex;
+    justify-content: space-around;
+    max-width: 80%;
+    min-height: 80%;
+    background-color: white;
+    border-radius: 1.2vh;
+    margin-top: 10vh;
+    margin-left: 15vh;
+    box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.25);
+}
+
+.form-sec-der{
+    padding-top: 7vh;
+}
+
+.form-sec-izq{
+    padding-top: 9vh;
+}
+
+.form-sec-izq h2{
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 4.3vh;
+    margin: 0;
+}
+
+.divider{
+    width: 4vh;
+    height: .8vh;
+    background: #3CC0C9;
+    border-radius: .9vh;
+}
+
+.form-sec-izq h3{
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 2.4vh;
+    color: #626262;
+    padding-bottom: 7vh;
+    margin: 0;
+}
+
+.cambio-contra h4{
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 2.3vh;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 2.5vh;
+}
+
+.btn-cambiar{
+    background-color: #3CC0C9;
+    color: #F8FDFD;
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 2vh;
+    width: 40vh;
+    height: 5vh;
+    border-radius: 2vh;
+    border: #3CC0C9;
+    margin-top: 5vh;
+    cursor: pointer;
+}
+
+.btn-cambiar:hover{
+    transform: scale(1.05);
+    transition: all .4s ease-in-out;
+}
+
+.sub-user-img{
+    display: flex;
+    justify-content: center;
+}
+
+.sub-img{
+    padding-top: 8vh;
+}
+
+.ID{
+    width: 40vh;
+}
+
+.foto-usuario{
+    width: 16vh;
+}
