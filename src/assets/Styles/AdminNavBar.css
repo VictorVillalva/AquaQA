@@ -5,6 +5,7 @@
     height: 100vh;
     background-color: #FFFFFF;
     overflow: hidden;
+
 }
 .navA{
     display: flex;
@@ -26,6 +27,7 @@
     width: 5vh;
 }
 #LogoutA{
-    margin-top: 50vh;
+    padding-top: 50vh;
     width: 4vh;
+    cursor: pointer;
 }

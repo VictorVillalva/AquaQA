@@ -10,7 +10,7 @@
     display: flex;
     justify-content: center;
 }
-.optionsUser{
+.optionsAdmin{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,7 +18,7 @@
 }
 
 .optionsU{
-    padding-top: 12vh;
+    padding-top: 28vh;
     width: 4vh;
 }
 
@@ -27,7 +27,7 @@
 }
 
 #LogoutU{
-    padding-top: 50vh;
+    padding-top: 70vh;
     width: 4vh;
 }
 

@@ -31,7 +31,7 @@ const UserNavBar = () => {
                 </div>
             </div>
             <div className="row">
-                <div className="col optionsUser navU">
+                <div className="col optionsAdmin navU">
                     <a href=""><img src={Home} alt="Home" className='optionsU' /></a>
                     <a href=""><img src={Settings} alt="Settings" className='optionsU' /></a>
                 </div>

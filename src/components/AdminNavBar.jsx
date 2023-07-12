@@ -1,19 +1,18 @@
-import {NavLink, useNavigate} from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import Logo from '../assets/Images/Logo.svg';
 import logoutt from '../assets/Images/Logout.svg';
 import User from '../assets/Images/UserAdmin.svg'
-
-
+import { logout } from '../Store/slices/AuthSlice';
 import '../assets/Styles/AdminNavBar.css'
-import {useDispatch} from "react-redux";
-import { logout } from "../Store/slices/AuthSlice.js";
-import {deleteRol, deleteToken} from "../Helpers/auth.js";
+import { useDispatch } from 'react-redux';
+import { deleteRol, deleteToken } from '../Helpers/auth';
 
 export const AdminNavBar = () => {
 
-    const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    const dispatch = useDispatch()
 
     const HandleLogOut = () => {
         dispatch(logout())
