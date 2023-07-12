@@ -25,19 +25,19 @@ const UserNavBar = () => {
     return (
         <>
             <div className="row">
-                <div className="col nav">
+                <div className="col navU">
                     <NavLink to={'/home'}><img src={Logo} alt="Logo" id='LogoAQA' /></NavLink>
                 </div>
             </div>
             <div className="row">
-                <div className="col optionsUser nav">
-                    <a href=""><img src={Home} alt="Home" className='options' /></a>
-                    <a href=""><img src={Settings} alt="Settings" className='options' /></a>
+                <div className="col optionsAdmin navU">
+                    <a href=""><img src={Home} alt="Home" className='optionsU' /></a>
+                    <a href=""><img src={Settings} alt="Settings" className='optionsU' /></a>
                 </div>
             </div>
             <div className="row">
-                <div className="col nav">
-                    <a onClick={HandleLogOut}><img src={logoutt} alt="" id='Logout' /></a>
+                <div className="col navU">
+                    <a onClick={HandleLogOut}><img src={logoutt} alt="" id='LogoutU' /></a>
                 </div>
             </div>
         </>
