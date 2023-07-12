@@ -4,7 +4,7 @@ import Settings from '../assets/Images/Settings.svg';
 import logoutt from '../assets/Images/Logout.svg';
 //CSS
 import '../assets/Styles/userNavBar.css';
-import { NavLink } from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { logout } from '../Store/slices/AuthSlice';
@@ -14,30 +14,31 @@ import { deleteRol, deleteToken } from '../Helpers/auth';
 const UserNavBar = () => {
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const HandleLogOut = () =>{
         dispatch(logout())
         deleteToken()
         deleteRol()
-
+        navigate('/landing')
     }
-    
+
     return (
         <>
             <div className="row">
-                <div className="col nav">
+                <div className="col navU">
                     <NavLink to={'/home'}><img src={Logo} alt="Logo" id='LogoAQA' /></NavLink>
                 </div>
             </div>
             <div className="row">
-                <div className="col optionsUser nav">
-                    <a href=""><img src={Home} alt="Home" className='options' /></a>
-                    <a href=""><img src={Settings} alt="Settings" className='options' /></a>
+                <div className="col optionsUser navU">
+                    <a href=""><img src={Home} alt="Home" className='optionsU' /></a>
+                    <a href=""><img src={Settings} alt="Settings" className='optionsU' /></a>
                 </div>
             </div>
             <div className="row">
-                <div className="col nav">
-                    <a onClick={HandleLogOut}><img src={logoutt} alt="" id='Logout' /></a>
+                <div className="col navU">
+                    <a onClick={HandleLogOut}><img src={logoutt} alt="" id='LogoutU' /></a>
                 </div>
             </div>
         </>

@@ -6,10 +6,9 @@
     background-color: #FFFFFF;
     overflow: hidden;
 }
-.nav{
+.navU{
     display: flex;
     justify-content: center;
-    padding-top: 9vh;
 }
 .optionsUser{
     display: flex;
@@ -18,8 +17,8 @@
     gap: 12vh;
 }
 
-.options{
-    padding-top: 10vh;
+.optionsU{
+    padding-top: 12vh;
     width: 4vh;
 }
 
@@ -27,8 +26,8 @@
     width: 5vh;
 }
 
-#Logout{
-    padding-top: 40vh;
+#LogoutU{
+    padding-top: 50vh;
     width: 4vh;
 }
 
