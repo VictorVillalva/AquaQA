@@ -22,14 +22,14 @@ import { axiosInstance } from '../Helpers/axiosInstance';
 
 export const TableUsers = () => {
 
-    const [open, setOpen] = useState(false);
+    const [openDeleteUser, setOpenDeleteUser] = useState(false);
 
     const handleClickOpen = () => {
-    setOpen(true);
+    setOpenDeleteUser(true);
     };
 
     const handleClose = () => {
-    setOpen(false);
+    setOpenDeleteUser(false);
     };
 
     const [info, setInfo] = useState(false);
@@ -84,6 +84,7 @@ export const TableUsers = () => {
           });
       }, []);
  
+    
     return(
         <>  
             <div className="head-add">
@@ -124,10 +125,11 @@ export const TableUsers = () => {
             </div>
 
 
-            
+
+
             <Dialog
                 sx={{ width: '80vh', marginLeft: '30%'}}
-                open={open}
+                open={openDeleteUser}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
@@ -199,6 +201,11 @@ export const TableUsers = () => {
                     <button className="btn-cancelar" onClick={handleCloseInfo}>Cancelar</button>
                 </DialogActions>
             </Dialog>
+
+
+
+
+
             <Dialog
                 className='dialog-addUser'
                 sx={{ width: '80vh', marginLeft: '26%' }}
@@ -244,7 +251,7 @@ export const TableUsers = () => {
                     
                 </DialogContent>
                 <DialogActions>
-                    <button className="btn-cancelar" onClick={handleClickCloseAddUser}>Cancelar</button>
+                    <button className="btn-cancelarAddUser" onClick={handleClickCloseAddUser}>Cancelar</button>
                     <button className="btn-crear" onClick={handleClickCloseAddUser}>Crear</button>
                 </DialogActions>
             </Dialog>

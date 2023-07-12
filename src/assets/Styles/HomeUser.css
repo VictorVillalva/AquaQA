@@ -4,8 +4,8 @@
 }
 
 .content-userhome{
-    margin-top: 5%;
-    margin-left: 5%;
+    margin-top: 3.5%;
+    margin-left: 8%;
 }
 
 .userBienvenida{
@@ -13,8 +13,9 @@
     margin: 0;
     font-size: 4vh;
     font-family: Poppins;
-    font-weight: 500;
+    font-weight: 400;
     color: #53C8CF;
+    padding-bottom: 3vh;
 }
 
 .nameUser{
@@ -25,4 +26,23 @@
     font-weight: 600;
     color: #464646;
     padding-left: 1vh;
+}
+
+.cards{
+    display: flex;
+}
+
+.porcentaje-suministro{
+    display: flex;
+    justify-content: space-around;
+    padding-left: 8vh;
+}
+
+.porcentaje{
+    padding-right: 15vh;
+}
+
+.analisis{
+    padding-top: 3vh;
+    padding-left: 8vh;
 }
