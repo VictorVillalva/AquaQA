@@ -1,5 +1,4 @@
-import React from 'react';
-
+import PropTypes from 'prop-types';
 const AdminGuard = (WrappedComponent) => {
 
     const rol = (localStorage.getItem('rol'))
@@ -15,5 +14,10 @@ const AdminGuard = (WrappedComponent) => {
         }
     };
 };
+
+AdminGuard.propTypes = {
+    props: PropTypes.node,
+  };
+
 
 export default AdminGuard;

@@ -19,7 +19,6 @@ const AdmiRouter =()=>{
         <>
         <Routes>
             <Route path="/users" element={<UsersAdmin/>} />
-
             <Route path="/" element={<Navigate to={'/user-'}/>}/>
         </Routes>
         </>

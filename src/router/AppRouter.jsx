@@ -3,11 +3,8 @@ import { useSelector } from "react-redux"
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 // import PublicRoutes from "./PublicRouter";
 import { Login } from "../pages/Login";
-import UserRouter from "./UserRouter";
 import { LandingPage } from "../pages/LandingPage";
-import PrivateRoutesAdmi from "./PrivateRouterAdmi";
 import { UsersAdmin } from "../pages/UsersAdmin";
-import PrivateRoutesUser from "./PrivateRouterUser";
 import AdminGuard from "../Helpers/AdminGuard.jsx";
 import {HomeUser} from "../pages/HomeUser.jsx";
 import {CambioContraseña} from "../pages/CambioContraseña.jsx";

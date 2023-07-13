@@ -18,13 +18,59 @@ import { Visibility,
     VisibilityOff
 } from '@mui/icons-material';
 import { axiosInstance } from '../Helpers/axiosInstance';
+import axios from 'axios';
 
 
 export const TableUsers = () => {
 
-    const [openDeleteUser, setOpenDeleteUser] = useState(false);
+    const [user, setUser] = useState([])
 
-    const handleClickOpen = () => {
+    const [name, setName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+
+
+    const handleNameChange = (event) => {
+        setName(event.target.value);
+      };
+      
+      const handleLastNameChange = (event) => {
+        setLastName(event.target.value);
+      };
+      
+      const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+      };
+      
+      const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+      };
+      
+      const handlePhoneNumberChange = (event) => {
+        setPhoneNumber(event.target.value);
+      };
+
+    //METODO PARA ABRIR EL DIALOG DE BORRAR USUARIO
+    
+    const [openDeleteUser, setOpenDeleteUser] = useState(false);
+    const [userIdToDelete, setUserIdToDelete] = useState(null);
+
+    useEffect(() => {
+        axiosInstance
+          .get('user')
+          .then(({ data }) => {
+            console.log(data);
+            setUser(data.data.filter(u => u.rol === 'user'));
+          })
+          .catch(err => {
+            console.log(err.message);
+          });
+      }, []);
+
+    const handleClickOpen = (id) => {
+    setUserIdToDelete(id);
     setOpenDeleteUser(true);
     };
 
@@ -32,58 +78,118 @@ export const TableUsers = () => {
     setOpenDeleteUser(false);
     };
 
-    const [info, setInfo] = useState(false);
+    
+    const borrar = (id) => {
+        const accessToken = localStorage.getItem('token');
 
+        if (!accessToken) {
+            console.error('Token no encontrado');
+            return;
+          }
+
+        axios.delete(`http://localhost:8080/api/user/${id}`, {
+            headers: {
+              Authorization: `${accessToken}`
+            }
+          })
+            .then(({ data }) => {
+              console.log(data);
+              const updatedUsers = user.filter((user) => user.id !== id);
+              setUser(updatedUsers);
+              setOpenDeleteUser(false);
+              // Realiza alguna acción después de eliminar el usuario
+            })
+            .catch((error) => {
+              if (axios.isAxiosError(error)) {
+                console.error('Error en la solicitud HTTP:', error.response);
+                // Maneja el error de la solicitud HTTP
+              } else {
+                console.error('Error:', error.message);
+                // Maneja otros errores
+              }
+            });
+        };
+
+    //METODO PARA ABRIR LA INFORMACION DE LOS SENSORES DEL USUARIO
+
+    const [info, setInfo] = useState(false);
     const handleClickInfo = () => {
     setInfo(true);
     };
-
     const handleCloseInfo = () => {
     setInfo(false);
     };
 
-    const [hovered, setHovered] = useState(false);
+    //METODO PARA ACTIVAR EL HOVER DEL BTN AGREGAR
 
+    const [hovered, setHovered] = useState(false);
     const handleMouseEnter = () => {
     setHovered(true);
     };
-
     const handleMouseLeave = () => {
     setHovered(false);
     };
     
+    //METODO PARA ABRIR EL DIALOG DE ADD USER
     const [addUser, setAddUser] = useState(false);  
-
     const handleClickOpenAddUser = () => {
     setAddUser(true);
     }
-
     const handleClickCloseAddUser = () => {
-        setAddUser(false);
+    setAddUser(false);
     }
 
+    //FUNCIONALIDAD DE LOS INPUTS DE CONTRASEÑA
+
     const [showPassword, setShowPassword] = useState(false);
-
     const handleClickShowPassword = () => setShowPassword((show) => !show);
-
     const handleMouseDownPassword = (event) => {
-        event.preventDefault();
+    event.preventDefault();
     };
 
-    const [user, setUser] = useState([])
-
-    useEffect(() => {
-        axiosInstance
-          .get('user')
-          .then(({ data }) => {
-            console.log(data);
-            setUser(data.data);
+    const handleCreateUser = () => {
+        const newUser = {
+          name: name,
+          lastName: lastName,
+          phoneNumber: phoneNumber,
+          email: email,
+          password: password,
+        };
+      
+        const accessToken = localStorage.getItem('token');
+      
+        if (!accessToken) {
+          console.error('Token no encontrado');
+          return;
+        }
+      
+        axios
+          .post('http://localhost:8080/api/user/sign-up', newUser, {
+            headers: {
+              Authorization: `${accessToken}`,
+            },
           })
-          .catch(err => {
-            console.log(err.message);
+          .then((response) => {
+            console.log(response.data);
+            const newUser = response.data;
+            const updatedUsers = [...user, newUser];
+            setUser(updatedUsers);
+            setAddUser(false);
+            // Realiza alguna acción después de crear el usuario
+            // Cerrar el diálogo, reiniciar los valores del formulario, actualizar la lista de usuarios, etc.
+          })
+          .catch((error) => {
+            if (axios.isAxiosError(error)) {
+              console.error('Error en la solicitud HTTP:', error.response);
+              // Maneja el error de la solicitud HTTP
+            } else {
+              console.error('Error:', error.message);
+              // Maneja otros errores
+            }
           });
-      }, []);
- 
+      };
+      
+
     
     return(
         <>  
@@ -93,7 +199,8 @@ export const TableUsers = () => {
                     <img src={AddUserWhite}/>
                 ) : (
                     <img src={AddUser}/>
-                )}<h2>Agregar</h2></button>
+                )}<h2>Agregar</h2>
+                </button>
             </div>
             <div className="container-crud">
                 <table className="table-users">
@@ -109,13 +216,13 @@ export const TableUsers = () => {
                     <tbody>
                         {user.map(users => (
                             <>
-                                <tr>
-                                    <td key={users.id}>{users.id}</td>
+                                <tr key={users.id}>
+                                    <td>{users.id}</td>
                                     <td><a onClick={handleClickInfo} className='infoSensores'>{users.name} {users.lastname}</a></td>
                                     <td>{users.email}</td>
                                     <td>{users.phoneNumber}</td>
                                     <td className="btns-admin">
-                                        <button className="btn-del" onClick={handleClickOpen}>Eliminar</button>
+                                        <button className="btn-del" onClick={() => handleClickOpen(users.id)}>Eliminar</button>
                                     </td>
                                 </tr>   
                             </>      
@@ -161,7 +268,7 @@ export const TableUsers = () => {
                 </DialogContent>
                 <DialogActions>
                     <button className="btn-cancelar" onClick={handleClose}>Cancelar</button>
-                    <button className="btn-Eliminar" onClick={handleClose}>Eliminar</button>
+                    <button className="btn-Eliminar" onClick={() => borrar(userIdToDelete)}>Eliminar</button>
                 </DialogActions>
             </Dialog>
 
@@ -217,42 +324,70 @@ export const TableUsers = () => {
                 <DialogTitle id="alert-dialog-title" sx={{ fontFamily: 'Poppins', fontWeight: '700', fontSize: '3vh' }}>
                     {"Agregar un nuevo usuario"}
                 </DialogTitle>
-                <DialogContent sx={{fontFamily: 'Poppins',}}>
-                    <div className="name-phoneNumber">
-                        <TextField sx={{paddingRight:'1.5vh', backgroundColor:'#F8FDFD'}} label="Nombre" variant="outlined" />
-                        <TextField sx={{background:'#F8FDFD'}} label="Apellido" variant="outlined" />
-                    </div>
-                    <div className="email">
-                        <TextField sx={{background:'#F8FDFD', width:'58.7vh'}} label="E-mail" variant="outlined" />
-                    </div>
-                    <div className="passwords">
-                        <FormControl sx={{width:'28.6vh', paddingRight:'1.5vh', background:'#F8FDFD'}} variant="outlined">
-                            <InputLabel htmlFor="outlined-adornment-password">Contraseña</InputLabel>
-                            <OutlinedInput
-                                id="outlined-adornment-password"
-                                type={showPassword ? 'text' : 'password'}
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                            edge="end"
-                                        >
-                                            {showPassword ? <Visibility /> : <VisibilityOff />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                                label="Password"
+                <DialogContent sx={{ fontFamily: 'Poppins', }}>
+                    <form action="" className='container-adduser'>
+                        <div className="name-apellidos">
+                            <TextField 
+                            sx={{ paddingRight: '1.5vh', backgroundColor: '#F8FDFD' }} 
+                            label="Nombre" 
+                            variant="outlined" 
+                            value={name}
+                            onChange={handleNameChange}
                             />
-                        </FormControl>
-                        <TextField sx={{background:'#F8FDFD'}} label="Teléfono" variant="outlined" />
-                    </div>
-                    
+                            <TextField 
+                            sx={{ background: '#F8FDFD' }} 
+                            label="Apellido" 
+                            variant="outlined"
+                            value={lastName}
+                            onChange={handleLastNameChange} 
+                            />
+                        </div>
+                        <div className="email">
+                            <TextField 
+                            sx={{ background: '#F8FDFD', width: '58.7vh' }} 
+                            label="E-mail" 
+                            variant="outlined" 
+                            value={email}
+                            onChange={handleEmailChange}
+                            />
+                        </div>
+                        <div className="passwords">
+                            <FormControl sx={{ width: '28.6vh', paddingRight: '1.5vh', background: '#F8FDFD' }} variant="outlined">
+                                <InputLabel htmlFor="outlined-adornment-password">Contraseña</InputLabel>
+                                <OutlinedInput
+                                    id="outlined-adornment-password"
+                                    type={showPassword ? 'text' : 'password'}
+                                    value={password}
+                                    onChange={handlePasswordChange}
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                aria-label="toggle password visibility"
+                                                onClick={handleClickShowPassword}
+                                                onMouseDown={handleMouseDownPassword}
+                                                edge="end"
+                                            >
+                                                {showPassword ? <Visibility /> : <VisibilityOff />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    }
+                                    label="Password"
+                                />
+                            </FormControl>
+                            <TextField
+                            inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} 
+                            sx={{ background: '#F8FDFD' }} 
+                            label="Teléfono"
+                            variant="outlined"
+                            value={phoneNumber}
+                            onChange={handlePhoneNumberChange} 
+                            />
+                        </div>
+                    </form>
                 </DialogContent>
                 <DialogActions>
                     <button className="btn-cancelarAddUser" onClick={handleClickCloseAddUser}>Cancelar</button>
-                    <button className="btn-crear" onClick={handleClickCloseAddUser}>Crear</button>
+                    <button className="btn-crear" onClick={handleCreateUser}>Crear</button>
                 </DialogActions>
             </Dialog>
         </>
