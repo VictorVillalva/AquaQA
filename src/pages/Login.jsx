@@ -91,6 +91,14 @@ export const Login = () => {
           })
           .catch(({ response }) => {
             console.log(response.message);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Contraseña o Emaiil incorrectos  ',
+                customClass: {
+                  container: 'custom-swal',
+                },
+              });
           });
         }
 

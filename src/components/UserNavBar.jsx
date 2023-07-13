@@ -42,13 +42,13 @@ const UserNavBar = () => {
         <>
             <div className="row">
                 <div className="col navU">
-                    <NavLink to={'/home'}><img src={Logo} alt="Logo" id='LogoAQA' /></NavLink>
+                    <NavLink to={'/home'}><img src={Logo} alt="Logo" id='LogoAQA'/></NavLink>
                 </div>
             </div>
             <div className="row">
                 <div className="col optionsAdmin navU">
-                    <a href=""><img src={Home} alt="Home" className='optionsU' /></a>
-                    <a href=""><img src={Settings} alt="Settings" className='optionsU' /></a>
+                    <NavLink to={'/home'}><img src={Home} alt="Home" className='optionsU'/></NavLink>
+                    <NavLink to={'/contraseña'}><img src={Settings} alt="Settings" className='optionsU' /></NavLink>
                 </div>
             </div>
             <div className="row">

@@ -31,6 +31,18 @@ export const TableUsers = () => {
     const [password, setPassword] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
 
+    const actualizarUsuarios = () => {
+        axiosInstance
+          .get('user')
+          .then(({ data }) => {
+            console.log(data);
+            setUser(data.data.filter(u => u.rol === 'user'));
+          })
+          .catch(err => {
+            console.log(err.message);
+          });
+      };
+
 
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -58,15 +70,7 @@ export const TableUsers = () => {
     const [userIdToDelete, setUserIdToDelete] = useState(null);
 
     useEffect(() => {
-        axiosInstance
-          .get('user')
-          .then(({ data }) => {
-            console.log(data);
-            setUser(data.data.filter(u => u.rol === 'user'));
-          })
-          .catch(err => {
-            console.log(err.message);
-          });
+        actualizarUsuarios()
       }, []);
 
     const handleClickOpen = (id) => {
@@ -174,6 +178,7 @@ export const TableUsers = () => {
             const newUser = response.data;
             const updatedUsers = [...user, newUser];
             setUser(updatedUsers);
+            actualizarUsuarios()
             setAddUser(false);
             // Realiza alguna acción después de crear el usuario
             // Cerrar el diálogo, reiniciar los valores del formulario, actualizar la lista de usuarios, etc.
@@ -188,6 +193,8 @@ export const TableUsers = () => {
             }
           });
       };
+
+      
       
 
     
@@ -195,7 +202,10 @@ export const TableUsers = () => {
         <>  
             <div className="head-add">
                 <h2 className="users">Lista de usuarios</h2>
-                <button onClick={handleClickOpenAddUser} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className="btn-addUser">{hovered ? (
+                <button onClick={handleClickOpenAddUser} 
+                        onMouseEnter={handleMouseEnter} 
+                        onMouseLeave={handleMouseLeave} 
+                        className="btn-addUser">{hovered ? (
                     <img src={AddUserWhite}/>
                 ) : (
                     <img src={AddUser}/>
