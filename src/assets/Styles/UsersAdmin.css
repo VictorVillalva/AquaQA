@@ -200,3 +200,13 @@ td{
     font-size: 2vh;
     cursor: pointer;
 }
+
+.custom-swal {
+    z-index: 9999;
+    padding-left: 4vh;
+}
+  
+.sweetalert-popup {
+    z-index: 10000;
+}
+  

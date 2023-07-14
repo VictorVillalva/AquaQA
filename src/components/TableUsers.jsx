@@ -19,17 +19,47 @@ import { Visibility,
 } from '@mui/icons-material';
 import { axiosInstance } from '../Helpers/axiosInstance';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 
 export const TableUsers = () => {
 
     const [user, setUser] = useState([])
-
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [passwordAdmin, setPasswordAdmin]=useState()
+
+
+    const handleChangePass=(e)=>{
+        setPasswordAdmin(e.target.value)
+    }
+
+    const probar = () => {
+        const dataUser = {
+            email: 'isai@aqua-qa.com',
+        }
+        console.log(dataUser)
+        axios.post("http://localhost:8080/api/user/sign-in", dataUser)
+        .then((resp) => {
+            const { data } = resp;
+            console.log(data)
+            borrar(userIdToDelete);
+          })
+          .catch(({ response }) => {
+            console.log(response.message);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Contraseña incorrecta',
+                customClass: {
+                  container: 'custom-swal',
+                },
+              });
+          });
+        }
 
     const actualizarUsuarios = () => {
         axiosInstance
@@ -42,7 +72,6 @@ export const TableUsers = () => {
             console.log(err.message);
           });
       };
-
 
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -85,12 +114,10 @@ export const TableUsers = () => {
     
     const borrar = (id) => {
         const accessToken = localStorage.getItem('token');
-
         if (!accessToken) {
             console.error('Token no encontrado');
             return;
           }
-
         axios.delete(`http://localhost:8080/api/user/${id}`, {
             headers: {
               Authorization: `${accessToken}`
@@ -151,7 +178,7 @@ export const TableUsers = () => {
     event.preventDefault();
     };
 
-    const handleCreateUser = () => {
+    const handleCreateUser = (e) => {
         const newUser = {
           name: name,
           lastName: lastName,
@@ -166,6 +193,25 @@ export const TableUsers = () => {
           console.error('Token no encontrado');
           return;
         }
+
+        e.preventDefault();
+        if (!email || !password) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Por favor, completa todos los campos',
+              customClass: {
+                container: 'custom-swal',
+                popup: 'sweetalert-popup',
+              },
+            });
+            return;
+          }
+        const dataUser = {
+            email: email,
+            password: password
+        }
+        console.log(dataUser)
       
         axios
           .post('http://localhost:8080/api/user/sign-up', newUser, {
@@ -180,16 +226,12 @@ export const TableUsers = () => {
             setUser(updatedUsers);
             actualizarUsuarios()
             setAddUser(false);
-            // Realiza alguna acción después de crear el usuario
-            // Cerrar el diálogo, reiniciar los valores del formulario, actualizar la lista de usuarios, etc.
           })
           .catch((error) => {
             if (axios.isAxiosError(error)) {
               console.error('Error en la solicitud HTTP:', error.response);
-              // Maneja el error de la solicitud HTTP
             } else {
               console.error('Error:', error.message);
-              // Maneja otros errores
             }
           });
       };
@@ -260,6 +302,8 @@ export const TableUsers = () => {
                                 <OutlinedInput
                                     id="outlined-adornment-password"
                                     type={showPassword ? 'text' : 'password'}
+                                    value={passwordAdmin || ''}
+                                    onChange={handleChangePass}
                                     endAdornment={
                                         <InputAdornment position="end">
                                             <IconButton
@@ -278,7 +322,7 @@ export const TableUsers = () => {
                 </DialogContent>
                 <DialogActions>
                     <button className="btn-cancelar" onClick={handleClose}>Cancelar</button>
-                    <button className="btn-Eliminar" onClick={() => borrar(userIdToDelete)}>Eliminar</button>
+                    <button className="btn-Eliminar" onClick={() => probar()}>Eliminar</button>
                 </DialogActions>
             </Dialog>
 

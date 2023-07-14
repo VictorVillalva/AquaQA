@@ -21,6 +21,7 @@ import { login } from '../Store/slices/AuthSlice';
 import { useDispatch } from 'react-redux';
 
 import { useNavigate } from "react-router-dom";
+import { setEmail } from '../Helpers/auth';
 
 export const Login = () => {
     const navigate = useNavigate();
@@ -28,11 +29,13 @@ export const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const dispatch= useDispatch()
     const handleClickShowPassword = () => setShowPassword((show) => !show);
-    const [email, setEmail]=useState()
+    const [email, setEmaill]=useState()
     const [password, setPassword]=useState()
 
     const handleChangeEmail=(e)=>{
+        setEmaill(e.target.value)
         setEmail(e.target.value)
+        console.log(setEmail)
     }
 
     const handleChangePass=(e)=>{

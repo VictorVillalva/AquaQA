@@ -47,6 +47,14 @@
     padding-left: 8vh;
 }
 
+.name-lastname{
+    margin: 0;
+    padding-left: 1vh;
+    font-size: 4vh;
+    color: #464646;
+    font-weight: 700;
+}
+
 /* @media (max-width: 1024px){
     .porcentaje-suministro{
         padding-left: 0vh;
