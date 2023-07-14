@@ -8,6 +8,6 @@ const PublicRoutes=({children}) =>{
 
 PublicRoutes.propTypes = {
     children: PropTypes.node,
-  };
+};
 
 export default PublicRoutes

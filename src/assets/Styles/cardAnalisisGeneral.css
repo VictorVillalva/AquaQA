@@ -1,0 +1,68 @@
+.card-analisisgeneral{
+    width: 65vh;
+    height: 59vh;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+.title-analisis{
+    font-size: 2.5vh;
+    padding-left: 4vh;
+    padding-top: 3vh;
+    margin: 0;
+}
+
+.title-analisis{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    color: #464646;
+}
+.service-water{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.services,.datos,.niveles-water{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1vh;
+}
+
+.services{
+    padding-left: 4vh;
+}
+
+.niveles-water{
+    padding-right: 4vh;
+}
+
+.services p,.datos p,.niveles-water p{
+    font-size: 2vh;
+}
+
+.service{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    color: #464646;
+}
+
+.nivel,.dato-water{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    color: #3CC0C9;
+}
+.txt-title-service,.txt-title-datos,.txt-title-nivel{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    color: #959595;
+}
+.grafica-bar{
+    padding-left: 6vh;
+    width: 50vh;
+    height: 20vh;
+}

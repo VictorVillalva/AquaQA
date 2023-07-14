@@ -2,7 +2,7 @@
 
 .navbarUser{
     width: 15vh;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #FFFFFF;
     overflow: hidden;
 }
@@ -18,7 +18,6 @@
 }
 
 .optionsU{
-    padding-top: 28vh;
     width: 4vh;
 }
 
@@ -27,10 +26,20 @@
 }
 
 #LogoutU{
-    padding-top: 70vh;
+    margin-top: 38vh;
     width: 4vh;
+    cursor: pointer;
 }
 
 .col a{
     height: 0;
+}
+
+.btn-salir{
+    background: none;
+    border: none;
+    font-family: Poppins;
+    font-size: 2vh;
+    color: #3CC0C9;
+    cursor: pointer;
 }

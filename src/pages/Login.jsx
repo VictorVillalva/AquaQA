@@ -20,8 +20,11 @@ import axios from 'axios';
 import { login } from '../Store/slices/AuthSlice';
 import { useDispatch } from 'react-redux';
 
+import { useNavigate } from "react-router-dom";
 
-export const Login = () => {    
+export const Login = () => {
+    const navigate = useNavigate();
+
     const [showPassword, setShowPassword] = useState(false);
     const dispatch= useDispatch()
     const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -59,7 +62,7 @@ export const Login = () => {
         }
         console.log(dataUser)
         axios.post("http://localhost:8080/api/user/sign-in", dataUser)
-        .then((resp) => {     
+        .then((resp) => {
             const { data } = resp;
             console.log(data)
             setTokens(data.data.token);
@@ -71,10 +74,31 @@ export const Login = () => {
                     status: resp.success
                 })
             )
+
+            const rol = data.data.rol; // 'admin' | 'user'
+            switch (rol){
+                case 'admin':
+                    navigate('/users');
+                    break;
+                case 'user':
+                    navigate('/home');
+                    break;
+                default:
+                    alert('Somthing went wrong');
+            }
+
             console.log(data.data.rol)
-          }) 
+          })
           .catch(({ response }) => {
             console.log(response.message);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Contraseña o Emaiil incorrectos  ',
+                customClass: {
+                  container: 'custom-swal',
+                },
+              });
           });
         }
 
@@ -88,13 +112,13 @@ export const Login = () => {
                         <h1>Iniciar sesión</h1>
                         <h4>Bienvenido, por favor ingrese sus datos</h4>
                         <div className="name-user">
-                        <TextField sx={{ m: '0', width: '55vh', backgroundColor: '#F8FDFD' }} 
-                                    id="outlined-basic" 
-                                    label="Correo Electrónico" 
+                        <TextField sx={{ m: '0', width: '55vh', backgroundColor: '#F8FDFD' }}
+                                    id="outlined-basic"
+                                    label="Correo Electrónico"
                                     variant="outlined"
                                     value={email || ''}
                                     onChange={handleChangeEmail}
-                                    />     
+                                    />
                         </div>
                         <div className="password-user">
                             <FormControl sx={{ m:'0', width: '55vh', backgroundColor:'#F8FDFD',}} variant="outlined">
@@ -118,7 +142,7 @@ export const Login = () => {
                                     }
                                     label="Password"
                                 />
-                            </FormControl> 
+                            </FormControl>
                         </div>
                         <div className="btn-iniciar-sesion">
                             <button type="submit" onClick={handleSubmit}>Iniciar Sesión</button>

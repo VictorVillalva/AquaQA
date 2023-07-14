@@ -10,7 +10,7 @@ const AdmiRouter =()=>{
     const dispatch = useDispatch();
     const token= localStorage.getItem('token')
     const rol = localStorage.getItem('rol')
-    
+
     useEffect(()=> {
         dispatch(login({token, currentUser: rol, isAuthenticathed: true}))
     },[])
@@ -19,8 +19,7 @@ const AdmiRouter =()=>{
         <>
         <Routes>
             <Route path="/users" element={<UsersAdmin/>} />
-           
-            <Route path="/" element={<Navigate to={'/users'}/>}/>
+            <Route path="/" element={<Navigate to={'/user-'}/>}/>
         </Routes>
         </>
     )
