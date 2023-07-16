@@ -1,17 +1,19 @@
 .card-analisisgeneral{
-    width: 557px;
-    height: 551px;
+    width: 65vh;
+    height: 59vh;
     background: #FFFFFF;
     box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
 }
-.title-analisis,.service-water{
-    width: 477px;
-    padding-top: 20px;
-    padding-left: 40px;
-}
 .title-analisis{
-    font-family: 'Poppins', sans-serif;
+    font-size: 2.5vh;
+    padding-left: 4vh;
+    padding-top: 3vh;
+    margin: 0;
+}
+
+.title-analisis{
+    font-family: Poppins;
     font-style: normal;
     font-weight: 700;
     color: #464646;
@@ -20,25 +22,31 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 270px;
 }
+
 .services,.datos,.niveles-water{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
+    padding-bottom: 1vh;
 }
+
 .services{
-    width: 145px;
+    padding-left: 4vh;
 }
+
+.niveles-water{
+    padding-right: 4vh;
+}
+
+.services p,.datos p,.niveles-water p{
+    font-size: 2vh;
+}
+
 .service{
-    font-family: 'Poppins', sans-serif;
+    font-family: Poppins;
     font-style: normal;
     font-weight: 600;
     color: #464646;
-}
-.datos{
-    margin-left: 127px;
 }
 .nivel,.dato-water{
     font-family: 'Poppins', sans-serif;
@@ -53,8 +61,7 @@
     color: #959595;
 }
 .grafica-bar{
-    margin-top: 26px;
-    margin-left: 40px;
-    width: 477px;
-    height: 173px;
+    padding-left: 6vh;
+    width: 50vh;
+    height: 20vh;
 }

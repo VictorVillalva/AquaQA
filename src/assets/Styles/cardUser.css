@@ -1,7 +1,6 @@
 .cardUser{
-    margin-top:1.5rem;
-    width: 20.1875rem;
-    height: 30.5rem;
+    width: 45vh;
+    height: 83vh;
     background: #FFFFFF;
     box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
@@ -10,60 +9,66 @@
     align-items: center;
 }
 .user{
-    width: 16.5625rem;
-    height: 4.625rem;
-    margin-top: 1.5rem;
     display: flex;
-    justify-content: space-between;
+    padding-top: 2.8vh;
 }
+
+.info{
+    padding-right: 4.4vh;
+}
+
 .name{
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 600;
     color: #464646;
-    line-height: 32px;
+    font-size: 2.7vh;
+    margin: 0;
+    padding-top: 3vh;
+    padding-bottom: .5vh;
 }
 .separador{
-    width: 2rem;
-    height: .4rem;
+    width: 5vh;
+    height: .8vh;
     background: #3CC0C9;
-    border-radius: 15px;
+    border-radius: 4vh;
 }
-.email{
+.card-email{
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 0.625rem;
-    line-height: 15px;
+    font-size: 1.3vh;
     color: #626262;
+    margin: 0;
+    padding-top: .8vh;
 }
 .photo, .fotoPerfil{
     border-radius: 100%;
-    height: 4.47619rem;
-    width: 4.47619rem;
+    width: 10vh;
     object-fit: cover;
 }
 .water{
-    width: 16.5625rem;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    margin-top: 1.25rem;
 }
 .dataWater{
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 0.625rem;
-    line-height: 0.9375rem;
     color: #A5A5A5;
+    font-size: 1.3vh;
 }
-.graph-analyst,.bar-circular,.graph, .bar-graph, .graph-txt-data{
-    width: 16.5625rem;
+.dataWater2{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.625rem;
+    color: #A5A5A5;
+    font-size: 1.3vh;
+    padding-left: 9vh;
 }
-.graph-analyst{
-    margin-top: 1.8rem;
-}
+
 .graph{
     display: flex;
     flex-direction: column;
@@ -71,48 +76,50 @@
 .graph-txt-data{
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
 }
 .txt-graph{
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 0.75rem;
-    line-height: 18px;
+    font-size: 1.7vh;
     color: #464646;
+    margin: 0;
+    padding-top: 3vh;
+    padding-left: .05vh;
 }
 .txt-data-water{
-    font-family: 'Poppins', sans-serif;
+    font-family: Poppins;
     font-style: normal;
     font-weight: 500;
-    font-size: 0.75rem;
-    line-height: 18px;
+    font-size: 1.7vh;
     color: #959595;
 }
 .txt-minerales{
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 0.75rem;
-    line-height: 18px;
+    font-size: 1.7vh;
     color: #959595;
+    padding-bottom: 2.5vh;
+    margin: 0;
 }
 .bar-graph{
     background: #FFFFFF;
     box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.05);
     border-radius: 5px;
-    width: 16.1875rem;
-    height: 12.5rem;
+    width: 36vh;
+    height: 27vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .bar-graph-data{
     height: 26.25vh;
-    width: 250px;
+    width: 35vh;
 }
 .circular-progress-bar{
-    margin-top: 40px;
+    margin-top: 4vh;
 }
 .bar-circular{
     display: flex;
@@ -122,7 +129,7 @@
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
-    width: 130px;
-    height: 130px;
+    width: 30vh;
+    height: 15vh;
     display: flex;
 }

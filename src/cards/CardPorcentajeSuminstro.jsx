@@ -1,4 +1,4 @@
-import React from 'react'
+
 import ProgressBar from "@ramonak/react-progress-bar";
 //CSS
 import '../assets/Styles/cardPorcentaje.css';

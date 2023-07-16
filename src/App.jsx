@@ -1,10 +1,10 @@
-import UserHome from '../src/pages/UserHome.jsx';
 
+import AppRouter from '../src/router/AppRouter.jsx';
 function App() {
 
   return (
     <>
-    <UserHome />
+    <AppRouter/>
     </>
   )
 }

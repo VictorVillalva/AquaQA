@@ -1,0 +1,143 @@
+.container-home-user{
+    display: flex;
+    background-color: #F8FDFD;
+}
+
+.content-userhome{
+    margin-top: 3.5%;
+    margin-left: 8%;
+}
+
+.userBienvenida{
+    display: flex;
+    margin: 0;
+    font-size: 4vh;
+    font-family: Poppins;
+    font-weight: 400;
+    color: #53C8CF;
+    padding-bottom: 3vh;
+}
+
+.nameUser{
+    font-family: Poppins;
+    display: flex;
+    margin: 0;
+    font-size: 4vh;
+    font-weight: 600;
+    color: #464646;
+    padding-left: 1vh;
+}
+
+.cards{
+    display: flex;
+}
+
+.porcentaje-suministro{
+    display: flex;
+    justify-content: space-around;
+    padding-left: 8vh;
+}
+
+.porcentaje{
+    padding-right: 15vh;
+}
+
+.analisis{
+    padding-top: 3vh;
+    padding-left: 8vh;
+}
+
+/* @media (max-width: 1024px){
+    .porcentaje-suministro{
+        padding-left: 0vh;
+        padding-top: 4vh;
+        padding-bottom: 4vh;
+    }
+    .porcentaje,.analisis{
+        padding: 0vh;
+    }
+    .analisis{
+        padding-bottom: 4vh;
+    }
+}
+@media (min-width: 900px){
+    .content-userhome{
+        display: flex;
+        flex-direction: column;
+    }
+    .cards{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .porcentaje-suministro{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 0vh;
+        padding-top: 4vh;
+        padding-bottom: 4vh;
+    }
+    .porcentaje,.analisis{
+        padding: 0vh;
+    }
+    .analisis{
+        padding-bottom: 4vh;
+    }
+}
+@media (min-width: 640px){
+    .content-userhome{
+        display: flex;
+        flex-direction: column;
+    }
+    .cards{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .porcentaje-suministro{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 0vh;
+        padding-top: 4vh;
+        padding-bottom: 4vh;
+    }
+    .porcentaje,.analisis{
+        padding: 0vh;
+    }
+    .analisis{
+        padding-bottom: 4vh;
+    }
+}
+@media (min-width: 320px){
+    .content-userhome{
+        display: flex;
+        flex-direction: column;
+    }
+    .cards{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .porcentaje-suministro{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 0vh;
+        padding-top: 4vh;
+        padding-bottom: 4vh;
+    }
+    .porcentaje,.analisis{
+        padding: 0vh;
+    }
+    .analisis{
+        padding-bottom: 4vh;
+    }
+} */
+
+
+
