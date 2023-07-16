@@ -209,4 +209,25 @@ td{
 .sweetalert-popup {
     z-index: 10000;
 }
+
+.sensores th{
+    text-align: center;
+    color: #464646;
+    font-size: 2.5vh;
+    font-weight: 600;
+}
+
+.sensores td{
+    text-align: center;
+    color: #464646;
+    font-size: 1.8vh;
+}
+
+.sensores{
+    padding-left: 9.5vh;
+}
+
+.sensores .status{
+    color: #3CC0C9;
+}
   

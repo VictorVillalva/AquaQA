@@ -5,6 +5,7 @@
     min-height: 100vh;
     background-color: #FFFFFF;
     overflow: hidden;
+    position: fixed;
 }
 .navU{
     display: flex;

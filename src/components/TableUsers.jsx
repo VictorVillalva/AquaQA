@@ -30,7 +30,38 @@ export const TableUsers = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [passwordAdmin, setPasswordAdmin]=useState()
+    const [passwordAdmin, setPasswordAdmin]=useState();
+    const [phSensorStatus, setPhSensorStatus] = useState(null);
+    const [selectedUserId, setSelectedUserId] = useState(null);
+
+    //METODO PARA ABRIR LA INFORMACION DE LOS SENSORES DEL USUARIO
+
+    const [info, setInfo] = useState(false);
+    
+    const handleClickInfo = (userId) => {
+        setSelectedUserId(userId);
+        setInfo(true);
+      };
+      
+    const handleCloseInfo = () => {
+    setInfo(false);
+    };
+    
+
+    useEffect(() => {
+        if (selectedUserId) {
+          const apiUrl = `http://localhost:8080/api/health/ph/${selectedUserId}`;
+          
+          axios.get(apiUrl)
+            .then(response => {
+              const phStatus = response.data
+              setPhSensorStatus(phStatus);
+            })
+            .catch(error => {
+              console.error('Error al obtener el estado del sensor de pH:', error);
+            });
+        }
+      }, [selectedUserId]);
 
 
     const handleChangePass=(e)=>{
@@ -141,15 +172,7 @@ export const TableUsers = () => {
             });
         };
 
-    //METODO PARA ABRIR LA INFORMACION DE LOS SENSORES DEL USUARIO
-
-    const [info, setInfo] = useState(false);
-    const handleClickInfo = () => {
-    setInfo(true);
-    };
-    const handleCloseInfo = () => {
-    setInfo(false);
-    };
+    
 
     //METODO PARA ACTIVAR EL HOVER DEL BTN AGREGAR
 
@@ -270,7 +293,7 @@ export const TableUsers = () => {
                             <>
                                 <tr key={users.id}>
                                     <td>{users.id}</td>
-                                    <td><a onClick={handleClickInfo} className='infoSensores'>{users.name} {users.lastname}</a></td>
+                                    <td><a onClick={() => handleClickInfo(users.id)} className='infoSensores'>{users.name} {users.lastname}</a></td>
                                     <td>{users.email}</td>
                                     <td>{users.phoneNumber}</td>
                                     <td className="btns-admin">
@@ -331,16 +354,16 @@ export const TableUsers = () => {
 
             <Dialog
                 className='sensores-info'
-                sx={{ width: '80vh', marginLeft: '26%' }}
+                sx={{ width: '80vh', marginLeft: '26%'}}
                 open={info}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <DialogTitle id="alert-dialog-title" sx={{ fontFamily: 'Poppins', fontWeight: '700', fontSize: '3vh' }}>
+                <DialogTitle id="alert-dialog-title" sx={{ fontFamily: 'Poppins', fontWeight: '700', fontSize: '3vh', textAlign:'center' }}>
                     {"Información de sensores"}
                 </DialogTitle>
-                <DialogContent sx={{ fontFamily: 'Poppins'}}>
+                <DialogContent sx={{ fontFamily: 'Poppins', overflow:'hidden' }}>
                     <table className="sensores">
                         <thead>
                             <tr>
@@ -351,9 +374,29 @@ export const TableUsers = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>1</td>
+                                <td>Temperatura</td>
+                                <td className='status'>OK</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>PH</td>
+                                <td className='status'>{phSensorStatus === null ? 'Cargando...' : String(phSensorStatus)}</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Conductividad</td>
+                                <td className='status'>OK</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Turbidez</td>
+                                <td className='status'>OK</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Humedad</td>
+                                <td className='status'>OK</td>
                             </tr>
                         </tbody>
                     </table>

@@ -5,7 +5,34 @@
 
 .content-userhome{
     margin-top: 3.5%;
-    margin-left: 8%;
+    margin-left: 15%;
+}
+
+.encabezado{
+    display: flex;
+}
+
+.encabezado img{
+    width: 4vh;
+}
+
+.selects{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.select{
+    margin-right: 8vh;
+    font-family: Poppins;
+    font-size: 2vh;
+    font-weight: 500;
+    background: none;
+    border: none;
+}
+
+.icon-pdf{
+    margin-top: 1vh;
+    margin-left: 76.5vh;
 }
 
 .userBienvenida{
@@ -28,25 +55,6 @@
     padding-left: 1vh;
 }
 
-.cards{
-    display: flex;
-}
-
-.porcentaje-suministro{
-    display: flex;
-    justify-content: space-around;
-    padding-left: 8vh;
-}
-
-.porcentaje{
-    padding-right: 15vh;
-}
-
-.analisis{
-    padding-top: 3vh;
-    padding-left: 8vh;
-}
-
 .name-lastname{
     margin: 0;
     padding-left: 1vh;
@@ -55,97 +63,178 @@
     font-weight: 700;
 }
 
-/* @media (max-width: 1024px){
-    .porcentaje-suministro{
-        padding-left: 0vh;
-        padding-top: 4vh;
-        padding-bottom: 4vh;
-    }
-    .porcentaje,.analisis{
-        padding: 0vh;
-    }
-    .analisis{
-        padding-bottom: 4vh;
-    }
+.tit{
+    padding-top: 3vh;
+    padding-left: 5vh;
 }
-@media (min-width: 900px){
-    .content-userhome{
-        display: flex;
-        flex-direction: column;
-    }
-    .cards{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .porcentaje-suministro{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding-left: 0vh;
-        padding-top: 4vh;
-        padding-bottom: 4vh;
-    }
-    .porcentaje,.analisis{
-        padding: 0vh;
-    }
-    .analisis{
-        padding-bottom: 4vh;
-    }
+
+.analisis-general{
+    width: 134vh;
+    height: 45vh;
+    background-color: white;
+    border-radius: 1vh;
+    box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.25);
+    margin-top: 3vh;
 }
-@media (min-width: 640px){
-    .content-userhome{
-        display: flex;
-        flex-direction: column;
-    }
-    .cards{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .porcentaje-suministro{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding-left: 0vh;
-        padding-top: 4vh;
-        padding-bottom: 4vh;
-    }
-    .porcentaje,.analisis{
-        padding: 0vh;
-    }
-    .analisis{
-        padding-bottom: 4vh;
-    }
+
+.contenido-analisis h2{
+    margin: 0;
+    color: #464646;
+    font-family: Poppins;
+    font-weight: 700;
+    font-size: 2.5vh;
 }
-@media (min-width: 320px){
-    .content-userhome{
-        display: flex;
-        flex-direction: column;
-    }
-    .cards{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .porcentaje-suministro{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding-left: 0vh;
-        padding-top: 4vh;
-        padding-bottom: 4vh;
-    }
-    .porcentaje,.analisis{
-        padding: 0vh;
-    }
-    .analisis{
-        padding-bottom: 4vh;
-    }
-} */
+
+.table-frecuencia{
+    margin-left: 4vh;
+}
+
+.table-frecuencia th{
+    font-family: Poppins;
+    color: #959595;
+    font-size: 1.6vh;
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+    line-height: 2.4vh;
+}
+
+.table-frecuencia td{
+    font-family: Poppins;
+    font-size: 1.6vh;
+    font-weight: 600;
+    margin: 0;
+    color: #3CC0C9;
+    text-align: center;
+    padding-right: 3vh;
+}
+
+.frecuencia{
+    padding-top: 2vh;
+    padding-right: 3vh;
+}
+
+.analisis-avanzado{
+    display: flex;
+    justify-content: space-between;
+}
+
+.contenedor-analisis, .contenedor-analisis2{
+    width: 52vh;
+    height: 20vh;
+    background-color: white;
+    box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.25);
+    border-radius: 1vh;
+    margin-top: 10vh;
+}
+
+.tit-analisis h2{
+    font-family: Poppins;
+    color: #464646;
+    font-size: 2.5vh;
+    margin: 0;
+}
+
+.tit-analisis{
+    margin-top: 3vh;
+    margin-left: 5vh;
+}
+
+.tableAn{
+    margin-right: 5vh;
+    margin-left: 2vh;
+}
+
+.tableAn th{
+    font-family: Poppins;
+    color: #959595;
+    font-size: 1.6vh;
+    font-weight: 400;
+    text-align: center;
+    padding-top: 1vh;
+    padding-right: 0;
+    padding-left: 2vh;
+}
+
+.tableAn td{
+    font-family: Poppins;
+    color: #3CC0C9;
+    font-size: 1.5vh;
+    font-weight: 600;
+    text-align: center;
+    padding-left: 2vh;
+    padding-right: 0;
+}
+
+.tableAn .var{
+    padding-left: 5.5vh;
+}
+
+.tablaPronosticos{
+    background-color: white;
+    width: 52vh;
+    height: 38vh;
+    box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.25);
+    border-radius: 1vh;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
+.tit-pronos h2{
+    margin: 0;
+    font-family: Poppins;
+    font-size: 2.5vh;
+    color: #464646;
+}
+
+.tit-pronos{
+    padding-top: 3vh;
+    margin-left: 5vh;
+}
+
+.table-pronostico td{
+    margin: 0;
+    padding: 0;
+    padding-top: 2.3vh;
+    padding-left: 4.5vh;
+    font-family: Poppins;
+    color: #959595;
+    font-size: 1.6vh;
+}
+
+.table-pronostico .resultado{
+    color: #3CC0C9;
+    font-size: 2vh;
+    padding-left: 10vh;
+    font-size: 1.6vh;
+}
+
+.resultado input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.resultado input{
+    width: 5vh;
+}
+
+.btn-filtro{
+    align-items: center;
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 1.7vh;
+    color: #F8FDFD;
+    background-color: #3CC0C9;
+    border: none;
+    border-radius: 1vh;
+    width: 8vh;
+    height: 4vh;
+    cursor: pointer;
+    margin-right: 8vh;
+}
+
 
 
 
