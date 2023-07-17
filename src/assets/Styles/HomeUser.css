@@ -32,7 +32,7 @@
 
 .icon-pdf{
     margin-top: 1vh;
-    margin-left: 76.5vh;
+    margin-left: 75.7vh;
 }
 
 .userBienvenida{
@@ -223,7 +223,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .btn-filtro{
     align-items: center;
     font-family: Poppins;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1.7vh;
     color: #F8FDFD;
     background-color: #3CC0C9;
@@ -235,6 +235,11 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-right: 8vh;
 }
 
+.btn-filtro:hover{
+    transform: scale(1.07);
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
 
 
 

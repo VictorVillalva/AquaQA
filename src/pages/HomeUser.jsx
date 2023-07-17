@@ -15,13 +15,7 @@ export const HomeUser = () => {
     const [ID, setID] = useState()
     const [sensor, setSensor] = useState('default');
     const [tiempo, setTiempo] = useState('default');
-    const [ph, setPH] = useState([])
-    const [etemp, setEtemp] = useState([])
-    const [itemp, setItemp] = useState([])
-    const [tds, setTds] = useState([])
-    const [ts, setTs] = useState([])
-    const [ehum, setEhum] = useState([])
-    const [tension, setTension] = useState([])
+    const [dta, setDta] = useState([])
 
     //Obtencion de datos del usuario
 
@@ -58,145 +52,39 @@ export const HomeUser = () => {
     };
 
     const handleFiltroClick = () => {
-        switch (sensor) {
-            case 'PH':
-                axios.get(`http://localhost:8080/api/report/${tiempo}/data/ph/${ID}`, {
-                    headers: {
-                        'Content-type': 'application/json',
-                        'Authorization': localStorage.getItem('token'),
-                    }
-                })
-                    .then((response) => {
-                        const data = response.data;
-                        setPH(data)
-                        console.log(data)
-                        postApiPythonPH();
-                    })
-                    .catch((error) => {
-                        console.error(error)
-                    })
-                break;
-            case 'TemperaturaExterna':
-                axios.get(`http://localhost:8080/api/report/${tiempo}/data/etemp/${ID}`, {
-                    headers: {
-                        'Content-type': 'application/json',
-                        'Authorization': localStorage.getItem('token'),
-                    }
-                })
-                    .then((response) => {
-                        const data = response.data
-                        setEtemp(data)
-                        postApiPythonEtemp();
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
-                break;
-            case 'TemperaturaInterna':
-                axios.get(`http://localhost:8080/api/report/${tiempo}/data/itemp/${ID}`, {
-                    headers: {
-                        'Content-type': 'application/json',
-                        'Authorization': localStorage.getItem('token'),
-                    }
-                })
-                    .then((response) => {
-                        const data = response.data
-                        setItemp(data)
-                        postApiPythonItemp()
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
-                break;
-            case 'Conductividad':
-                axios.get(`http://localhost:8080/api/report/${tiempo}/data/tds/${ID}`, {
-                    headers: {
-                        'Content-type': 'application/json',
-                        'Authorization': localStorage.getItem('token'),
-                    }
-                })
-                    .then((response) => {
-                        const data = response.data
-                        setTds(data)
-                        postApiPythonTds()
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
-                break;
-            case 'Turbidez':
-                axios.get(`http://localhost:8080/api/report/${tiempo}/data/ts/${ID}`, {
-                    headers: {
-                        'Content-type': 'application/json',
-                        'Authorization': localStorage.getItem('token'),
-                    }
-                })
-                    .then((response) => {
-                        const data = response.data
-                        setTs(data)
-                        postApiPythonTs()
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
-                break;
-            case 'Humedad':
-                axios.get(`http://localhost:8080/api/report/${tiempo}/data/ehum/${ID}`, {
-                    headers: {
-                        'Content-type': 'application/json',
-                        'Authorization': localStorage.getItem('token'),
-                    }
-                })
-                    .then((response) => {
-                        const data = response.data
-                        setEhum(data)
-                        postApiPythonEhum()
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
-                break;
-            case 'Tension':
-                axios.get(`http://localhost:8080/api/report/${tiempo}/data/tension/${ID}`, {
-                    headers: {
-                        'Content-type': 'application/json',
-                        'Authorization': localStorage.getItem('token'),
-                    }
-                })
-                    .then((response) => {
-                        const data = response.data
-                        setTension(data)
-                        postApiPythonTension()
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
-                break;
-            default:
-                break;
-        }
+        axios.get(`http://localhost:8080/api/report/${tiempo}/data/${sensor}/${ID}`, {
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': localStorage.getItem('token'),
+            }
+        })
+            .then((response) => {
+                const data = response.data;
+                setDta(data)
+                console.log(data)
+                postApiPython();
+            })
+            .catch((error) => {
+                console.error(error)
+            })
     };
 
-    const postApiPythonPH = () => {
-        console.log(ph)
+    const postApiPython = () => {
         const datapost = {
-            data: ph,
+            data: dta,
         }
         axios.post('https://aquaqa-data-analysis.onrender.com/frecuency-distribution', datapost)
             .then((resp) => {
                 const { data } = resp;
                 setDataTableDistribution(data)
-                console.log(data)
                 axios.post('https://aquaqa-data-analysis.onrender.com/central-tendency', datapost)
                     .then((resp) => {
                         const { data } = resp
                         setDataTableTendency(data)
-                        console.log(data)
                         axios.post('https://aquaqa-data-analysis.onrender.com/dispersion-data', datapost)
                             .then((resp) => {
                                 const { data } = resp
                                 setDataTableDispersion(data)
-                                console.log(data)
                             })
                             .catch((error) => {
                                 console.log(error)
@@ -210,215 +98,6 @@ export const HomeUser = () => {
                 console.log(resp)
             })
     }
-
-    const postApiPythonEtemp = () => {
-        console.log(etemp)
-        const datapost = {
-            data: etemp,
-        }
-        axios.post('https://aquaqa-data-analysis.onrender.com/frecuency-distribution', datapost)
-            .then((resp) => {
-                const { data } = resp;
-                setDataTableDistribution(data)
-                console.log(data)
-                axios.post('https://aquaqa-data-analysis.onrender.com/central-tendency', datapost)
-                    .then((resp) => {
-                        const { data } = resp
-                        setDataTableTendency(data)
-                        console.log(data)
-                        axios.post('https://aquaqa-data-analysis.onrender.com/dispersion-data', datapost)
-                            .then((resp) => {
-                                const { data } = resp
-                                setDataTableDispersion(data)
-                                console.log(data)
-                            })
-                            .catch((error) => {
-                                console.log(error)
-                            })
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
-            })
-            .catch(({ response }) => {
-                console.log(response)
-            })
-    }
-
-    const postApiPythonItemp = () => {
-        console.log(itemp)
-        const datapost = {
-            data: itemp,
-        }
-        axios.post('https://aquaqa-data-analysis.onrender.com/frecuency-distribution', datapost)
-            .then((resp) => {
-                const { data } = resp;
-                setDataTableDistribution(data)
-                console.log(data)
-                axios.post('https://aquaqa-data-analysis.onrender.com/central-tendency', datapost)
-                    .then((resp) => {
-                        const { data } = resp
-                        setDataTableTendency(data)
-                        console.log(data)
-                        axios.post('https://aquaqa-data-analysis.onrender.com/dispersion-data', datapost)
-                            .then((resp) => {
-                                const { data } = resp
-                                setDataTableDispersion(data)
-                                console.log(data)
-                            })
-                            .catch((error) => {
-                                console.log(error)
-                            })
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
-            })
-            .catch(({ response }) => {
-                console.log(response)
-            })
-    }
-
-    const postApiPythonTds = () => {
-        console.log(tds)
-        const datapost = {
-            data: tds,
-        }
-        axios.post('https://aquaqa-data-analysis.onrender.com/frecuency-distribution', datapost)
-            .then((resp) => {
-                const { data } = resp;
-                setDataTableDistribution(data)
-                console.log(data)
-                axios.post('https://aquaqa-data-analysis.onrender.com/central-tendency', datapost)
-                    .then((resp) => {
-                        const { data } = resp
-                        setDataTableTendency(data)
-                        console.log(data)
-                        axios.post('https://aquaqa-data-analysis.onrender.com/dispersion-data', datapost)
-                            .then((resp) => {
-                                const { data } = resp
-                                setDataTableDispersion(data)
-                                console.log(data)
-                            })
-                            .catch((error) => {
-                                console.log(error)
-                            })
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
-
-            })
-            .catch(({ response }) => {
-                console.log(response)
-            })
-    }
-
-    const postApiPythonTs = () => {
-        console.log(ts)
-        const datapost = {
-            data: ts,
-        }
-        axios.post('https://aquaqa-data-analysis.onrender.com/frecuency-distribution', datapost)
-            .then((resp) => {
-                const { data } = resp;
-                setDataTableDistribution(data)
-                console.log(data)
-                axios.post('https://aquaqa-data-analysis.onrender.com/central-tendency', datapost)
-                    .then((resp) => {
-                        const { data } = resp
-                        setDataTableTendency(data)
-                        console.log(data)
-                        axios.post('https://aquaqa-data-analysis.onrender.com/dispersion-data', datapost)
-                            .then((resp) => {
-                                const { data } = resp
-                                setDataTableDispersion(data)
-                                console.log(data)
-                            })
-                            .catch((error) => {
-                                console.log(error)
-                            })
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
-
-            })
-            .catch(({ response }) => {
-                console.log(response)
-            })
-    }
-
-    const postApiPythonEhum = () => {
-        console.log(ehum)
-        const datapost = {
-            data: ehum,
-        }
-        axios.post('https://aquaqa-data-analysis.onrender.com/frecuency-distribution', datapost)
-            .then((resp) => {
-                const { data } = resp;
-                setDataTableDistribution(data)
-                console.log(data)
-                axios.post('https://aquaqa-data-analysis.onrender.com/central-tendency', datapost)
-                    .then((resp) => {
-                        const { data } = resp
-                        setDataTableTendency(data)
-                        console.log(data)
-                        axios.post('https://aquaqa-data-analysis.onrender.com/dispersion-data', datapost)
-                            .then((resp) => {
-                                const { data } = resp
-                                setDataTableDispersion(data)
-                                console.log(data)
-                            })
-                            .catch((error) => {
-                                console.log(error)
-                            })
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
-
-            })
-            .catch(({ response }) => {
-                console.log(response)
-            })
-    }
-
-    const postApiPythonTension = () => {
-        console.log(tension)
-        const datapost = {
-            data: tension,
-        }
-        axios.post('https://aquaqa-data-analysis.onrender.com/frecuency-distribution', datapost)
-            .then((resp) => {
-                const { data } = resp;
-                setDataTableDistribution(data)
-                console.log(data)
-                axios.post('https://aquaqa-data-analysis.onrender.com/central-tendency', datapost)
-                    .then((resp) => {
-                        const { data } = resp
-                        setDataTableTendency(data)
-                        console.log(data)
-                        axios.post('https://aquaqa-data-analysis.onrender.com/dispersion-data', datapost)
-                            .then((resp) => {
-                                const { data } = resp
-                                setDataTableDispersion(data)
-                                console.log(data)
-                            })
-                            .catch((error) => {
-                                console.log(error)
-                            })
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
-
-            })
-            .catch(({ response }) => {
-                console.log(response)
-            })
-    }
-
 
     return (
         <div className="container-home-user">
@@ -437,13 +116,13 @@ export const HomeUser = () => {
                 <div className="selects"  >
                     <select className="select" value={sensor} onChange={handleSensorChange}>
                         <option value="default" disabled>Sensor</option>
-                        <option value="PH">PH</option>
-                        <option value="TemperaturaExterna">Temperatura Externa</option>
-                        <option value="TemperaturaInterna">Temperatura Interna</option>
-                        <option value="Conductividad">Conductividad</option>
-                        <option value="Turbidez">Turbidez</option>
-                        <option value="Humedad">Humedad</option>
-                        <option value="Tension">Tension</option>
+                        <option value="ph">PH</option>
+                        <option value="etemp">Temperatura Externa</option>
+                        <option value="itemp">Temperatura Interna</option>
+                        <option value="tds">Conductividad</option>
+                        <option value="ts">Turbidez</option>
+                        <option value="ehum">Humedad</option>
+                        <option value="tension">Tension</option>
                     </select>
                     <select className="select" value={tiempo} onChange={handleTiempoChange}>
                         <option value="default" disabled>Tiempo</option>
@@ -552,7 +231,7 @@ export const HomeUser = () => {
                             <tbody>
                                 <tr>
                                     <td>Coeficiente relacional</td>
-                                    <td className="resultado">00000</td>
+                                    <td className="resultado"></td>
                                 </tr>
                                 <tr>
                                     <td>Coeficiente lineal</td>
@@ -578,7 +257,6 @@ export const HomeUser = () => {
                         </table>
                     </div>
                     <div className="grafica">
-
                     </div>
                 </div>
             </div>
