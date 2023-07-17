@@ -4,7 +4,7 @@
 }
 
 .content-userhome{
-    margin-top: 3.5%;
+    margin-top: 6%;
     margin-left: 15%;
 }
 
@@ -153,7 +153,7 @@
     text-align: center;
     padding-top: 1vh;
     padding-right: 0;
-    padding-left: 2vh;
+    padding-left: 2.9vh;
 }
 
 .tableAn td{
@@ -173,7 +173,7 @@
 .tablaPronosticos{
     background-color: white;
     width: 52vh;
-    height: 38vh;
+    height: 40vh;
     box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.25);
     border-radius: 1vh;
     margin-top: 10vh;
@@ -196,7 +196,7 @@
     margin: 0;
     padding: 0;
     padding-top: 2.3vh;
-    padding-left: 4.5vh;
+    padding-left: 5.6vh;
     font-family: Poppins;
     color: #959595;
     font-size: 1.6vh;
@@ -205,7 +205,7 @@
 .table-pronostico .resultado{
     color: #3CC0C9;
     font-size: 2vh;
-    padding-left: 10vh;
+    padding-left: 12vh;
     font-size: 1.6vh;
 }
 
