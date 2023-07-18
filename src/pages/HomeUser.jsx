@@ -1,8 +1,16 @@
-import UserNavBar from "../components/UserNavBar"
+//Componentes
+import UserNavBar from "../components/UserNavBar";
+import GraficaUser from "../components/GraficaUsuario.jsx";
+
+//CSS
 import '../assets/Styles/HomeUser.css'
+//Dependencias o Librerias
 import { useEffect } from "react"
 import axios from "axios"
 import { useState } from "react"
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+//Imagenes
 import Print from '../assets/Images/Print.svg'
 
 export const HomeUser = () => {
@@ -180,6 +188,68 @@ export const HomeUser = () => {
         })
     }
 
+    // Generador de pdf
+    const exportarAPDF = async () => {
+        const inputElements = document.getElementsByClassName('pdf-content');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        let yOffset = 10; // Ajusta la posición vertical de los componentes en la página
+
+            pdf.setFontSize(18);
+            pdf.text(`Reporte General ${name} ${lastName}`, 10, 10);
+
+        for (let i = 0; i < inputElements.length; i++) {
+          const input = inputElements[i];
+
+
+          const canvas = await html2canvas(input);
+          const imgData = canvas.toDataURL('image/png');
+
+          const imgWidth = pdf.internal.pageSize.getWidth() - 20; // Ajusta el ancho de la imagen al ancho de la página
+          const imgHeight = (canvas.height * imgWidth) / canvas.width;
+           
+          pdf.addImage(imgData, 'PNG', 10, yOffset, imgWidth, imgHeight);
+          yOffset += imgHeight + 10; // Ajusta la posición vertical para el siguiente componente
+        }  
+
+
+
+      
+        pdf.save('ReporteGeneral.pdf');
+      };
+
+      
+      //Datos de pruebas
+    const pointData = [
+        { x: 0, y: 1 },
+        { x: 1, y: 0 },
+
+        { x: 1, y: 2 },
+        { x: 2, y: 1 },
+
+        { x: 2, y: 3 },
+        { x: 3, y: 2 },
+
+        { x: 3, y: 4 },
+        { x: 4, y: 3},
+
+        { x: 4, y: 5 },
+        { x: 5, y: 4},
+
+        { x: 5, y: 6 },
+        { x: 6, y: 5},
+    ];
+    
+    const lineaDato = [
+        { x: 0, y: 0 },
+        { x: 1, y: 1},
+        { x: 2, y: 2 },
+        { x: 3, y: 3 },
+        { x: 4, y: 4 },
+        { x: 5, y: 5 },
+        { x: 6, y: 6 },
+    ];
+      
+      
     return (
         <div className="container-home-user">
             <div className="container navbarUser">
@@ -191,10 +261,10 @@ export const HomeUser = () => {
                         <h2 className="userBienvenida">Bienvenido<h2 className="name-lastname">{name} {lastName}</h2></h2>
                     </div>
                     <div className="icon-pdf">
-                        <img src={Print} />
+                        <button className="button-print" onClick={exportarAPDF}><img src={Print} /></button>
                     </div>
                 </div>
-                <div className="selects"  >
+                <div className="selects" >
                     <select className="select" value={sensor} onChange={handleSensorChange}>
                         <option value="default" disabled>Sensor</option>
                         <option value="ph">PH</option>
@@ -214,7 +284,7 @@ export const HomeUser = () => {
                     </select>
                     <button className="btn-filtro" onClick={handleFiltroClick}>Enviar</button>
                 </div>
-                <div className="analisis-general">
+                <div className="analisis-general pdf-content" id="captura-datos">
                     <div className="contenido-analisis">
                         <div className="tit">
                             <h2>Análisis general</h2>
@@ -246,7 +316,7 @@ export const HomeUser = () => {
                         </table>
                     </div>
                 </div>
-                <div className="analisis-avanzado">
+                <div className="analisis-avanzado pdf-content" id="captura-datos2">
                     <div className="contenedor-analisis">
                         <div className="head">
                             <div className="tit-analisis">
@@ -300,7 +370,7 @@ export const HomeUser = () => {
                         </div>
                     </div>
                 </div>
-                <div className="pronosticos">
+                <div className="pronosticos pdf-content" id="captura-datos3">
                     <div className="tablaPronosticos">
                         <div className="head-pronos">
                             <div className="tit-pronos">
@@ -346,7 +416,10 @@ export const HomeUser = () => {
                             </tbody>
                         </table>
                     </div>
-                    <div className="grafica">
+                    <div className="graficaUserData">
+                        <div className="graficaStyles">
+                            <GraficaUser datos={pointData} linea={lineaDato}/>
+                        </div>
                     </div>
                 </div>
             </div>
