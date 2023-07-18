@@ -16,8 +16,25 @@ export const HomeUser = () => {
     const [sensor, setSensor] = useState('default');
     const [tiempo, setTiempo] = useState('default');
     const [dta, setDta] = useState([])
+    const [etemp, setEtemp] = useState([])
+    const [ph, setPh] = useState([])
+    const [coeR, setCoeR] = useState([])
+    const [coeL, setCoeL] = useState([])
+    const [valueEtemp, setValueEtemp] = useState([])
+    const [valuePh, setValuePh] = useState([])
+    const [etempProns, setEtempProns] = useState([])
+    const [phProns, setPhProns] = useState([])
 
     //Obtencion de datos del usuario
+
+
+    const handleSendEtemp=(e)=>{
+        setValueEtemp(e.target.value)
+    }
+
+    const handleSendPh=(e)=>{
+        setValuePh(e.target.value)
+    }
 
     useEffect(() => {
         const email = localStorage.getItem('email')
@@ -50,6 +67,8 @@ export const HomeUser = () => {
     const handleTiempoChange = (event) => {
         setTiempo(event.target.value);
     };
+
+
 
     const handleFiltroClick = () => {
         axios.get(`http://localhost:8080/api/report/${tiempo}/data/${sensor}/${ID}`, {
@@ -86,17 +105,79 @@ export const HomeUser = () => {
                                 const { data } = resp
                                 setDataTableDispersion(data)
                             })
-                            .catch((error) => {
-                                console.log(error)
-                            })
-                    })
-                    .catch((error) => {
-                        console.log(error)
                     })
             })
             .catch(({ resp }) => {
                 console.log(resp)
             })
+    }
+
+    const CoeficienteRelacional  = () => {
+        axios.get(`http://localhost:8080/api/report/${tiempo}/data/ph/${ID}`, {
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': localStorage.getItem('token'),
+            }
+        })
+        .then((response) => {
+            const {data} = response
+            setPh(data)
+            axios.get(`http://localhost:8080/api/report/${tiempo}/data/etemp/${ID}`,{
+                headers: {
+                    'Content-type': 'application/json',
+                    'Authorization': localStorage.getItem('token'),
+                }
+            })
+            .then((response) => {
+                const {data} = response;
+                setEtemp(data)
+                const dataCoe = {
+                    data01: ph,
+                    data02: etemp
+                  };
+                console.log(dataCoe) 
+                axios.post('https://aquaqa-data-analysis.onrender.com/relational-coeficient', dataCoe)
+                .then((response) => {
+                    const {data} = response
+                    setCoeR(data)
+                    const dataLineal = {
+                        data01: ph,
+                        data02: etemp
+                    }
+                    axios.post('https://aquaqa-data-analysis.onrender.com/determination-coeficient', dataLineal)
+                    .then((response) => {
+                    const {data} = response
+                    setCoeL(data)
+                    })
+                })
+            })
+        })
+    }
+
+    const temperaturaPronostico = () => {
+        const dataTempPronos = {
+            data01: ph,
+            data02: etemp,
+            number: valueEtemp
+        }
+        axios.post('https://aquaqa-data-analysis.onrender.com/regretion-coeficient-x', dataTempPronos)
+        .then((response) => {
+            const {data} = response
+            setEtempProns(data)
+        })
+    }
+
+    const PhPronostico = () => {
+        const dataPhPronos = {
+            data01: ph,
+            data02: etemp,
+            number: valuePh
+        }
+        axios.post('https://aquaqa-data-analysis.onrender.com/regretion-coeficient-y', dataPhPronos)
+        .then((response) => {
+            const {data} = response
+            setPhProns(data)
+        })
     }
 
     return (
@@ -226,32 +307,41 @@ export const HomeUser = () => {
                                 <h2>Pronósticos</h2>
                                 <div className="divider" />
                             </div>
-                        </div>
+                            <div className="btn-generar">
+                                <button onClick={CoeficienteRelacional}>Generar</button>
+                            </div>
+                        </div>  
                         <table className="table-pronostico">
                             <tbody>
                                 <tr>
                                     <td>Coeficiente relacional</td>
-                                    <td className="resultado"></td>
+                                    <td className="resultado">{coeR}</td>
                                 </tr>
                                 <tr>
                                     <td>Coeficiente lineal</td>
-                                    <td className="resultado">00000</td>
+                                    <td className="resultado">{coeL}</td>
                                 </tr>
                                 <tr>
                                     <td>Pronostico al valor del<br />sensor de temperatura</td>
-                                    <td className="resultado"> <input type="number" /> </td>
+                                    <td className="resultado"> 
+                                        <input type="number" placeholder="Temp" value={valueEtemp} onChange={handleSendEtemp}/>
+                                        <button className="btn-EnvPronos" onClick={temperaturaPronostico}>Enviar</button>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td className="resultado" >00000</td>
+                                    <td className="resultado">{etempProns}</td>
                                 </tr>
                                 <tr>
                                     <td>Pronostico al valor del<br />sensor de PH</td>
-                                    <td className="resultado"> <input type="number" /> </td>
+                                    <td className="resultado"> 
+                                        <input type="number" value={valuePh} onChange={handleSendPh}/> 
+                                        <button className="btn-EnvPronos" onClick={PhPronostico}>Enviar</button>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td className="resultado">00000</td>
+                                    <td className="resultado">{phProns}</td>
                                 </tr>
                             </tbody>
                         </table>
