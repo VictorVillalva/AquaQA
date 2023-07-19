@@ -32,6 +32,7 @@ export const HomeUser = () => {
     const [valuePh, setValuePh] = useState([])
     const [etempProns, setEtempProns] = useState([])
     const [phProns, setPhProns] = useState([])
+    const[cordPoints,setCordPoints] = useState([])
 
     //Obtencion de datos del usuario
 
@@ -143,7 +144,7 @@ export const HomeUser = () => {
                     data01: ph,
                     data02: etemp
                   };
-                console.log(dataCoe) 
+                console.log(dataCoe)
                 axios.post('https://aquaqa-data-analysis.onrender.com/relational-coeficient', dataCoe)
                 .then((response) => {
                     const {data} = response
@@ -157,6 +158,12 @@ export const HomeUser = () => {
                     const {data} = response
                     setCoeL(data)
                     })
+                })
+                //esto llena el array con [[x,y],[x,y]] mod#01
+                axios.post('https://aquaqa-data-analysis.onrender.com/cardinal-point',dataCoe)
+                    .then((response)=>{
+                    setCordPoints(response.data)
+                    console.log("cp: ", cordPoints)
                 })
             })
         })
@@ -206,39 +213,23 @@ export const HomeUser = () => {
 
           const imgWidth = pdf.internal.pageSize.getWidth() - 20; // Ajusta el ancho de la imagen al ancho de la página
           const imgHeight = (canvas.height * imgWidth) / canvas.width;
-           
+
           pdf.addImage(imgData, 'PNG', 10, yOffset, imgWidth, imgHeight);
           yOffset += imgHeight + 10; // Ajusta la posición vertical para el siguiente componente
-        }  
+        }
 
 
 
-      
+
         pdf.save('ReporteGeneral.pdf');
       };
 
-      
+
       //Datos de pruebas
-    const pointData = [
-        { x: 0, y: 1 },
-        { x: 1, y: 0 },
+    //esto le da el formato requerido en la grafica para rellenar mod#01
+    const pointData = cordPoints.map(([x, y])=>({x, y}));
+    console.log("pd",pointData)
 
-        { x: 1, y: 2 },
-        { x: 2, y: 1 },
-
-        { x: 2, y: 3 },
-        { x: 3, y: 2 },
-
-        { x: 3, y: 4 },
-        { x: 4, y: 3},
-
-        { x: 4, y: 5 },
-        { x: 5, y: 4},
-
-        { x: 5, y: 6 },
-        { x: 6, y: 5},
-    ];
-    
     const lineaDato = [
         { x: 0, y: 0 },
         { x: 1, y: 1},
@@ -248,8 +239,8 @@ export const HomeUser = () => {
         { x: 5, y: 5 },
         { x: 6, y: 6 },
     ];
-      
-      
+
+
     return (
         <div className="container-home-user">
             <div className="container navbarUser">
@@ -380,7 +371,7 @@ export const HomeUser = () => {
                             <div className="btn-generar">
                                 <button onClick={CoeficienteRelacional}>Generar</button>
                             </div>
-                        </div>  
+                        </div>
                         <table className="table-pronostico">
                             <tbody>
                                 <tr>
@@ -393,7 +384,7 @@ export const HomeUser = () => {
                                 </tr>
                                 <tr>
                                     <td>Pronostico al valor del<br />sensor de temperatura</td>
-                                    <td className="resultado"> 
+                                    <td className="resultado">
                                         <input type="number" placeholder="Temp" value={valueEtemp} onChange={handleSendEtemp}/>
                                         <button className="btn-EnvPronos" onClick={temperaturaPronostico}>Enviar</button>
                                     </td>
@@ -404,8 +395,8 @@ export const HomeUser = () => {
                                 </tr>
                                 <tr>
                                     <td>Pronostico al valor del<br />sensor de PH</td>
-                                    <td className="resultado"> 
-                                        <input type="number" value={valuePh} onChange={handleSendPh}/> 
+                                    <td className="resultado">
+                                        <input type="number" value={valuePh} onChange={handleSendPh}/>
                                         <button className="btn-EnvPronos" onClick={PhPronostico}>Enviar</button>
                                     </td>
                                 </tr>
