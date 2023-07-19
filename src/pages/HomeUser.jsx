@@ -32,7 +32,8 @@ export const HomeUser = () => {
     const [valuePh, setValuePh] = useState([])
     const [etempProns, setEtempProns] = useState([])
     const [phProns, setPhProns] = useState([])
-
+    const [cordPoints, setCordPoints] = useState([])
+    const [tableHeight, setTableHeight] = useState('21%');
 
     //Obtencion de datos del usuario
 
@@ -157,6 +158,11 @@ export const HomeUser = () => {
                     setCoeL(data)
                     })
                 })
+                axios.post('https://aquaqa-data-analysis.onrender.com/cardinal-point',dataCoe)
+                .then((response) => {
+                    setCordPoints(response.data)
+                    console.log("cp: ", cordPoints)
+                })
             })
         })
     }
@@ -216,6 +222,15 @@ export const HomeUser = () => {
         pdf.save('ReporteGeneral.pdf');
       };
 
+    useEffect(() => {
+        const newTableHeight = `${dataTableDistribution.length * 5}%`; 
+        setTableHeight(newTableHeight);
+      }, [dataTableDistribution]);
+
+
+    const pointData = cordPoints.map(([x, y])=>({x, y}));
+    console.log("pd",pointData)
+
             
     return (
         <div className="container-home-user">
@@ -251,7 +266,7 @@ export const HomeUser = () => {
                     </select>
                     <button className="btn-filtro" onClick={handleFiltroClick}>Enviar</button>
                 </div>
-                <div className="analisis-general pdf-content" id="captura-datos">
+                <div className="analisis-general pdf-content" style={{ height: tableHeight }} id="captura-datos">
                     <div className="contenido-analisis">
                         <div className="tit">
                             <h2>Análisis general</h2>
@@ -360,7 +375,7 @@ export const HomeUser = () => {
                                 </tr>
                                 <tr>
                                     <td>Pronostico al valor del<br />sensor de temperatura</td>
-                                    <td className="resultado"> 
+                                    <td className="resultado" id="inputres"> 
                                         <input type="number" placeholder="Temp" value={valueEtemp} onChange={handleSendEtemp}/>
                                         <button className="btn-EnvPronos" onClick={temperaturaPronostico}>Enviar</button>
                                     </td>
@@ -371,8 +386,8 @@ export const HomeUser = () => {
                                 </tr>
                                 <tr>
                                     <td>Pronostico al valor del<br />sensor de PH</td>
-                                    <td className="resultado"> 
-                                        <input type="number" value={valuePh} onChange={handleSendPh}/> 
+                                    <td className="resultado " id="inputres"> 
+                                        <input type="number" placeholder="PH" value={valuePh} onChange={handleSendPh}/> 
                                         <button className="btn-EnvPronos" onClick={PhPronostico}>Enviar</button>
                                     </td>
                                 </tr>
@@ -385,7 +400,7 @@ export const HomeUser = () => {
                     </div>
                     <div className="graficaUserData">
                         <div className="graficaStyles">
-                            <GraficaUser diagonalValue={coeL}/>
+                            <GraficaUser datos={pointData} diagonalValue={coeL}/>
                         </div>
                     </div>
                 </div>
