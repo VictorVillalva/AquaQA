@@ -33,6 +33,7 @@ export const HomeUser = () => {
     const [etempProns, setEtempProns] = useState([])
     const [phProns, setPhProns] = useState([])
 
+
     //Obtencion de datos del usuario
 
 
@@ -75,8 +76,6 @@ export const HomeUser = () => {
     const handleTiempoChange = (event) => {
         setTiempo(event.target.value);
     };
-
-
 
     const handleFiltroClick = () => {
         axios.get(`http://localhost:8080/api/report/${tiempo}/data/${sensor}/${ID}`, {
@@ -217,39 +216,7 @@ export const HomeUser = () => {
         pdf.save('ReporteGeneral.pdf');
       };
 
-      
-      //Datos de pruebas
-    const pointData = [
-        { x: 0, y: 1 },
-        { x: 1, y: 0 },
-
-        { x: 1, y: 2 },
-        { x: 2, y: 1 },
-
-        { x: 2, y: 3 },
-        { x: 3, y: 2 },
-
-        { x: 3, y: 4 },
-        { x: 4, y: 3},
-
-        { x: 4, y: 5 },
-        { x: 5, y: 4},
-
-        { x: 5, y: 6 },
-        { x: 6, y: 5},
-    ];
-    
-    const lineaDato = [
-        { x: 0, y: 0 },
-        { x: 1, y: 1},
-        { x: 2, y: 2 },
-        { x: 3, y: 3 },
-        { x: 4, y: 4 },
-        { x: 5, y: 5 },
-        { x: 6, y: 6 },
-    ];
-      
-      
+            
     return (
         <div className="container-home-user">
             <div className="container navbarUser">
@@ -418,7 +385,7 @@ export const HomeUser = () => {
                     </div>
                     <div className="graficaUserData">
                         <div className="graficaStyles">
-                            <GraficaUser datos={pointData} linea={lineaDato}/>
+                            <GraficaUser diagonalValue={coeL}/>
                         </div>
                     </div>
                 </div>

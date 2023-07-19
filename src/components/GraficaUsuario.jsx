@@ -4,65 +4,61 @@ import { Line } from 'react-chartjs-2';
 
 ChartJS.register(CategoryScale,LinearScale,PointElement,LineElement,Title,Tooltip,Legend);
 
-const Grafica = ({datos, linea}) => {
-
-
-      // Datos de ejemplo para la línea diagonal
-    // const lineaD = [
-    //     { x: 0, y: 0 },
-    //     { x: linea, y: linea },
-    // ];
-
-    const options = {
-        responsive: true,
-        plugins: {
-            legend: {
-            position: 'top',
-            },
-            title: {
-            display: true,
-            text: 'Grafica ',
-            },
-        },
-        //  scales: {
-        //  x: {
-        //      beginAtZero: true,
-        //      max: linea, // Ajusta el máximo del eje X según el valor de la línea diagonal
-        //      },
-        //  y: {
-        //      beginAtZero: true,
-        //      max: linea, // Ajusta el máximo del eje Y según el valor de la línea diagonal
-        //      },
-        //  },
+const GraficaUsuario = ({ datos, diagonalValue }) => {
+    // Calcular los puntos de la diagonal
+    const calculateDiagonalPoints = () => {
+      const startPoint = { x: 0, y: 0 };
+      const endPoint = { x: diagonalValue, y: diagonalValue };
+      const slope = (endPoint.y - startPoint.y) / (endPoint.x - startPoint.x);
+  
+      const diagonalPoints = [];
+  
+      for (let i = startPoint.x; i <= endPoint.x; i++) {
+        const yValue = startPoint.y + slope * (i - startPoint.x);
+        diagonalPoints.push({ x: i, y: yValue });
+      }
+  
+      return diagonalPoints;
     };
-
-
-    const labels = [0,1,2,3,4,5,6];
-
+  
+    // Datos para la gráfica
     const data = {
-        labels,
-        datasets: [
-            {
-                label: 'Puntos',
-                data: datos,
-                borderColor: 'transparent',
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-            },
-            {
-                label: 'Linea Recta',
-                data: linea,
-                borderColor: '#3CC0C9',
-                backgroundColor: '#3CC0C9',
-                borderWidth: 2,
-                fill: false,
-            },
-        ],
+      datasets: [
+        {
+          label: 'Puntos',
+          data: datos,
+          backgroundColor: 'rgba(75,192,192,1)',
+          borderColor: 'transparent',
+          pointRadius: 6,
+        },
+        {
+          label: 'Diagonal',
+          data: calculateDiagonalPoints(),
+          borderColor: 'rgba(255,0,0,1)',
+          borderWidth: 2,
+        },
+      ],
     };
-    return (  
-        <div>
-            <Line data={data} options={options}/>
-        </div>
+  
+    // Opciones para la gráfica
+    const options = {
+      scales: {
+        x: {
+          type: 'linear',
+          position: 'bottom',
+        },
+        y: {
+          type: 'linear',
+          position: 'left',
+        },
+      },
+    };
+  
+    return (
+      <div>
+        <Line data={data} options={options} />
+      </div>
     );
-};
-
-export default Grafica;
+  };
+  
+  export default GraficaUsuario;
