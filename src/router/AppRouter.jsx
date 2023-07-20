@@ -7,7 +7,6 @@ import { LandingPage } from "../pages/LandingPage";
 import { UsersAdmin } from "../pages/UsersAdmin";
 import AdminGuard from "../Helpers/AdminGuard.jsx";
 import {HomeUser} from "../pages/HomeUser.jsx";
-import {CambioContraseña} from "../pages/CambioContraseña.jsx";
 import UserGuard from "../Helpers/UserGuard.jsx";
 
 
@@ -22,7 +21,7 @@ const AppRouter =()=>{
 
     //User
     const HomeUserProtected = UserGuard(HomeUser);
-    const CambioContraseñaProtected =  UserGuard(CambioContraseña);
+
 
     return(
         <BrowserRouter>
@@ -53,7 +52,6 @@ const AppRouter =()=>{
 
                 {/* User Routes */}
                 <Route path="/home" element={<HomeUserProtected/>} />
-                <Route path="/contrasena" element={<CambioContraseñaProtected/>}/>
 
 
                 {/* Default catch */}

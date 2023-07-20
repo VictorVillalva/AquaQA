@@ -19,23 +19,82 @@ import { Visibility,
 } from '@mui/icons-material';
 import { axiosInstance } from '../Helpers/axiosInstance';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 
 export const TableUsers = () => {
 
     const [user, setUser] = useState([])
-
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [passwordAdmin, setPasswordAdmin]=useState();
+    const [phSensorStatus, setPhSensorStatus] = useState(null);
+    const [selectedUserId, setSelectedUserId] = useState(null);
+
+    //METODO PARA ABRIR LA INFORMACION DE LOS SENSORES DEL USUARIO
+
+    const [info, setInfo] = useState(false);
+    
+    const handleClickInfo = (userId) => {
+        setSelectedUserId(userId);
+        setInfo(true);
+      };
+      
+    const handleCloseInfo = () => {
+    setInfo(false);
+    };
+    
+
+    useEffect(() => {
+        if (selectedUserId) {
+          const apiUrl = `https://aqua-qa.sytes.net/api/health/ph/${selectedUserId}`;
+          axios.get(apiUrl)
+            .then(response => {
+              const phStatus = response.data
+              setPhSensorStatus(phStatus);
+            })
+            .catch(error => {
+              console.error(error);
+            });
+        }
+      }, [selectedUserId]);
+
+
+    const handleChangePass=(e)=>{
+        setPasswordAdmin(e.target.value)
+    }
+
+    const probar = () => {
+        const dataUser = {
+            email: 'admin@aqua-qa.com',
+            password: passwordAdmin
+        }
+        axios.post("https://aqua-qa.sytes.net/api/user/sign-in", dataUser)
+        .then((resp) => {
+            const { data } = resp;
+            console.log(data)
+            borrar(userIdToDelete);
+          })
+          .catch(({ response }) => {
+            console.log(response.message);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Contraseña incorrecta',
+                customClass: {
+                  container: 'custom-swal',
+                },
+              });
+          });
+        }
 
     const actualizarUsuarios = () => {
         axiosInstance
           .get('user')
           .then(({ data }) => {
-            console.log(data);
             setUser(data.data.filter(u => u.rol === 'user'));
           })
           .catch(err => {
@@ -43,12 +102,11 @@ export const TableUsers = () => {
           });
       };
 
-
     const handleNameChange = (event) => {
         setName(event.target.value);
       };
       
-      const handleLastNameChange = (event) => {
+    const handleLastNameChange = (event) => {
         setLastName(event.target.value);
       };
       
@@ -74,8 +132,8 @@ export const TableUsers = () => {
       }, []);
 
     const handleClickOpen = (id) => {
-    setUserIdToDelete(id);
-    setOpenDeleteUser(true);
+      setUserIdToDelete(id);
+      setOpenDeleteUser(true);
     };
 
     const handleClose = () => {
@@ -85,15 +143,14 @@ export const TableUsers = () => {
     
     const borrar = (id) => {
         const accessToken = localStorage.getItem('token');
-
         if (!accessToken) {
             console.error('Token no encontrado');
             return;
           }
-
-        axios.delete(`http://localhost:8080/api/user/${id}`, {
+        axios.delete(`https://aqua-qa.sytes.net/api/user/${id}`, {
             headers: {
-              Authorization: `${accessToken}`
+              'Content-type': 'application/json',
+              'Authorization': localStorage.getItem('token'),
             }
           })
             .then(({ data }) => {
@@ -114,15 +171,7 @@ export const TableUsers = () => {
             });
         };
 
-    //METODO PARA ABRIR LA INFORMACION DE LOS SENSORES DEL USUARIO
-
-    const [info, setInfo] = useState(false);
-    const handleClickInfo = () => {
-    setInfo(true);
-    };
-    const handleCloseInfo = () => {
-    setInfo(false);
-    };
+    
 
     //METODO PARA ACTIVAR EL HOVER DEL BTN AGREGAR
 
@@ -151,10 +200,10 @@ export const TableUsers = () => {
     event.preventDefault();
     };
 
-    const handleCreateUser = () => {
+    const handleCreateUser = (e) => {
         const newUser = {
           name: name,
-          lastName: lastName,
+          lastname: lastName,
           phoneNumber: phoneNumber,
           email: email,
           password: password,
@@ -166,9 +215,26 @@ export const TableUsers = () => {
           console.error('Token no encontrado');
           return;
         }
-      
-        axios
-          .post('http://localhost:8080/api/user/sign-up', newUser, {
+
+        e.preventDefault();
+        if (!email || !password) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Por favor, completa todos los campos',
+              customClass: {
+                container: 'custom-swal',
+                popup: 'sweetalert-popup',
+              },
+            });
+            return;
+          }
+        const dataUser = {
+            email: email,
+            password: password
+        }
+        console.log(dataUser)
+        axios.post('https://aqua-qa.sytes.net/api/user/sign-up', newUser, {
             headers: {
               Authorization: `${accessToken}`,
             },
@@ -180,24 +246,26 @@ export const TableUsers = () => {
             setUser(updatedUsers);
             actualizarUsuarios()
             setAddUser(false);
-            // Realiza alguna acción después de crear el usuario
-            // Cerrar el diálogo, reiniciar los valores del formulario, actualizar la lista de usuarios, etc.
           })
           .catch((error) => {
             if (axios.isAxiosError(error)) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Datos Invalidos',
+                customClass: {
+                  container: 'custom-swal',
+                  popup: 'sweetalert-popup',
+                },
+              });
               console.error('Error en la solicitud HTTP:', error.response);
-              // Maneja el error de la solicitud HTTP
             } else {
               console.error('Error:', error.message);
-              // Maneja otros errores
             }
           });
       };
 
-      
-      
-
-    
+          
     return(
         <>  
             <div className="head-add">
@@ -228,7 +296,7 @@ export const TableUsers = () => {
                             <>
                                 <tr key={users.id}>
                                     <td>{users.id}</td>
-                                    <td><a onClick={handleClickInfo} className='infoSensores'>{users.name} {users.lastname}</a></td>
+                                    <td><a onClick={() => handleClickInfo(users.id)} className='infoSensores'>{users.name} {users.lastname}</a></td>
                                     <td>{users.email}</td>
                                     <td>{users.phoneNumber}</td>
                                     <td className="btns-admin">
@@ -245,7 +313,7 @@ export const TableUsers = () => {
 
 
             <Dialog
-                sx={{ width: '80vh', marginLeft: '30%'}}
+                sx={{ width: '80vh', marginLeft: '28%'}}
                 open={openDeleteUser}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
@@ -260,6 +328,8 @@ export const TableUsers = () => {
                                 <OutlinedInput
                                     id="outlined-adornment-password"
                                     type={showPassword ? 'text' : 'password'}
+                                    value={passwordAdmin || ''}
+                                    onChange={handleChangePass}
                                     endAdornment={
                                         <InputAdornment position="end">
                                             <IconButton
@@ -278,7 +348,7 @@ export const TableUsers = () => {
                 </DialogContent>
                 <DialogActions>
                     <button className="btn-cancelar" onClick={handleClose}>Cancelar</button>
-                    <button className="btn-Eliminar" onClick={() => borrar(userIdToDelete)}>Eliminar</button>
+                    <button className="btn-Eliminar" onClick={() => probar()}>Eliminar</button>
                 </DialogActions>
             </Dialog>
 
@@ -287,16 +357,16 @@ export const TableUsers = () => {
 
             <Dialog
                 className='sensores-info'
-                sx={{ width: '80vh', marginLeft: '26%' }}
+                sx={{ width: '80vh', marginLeft: '26%'}}
                 open={info}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <DialogTitle id="alert-dialog-title" sx={{ fontFamily: 'Poppins', fontWeight: '700', fontSize: '3vh' }}>
+                <DialogTitle id="alert-dialog-title" sx={{ fontFamily: 'Poppins', fontWeight: '700', fontSize: '3vh', textAlign:'center' }}>
                     {"Información de sensores"}
                 </DialogTitle>
-                <DialogContent sx={{ fontFamily: 'Poppins'}}>
+                <DialogContent sx={{ fontFamily: 'Poppins', overflow:'hidden' }}>
                     <table className="sensores">
                         <thead>
                             <tr>
@@ -307,9 +377,29 @@ export const TableUsers = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>1</td>
+                                <td>Temperatura</td>
+                                <td className='status'>OK</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>PH</td>
+                                <td className='status'>{phSensorStatus === null ? 'Error' : String(phSensorStatus)}</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Conductividad</td>
+                                <td className='status'>OK</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Turbidez</td>
+                                <td className='status'>OK</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Humedad</td>
+                                <td className='status'>OK</td>
                             </tr>
                         </tbody>
                     </table>

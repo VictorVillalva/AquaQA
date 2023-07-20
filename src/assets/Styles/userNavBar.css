@@ -5,6 +5,7 @@
     min-height: 100vh;
     background-color: #FFFFFF;
     overflow: hidden;
+    position: fixed;
 }
 .navU{
     display: flex;
@@ -26,7 +27,7 @@
 }
 
 #LogoutU{
-    margin-top: 38vh;
+    margin-top: 50vh;
     width: 4vh;
     cursor: pointer;
 }
@@ -40,6 +41,6 @@
     border: none;
     font-family: Poppins;
     font-size: 2vh;
-    color: #3CC0C9;
+    color: red;
     cursor: pointer;
 }
