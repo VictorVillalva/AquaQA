@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
+
+.navbarUser{
+    width: 15vh;
+    min-height: 100vh;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    position: fixed;
+}
+.navU{
+    display: flex;
+    justify-content: center;
+}
+.optionsAdmin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12vh;
+}
+
+.optionsU{
+    width: 4vh;
+}
+
+#LogoAQA{
+    width: 5vh;
+}
+
+#LogoutU{
+    margin-top: 50vh;
+    width: 4vh;
+    cursor: pointer;
+}
+
+.col a{
+    height: 0;
+}
+
+.btn-salir{
+    background: none;
+    border: none;
+    font-family: Poppins;
+    font-size: 2vh;
+    color: red;
+    cursor: pointer;
+}

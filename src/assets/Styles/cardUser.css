@@ -1,0 +1,135 @@
+.cardUser{
+    width: 45vh;
+    height: 83vh;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.user{
+    display: flex;
+    padding-top: 2.8vh;
+}
+
+.info{
+    padding-right: 4.4vh;
+}
+
+.name{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    color: #464646;
+    font-size: 2.7vh;
+    margin: 0;
+    padding-top: 3vh;
+    padding-bottom: .5vh;
+}
+.separador{
+    width: 5vh;
+    height: .8vh;
+    background: #3CC0C9;
+    border-radius: 4vh;
+}
+.card-email{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.3vh;
+    color: #626262;
+    margin: 0;
+    padding-top: .8vh;
+}
+.photo, .fotoPerfil{
+    border-radius: 100%;
+    width: 10vh;
+    object-fit: cover;
+}
+.water{
+    display: flex;
+    justify-content: space-between;
+}
+.dataWater{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.625rem;
+    color: #A5A5A5;
+    font-size: 1.3vh;
+}
+.dataWater2{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.625rem;
+    color: #A5A5A5;
+    font-size: 1.3vh;
+    padding-left: 9vh;
+}
+
+.graph{
+    display: flex;
+    flex-direction: column;
+}
+.graph-txt-data{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.txt-graph{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.7vh;
+    color: #464646;
+    margin: 0;
+    padding-top: 3vh;
+    padding-left: .05vh;
+}
+.txt-data-water{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.7vh;
+    color: #959595;
+}
+.txt-minerales{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.7vh;
+    color: #959595;
+    padding-bottom: 2.5vh;
+    margin: 0;
+}
+.bar-graph{
+    background: #FFFFFF;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+    width: 36vh;
+    height: 27vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bar-graph-data{
+    height: 26.25vh;
+    width: 35vh;
+}
+.circular-progress-bar{
+    margin-top: 4vh;
+}
+.bar-circular{
+    display: flex;
+    justify-content: center;
+}
+.circular{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    width: 30vh;
+    height: 15vh;
+    display: flex;
+}

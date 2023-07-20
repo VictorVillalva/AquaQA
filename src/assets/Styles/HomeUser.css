@@ -1,0 +1,348 @@
+.container-home-user{
+    display: flex;
+    background-color: #F8FDFD;
+    height: 100%;
+    width: 100%;
+}
+
+.content-userhome{
+    margin-top: 5.8%;
+    margin-left: 14%;
+}
+
+.encabezado{
+    display: flex;
+}
+
+.encabezado img{
+    width: 4vh;
+}
+
+.selects{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.select{
+    margin-right: 8vh;
+    font-family: Poppins;
+    font-size: 2vh;
+    font-weight: 500;
+    background: none;
+    border: none;
+}
+
+.icon-pdf{
+    margin-top: 1vh;
+    margin-left: 75.7vh;
+}
+
+.userBienvenida{
+    display: flex;
+    margin: 0;
+    font-size: 4vh;
+    font-family: Poppins;
+    font-weight: 400;
+    color: #53C8CF;
+    padding-bottom: 3vh;
+}
+
+.nameUser{
+    font-family: Poppins;
+    display: flex;
+    margin: 0;
+    font-size: 4vh;
+    font-weight: 600;
+    color: #464646;
+    padding-left: 1vh;
+}
+
+.name-lastname{
+    margin: 0;
+    padding-left: 1vh;
+    font-size: 4vh;
+    color: #464646;
+    font-weight: 700;
+}
+
+.tit{
+    padding-top: 3vh;
+    padding-left: 5vh;
+}
+
+.analisis-general{
+    width: 135vh;
+    height: 21%;
+    min-height: 21%;
+    max-width: 100%;
+    background-color: white;
+    border-radius: 1vh;
+    box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.25);
+    margin-top: 3vh;
+}
+
+.contenido-analisis h2{
+    margin: 0;
+    color: #464646;
+    font-family: Poppins;
+    font-weight: 700;
+    font-size: 2.5vh;
+}
+
+.table-frecuencia{
+    margin-left: 4vh;
+}
+
+.table-frecuencia th{
+    font-family: Poppins;
+    color: #959595;
+    font-size: 1.6vh;
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+    line-height: 2.4vh;
+}
+
+.table-frecuencia td{
+    font-family: Poppins;
+    font-size: 1.6vh;
+    font-weight: 600;
+    margin: 0;
+    color: #3CC0C9;
+    text-align: center;
+    padding-right: 3vh;
+}
+
+.frecuencia{
+    padding-top: 2vh;
+    padding-right: 3vh;
+}
+
+.analisis-avanzado{
+    display: flex;
+    justify-content: space-between;
+}
+
+.contenedor-analisis, .contenedor-analisis2{
+    width: 48vh;
+    height: 20vh;
+    background-color: white;
+    box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.25);
+    border-radius: 1vh;
+    margin-top: 10vh;
+}
+
+.tit-analisis h2{
+    font-family: Poppins;
+    color: #464646;
+    font-size: 2.5vh;
+    margin: 0;
+}
+
+.tit-analisis{
+    margin-top: 3vh;
+    margin-left: 5vh;
+}
+
+.tableAn{
+    margin-right: 5vh;
+    margin-left: 2%;
+}
+
+.tableAn th{
+    font-family: Poppins;
+    color: #959595;
+    font-size: 1.6vh;
+    font-weight: 400;
+    text-align: center;
+    padding-top: 1vh;
+    padding-right: 0;
+    padding-left: 2.9vh;
+}
+
+.tableAn td{
+    font-family: Poppins;
+    color: #3CC0C9;
+    font-size: 1.5vh;
+    font-weight: 600;
+    text-align: center;
+    padding-left: 2vh;
+    padding-right: 0;
+}
+
+.tableAn .var{
+    padding-left: 5.5vh;
+}
+
+.tablaPronosticos{
+    background-color: white;
+    width: 55vh;
+    height: 40vh;
+    box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.25);
+    border-radius: 1vh;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
+.tit-pronos h2{
+    margin: 0;
+    font-family: Poppins;
+    font-size: 2.5vh;
+    color: #464646;
+}
+
+.tit-pronos{
+    padding-top: 3.8vh;
+    margin-left: 5vh;
+}
+
+.table-pronostico td{
+    margin: 0;
+    padding: 0;
+    padding-top: 2.3vh;
+    padding-left: 5.6vh;
+    font-family: Poppins;
+    color: #959595;
+    font-size: 1.6vh;
+}
+
+.table-pronostico .resultado{
+    color: #3CC0C9;
+    font-size: 2vh;
+    padding-left: 13.5vh;
+    font-size: 1.6vh;
+}
+
+#inputres{
+    padding-left: 8.5vh;
+}
+
+.resultado input::placeholder{
+    font-family: Poppins;
+    font-size: 1.2vh;
+    color: #959595;
+}
+
+.resultado input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;   
+}
+
+
+.resultado input{
+    width: 5vh;
+    height: 2.4vh;
+}
+
+.btn-filtro{
+    align-items: center;
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 1.7vh;
+    color: #F8FDFD;
+    background-color: #3CC0C9;
+    border: none;
+    border-radius: 1vh;
+    width: 8vh;
+    height: 4vh;
+    cursor: pointer;
+    margin-right: 8vh;
+}
+
+.btn-filtro:hover{
+    transform: scale(1.07);
+    transition: all .3s ease-in-out;
+    font-size: 1.7vh;
+    cursor: pointer;
+}
+
+.head-pronos{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.btn-generar button{
+    font-family: Poppins;
+    font-size: 1.6vh;
+    font-weight: 500;
+    background: #3CC0C9;
+    border-radius: 1vh;
+    border: #3CC0C9;
+    color: white;
+    width: 9.4vh;
+    height: 4vh;
+    margin-right: 9.8vh;
+}
+
+.btn-generar button:hover{
+    transform: scale(1.07);
+    transition: all .3s ease-in-out;
+    font-size: 1.6vh;
+    cursor: pointer;
+}
+
+.btn-EnvPronos{
+    font-family: Poppins;
+    font-size: 1.6vh;
+    font-weight: 500;
+    border: none;
+    background: #3CC0C9;
+    border-radius: 1vh;
+    height: 3.4vh;
+    color: white;
+    margin-left: 2vh;
+}
+
+.btn-EnvPronos:hover{
+    transform: scale(1.07);
+    transition: all .3s ease-in-out;
+    font-size: 1.5vh;
+    cursor: pointer;
+}
+.button-print{
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.pronosticos{
+    display: flex;
+    flex-direction: row;
+}
+
+.graficaUserData{
+    background-color: white;
+    width: 70vh;
+    height: 40vh;
+    box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.25);
+    border-radius: 1vh;
+    margin-top: 10vh;
+    margin-left: 10vh;
+    margin-bottom: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.graficaStyles{
+    margin-top: 3vh;
+    width: 65vh;
+    height: 60vh;
+}
+
+
+td .resultado{
+    padding-right: 4vh;
+}
+
+.Tit-TPH{
+    margin: 0;
+    font-family: Poppins;
+    color: #464646;
+    display: flex;
+    justify-content: center;
+    padding-top: 10vh;
+}
