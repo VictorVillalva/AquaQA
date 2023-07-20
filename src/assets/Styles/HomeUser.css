@@ -71,7 +71,7 @@
 }
 
 .analisis-general{
-    width: 134vh;
+    width: 135vh;
     height: 21%;
     min-height: 21%;
     max-width: 100%;
@@ -90,7 +90,6 @@
 }
 
 .table-frecuencia{
-
     margin-left: 4vh;
 }
 
@@ -125,7 +124,7 @@
 }
 
 .contenedor-analisis, .contenedor-analisis2{
-    width: 52vh;
+    width: 48vh;
     height: 20vh;
     background-color: white;
     box-shadow: 0px 1px 22px rgba(0, 0, 0, 0.25);
@@ -193,7 +192,7 @@
 }
 
 .tit-pronos{
-    padding-top: 4vh;
+    padding-top: 3.8vh;
     margin-left: 5vh;
 }
 
@@ -337,4 +336,13 @@ input[type="number"]::-webkit-outer-spin-button {
 
 td .resultado{
     padding-right: 4vh;
+}
+
+.Tit-TPH{
+    margin: 0;
+    font-family: Poppins;
+    color: #464646;
+    display: flex;
+    justify-content: center;
+    padding-top: 10vh;
 }

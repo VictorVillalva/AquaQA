@@ -1,6 +1,5 @@
 import Logo from '../assets/Images/Logo.svg';
 import Home from '../assets/Images/UserHome.svg';
-import Settings from '../assets/Images/Settings.svg';
 import logoutt from '../assets/Images/Logout.svg';
 //CSS
 import '../assets/Styles/userNavBar.css';
@@ -48,7 +47,6 @@ const UserNavBar = () => {
             <div className="row">
                 <div className="col optionsAdmin navU">
                     <NavLink to={'/home'}><img src={Home} alt="Home" className='optionsU'/></NavLink>
-                    <NavLink to={'/contraseña'}><img src={Settings} alt="Settings" className='optionsU' /></NavLink>
                 </div>
             </div>
             <div className="row">

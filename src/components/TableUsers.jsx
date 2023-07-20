@@ -51,14 +51,13 @@ export const TableUsers = () => {
     useEffect(() => {
         if (selectedUserId) {
           const apiUrl = `http://localhost:8080/api/health/ph/${selectedUserId}`;
-          
           axios.get(apiUrl)
             .then(response => {
               const phStatus = response.data
               setPhSensorStatus(phStatus);
             })
             .catch(error => {
-              console.error('Error al obtener el estado del sensor de pH:', error);
+              console.error(error);
             });
         }
       }, [selectedUserId]);
@@ -71,8 +70,8 @@ export const TableUsers = () => {
     const probar = () => {
         const dataUser = {
             email: 'isai@aqua-qa.com',
+            password: passwordAdmin
         }
-        console.log(dataUser)
         axios.post("http://localhost:8080/api/user/sign-in", dataUser)
         .then((resp) => {
             const { data } = resp;
@@ -96,7 +95,6 @@ export const TableUsers = () => {
         axiosInstance
           .get('user')
           .then(({ data }) => {
-            console.log(data);
             setUser(data.data.filter(u => u.rol === 'user'));
           })
           .catch(err => {
@@ -108,7 +106,7 @@ export const TableUsers = () => {
         setName(event.target.value);
       };
       
-      const handleLastNameChange = (event) => {
+    const handleLastNameChange = (event) => {
         setLastName(event.target.value);
       };
       
@@ -134,8 +132,8 @@ export const TableUsers = () => {
       }, []);
 
     const handleClickOpen = (id) => {
-    setUserIdToDelete(id);
-    setOpenDeleteUser(true);
+      setUserIdToDelete(id);
+      setOpenDeleteUser(true);
     };
 
     const handleClose = () => {
@@ -151,7 +149,8 @@ export const TableUsers = () => {
           }
         axios.delete(`http://localhost:8080/api/user/${id}`, {
             headers: {
-              Authorization: `${accessToken}`
+              'Content-type': 'application/json',
+              'Authorization': localStorage.getItem('token'),
             }
           })
             .then(({ data }) => {
@@ -204,7 +203,7 @@ export const TableUsers = () => {
     const handleCreateUser = (e) => {
         const newUser = {
           name: name,
-          lastName: lastName,
+          lastname: lastName,
           phoneNumber: phoneNumber,
           email: email,
           password: password,
@@ -235,9 +234,7 @@ export const TableUsers = () => {
             password: password
         }
         console.log(dataUser)
-      
-        axios
-          .post('http://localhost:8080/api/user/sign-up', newUser, {
+        axios.post('http://localhost:8080/api/user/sign-up', newUser, {
             headers: {
               Authorization: `${accessToken}`,
             },
@@ -259,10 +256,7 @@ export const TableUsers = () => {
           });
       };
 
-      
-      
-
-    
+          
     return(
         <>  
             <div className="head-add">

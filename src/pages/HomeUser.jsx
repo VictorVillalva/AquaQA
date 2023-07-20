@@ -223,13 +223,10 @@ export const HomeUser = () => {
       };
 
     useEffect(() => {
-        const newTableHeight = `${dataTableDistribution.length * 5}%`; 
+        const newTableHeight = `${dataTableDistribution.length * 4.2}%`; 
         setTableHeight(newTableHeight);
       }, [dataTableDistribution]);
-
-
     const pointData = cordPoints.map(([x, y])=>({x, y}));
-    console.log("pd",pointData)
 
             
     return (
@@ -352,6 +349,7 @@ export const HomeUser = () => {
                         </div>
                     </div>
                 </div>
+                <h2 className="Tit-TPH pdf-content">Análisis lineal del PH y Temperatura</h2>
                 <div className="pronosticos pdf-content" id="captura-datos3">
                     <div className="tablaPronosticos">
                         <div className="head-pronos">
