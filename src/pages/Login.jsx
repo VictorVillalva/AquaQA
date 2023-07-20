@@ -64,7 +64,7 @@ export const Login = () => {
             password: password
         }
         console.log(dataUser)
-        axios.post("http://localhost:8080/api/user/sign-in", dataUser)
+        axios.post("https://aqua-qa.sytes.net/api/user/sign-in", dataUser)
         .then((resp) => {
             const { data } = resp;
             console.log(data)

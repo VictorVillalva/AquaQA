@@ -52,7 +52,7 @@ export const HomeUser = () => {
             email: email
         }
         console.log(dataUser)
-        axios.post("http://localhost:8080/api/user/email", dataUser, {
+        axios.post("https://aqua-qa.sytes.net/api/user/email", dataUser, {
             headers: {
                 'Content-type': 'application/json',
                 'Authorization': localStorage.getItem('token'),
@@ -79,7 +79,7 @@ export const HomeUser = () => {
     };
 
     const handleFiltroClick = () => {
-        axios.get(`http://localhost:8080/api/report/${tiempo}/data/${sensor}/${ID}`, {
+        axios.get(`https://aqua-qa.sytes.net/api/report/${tiempo}/data/${sensor}/${ID}`, {
             headers: {
                 'Content-type': 'application/json',
                 'Authorization': localStorage.getItem('token'),
@@ -121,7 +121,7 @@ export const HomeUser = () => {
     }
 
     const CoeficienteRelacional  = () => {
-        axios.get(`http://localhost:8080/api/report/${tiempo}/data/ph/${ID}`, {
+        axios.get(`https://aqua-qa.sytes.net/api/report/${tiempo}/data/ph/${ID}`, {
             headers: {
                 'Content-type': 'application/json',
                 'Authorization': localStorage.getItem('token'),
@@ -130,7 +130,7 @@ export const HomeUser = () => {
         .then((response) => {
             const {data} = response
             setPh(data)
-            axios.get(`http://localhost:8080/api/report/${tiempo}/data/etemp/${ID}`,{
+            axios.get(`https://aqua-qa.sytes.net/api/report/${tiempo}/data/etemp/${ID}`,{
                 headers: {
                     'Content-type': 'application/json',
                     'Authorization': localStorage.getItem('token'),

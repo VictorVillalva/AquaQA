@@ -50,7 +50,7 @@ export const TableUsers = () => {
 
     useEffect(() => {
         if (selectedUserId) {
-          const apiUrl = `http://localhost:8080/api/health/ph/${selectedUserId}`;
+          const apiUrl = `https://aqua-qa.sytes.net/api/health/ph/${selectedUserId}`;
           axios.get(apiUrl)
             .then(response => {
               const phStatus = response.data
@@ -69,10 +69,10 @@ export const TableUsers = () => {
 
     const probar = () => {
         const dataUser = {
-            email: 'isai@aqua-qa.com',
+            email: 'admin@aqua-qa.com',
             password: passwordAdmin
         }
-        axios.post("http://localhost:8080/api/user/sign-in", dataUser)
+        axios.post("https://aqua-qa.sytes.net/api/user/sign-in", dataUser)
         .then((resp) => {
             const { data } = resp;
             console.log(data)
@@ -147,7 +147,7 @@ export const TableUsers = () => {
             console.error('Token no encontrado');
             return;
           }
-        axios.delete(`http://localhost:8080/api/user/${id}`, {
+        axios.delete(`https://aqua-qa.sytes.net/api/user/${id}`, {
             headers: {
               'Content-type': 'application/json',
               'Authorization': localStorage.getItem('token'),
@@ -234,7 +234,7 @@ export const TableUsers = () => {
             password: password
         }
         console.log(dataUser)
-        axios.post('http://localhost:8080/api/user/sign-up', newUser, {
+        axios.post('https://aqua-qa.sytes.net/api/user/sign-up', newUser, {
             headers: {
               Authorization: `${accessToken}`,
             },
@@ -249,6 +249,15 @@ export const TableUsers = () => {
           })
           .catch((error) => {
             if (axios.isAxiosError(error)) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Datos Invalidos',
+                customClass: {
+                  container: 'custom-swal',
+                  popup: 'sweetalert-popup',
+                },
+              });
               console.error('Error en la solicitud HTTP:', error.response);
             } else {
               console.error('Error:', error.message);
@@ -304,7 +313,7 @@ export const TableUsers = () => {
 
 
             <Dialog
-                sx={{ width: '80vh', marginLeft: '30%'}}
+                sx={{ width: '80vh', marginLeft: '28%'}}
                 open={openDeleteUser}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
@@ -375,7 +384,7 @@ export const TableUsers = () => {
                             <tr>
                                 <td>2</td>
                                 <td>PH</td>
-                                <td className='status'>{phSensorStatus === null ? 'Cargando...' : String(phSensorStatus)}</td>
+                                <td className='status'>{phSensorStatus === null ? 'Error' : String(phSensorStatus)}</td>
                             </tr>
                             <tr>
                                 <td>3</td>
