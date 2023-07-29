@@ -9,6 +9,9 @@ export const setTokens = token => {
 export const setEmail = email => {
     localStorage.setItem('email', email);
   };
+export const deleteEmail = email => {
+    localStorage.removeItem('email', email);
+  };  
 
   export const setRol = rol=>{
     localStorage.setItem('rol', rol)

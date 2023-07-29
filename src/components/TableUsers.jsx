@@ -50,7 +50,7 @@ export const TableUsers = () => {
 
     useEffect(() => {
         if (selectedUserId) {
-          const apiUrl = `https://aqua-qa.sytes.net/api/health/ph/${selectedUserId}`;
+          const apiUrl = `http://localhost:8080/api/health/ph/${selectedUserId}`;
           axios.get(apiUrl)
             .then(response => {
               const phStatus = response.data
@@ -72,7 +72,7 @@ export const TableUsers = () => {
             email: 'admin@aqua-qa.com',
             password: passwordAdmin
         }
-        axios.post("https://aqua-qa.sytes.net/api/user/sign-in", dataUser)
+        axios.post("http://localhost:8080/api/user/sign-in", dataUser)
         .then((resp) => {
             const { data } = resp;
             console.log(data)
@@ -147,7 +147,7 @@ export const TableUsers = () => {
             console.error('Token no encontrado');
             return;
           }
-        axios.delete(`https://aqua-qa.sytes.net/api/user/${id}`, {
+        axios.delete(`http://localhost:8080/api/user/${id}`, {
             headers: {
               'Content-type': 'application/json',
               'Authorization': localStorage.getItem('token'),
@@ -234,7 +234,7 @@ export const TableUsers = () => {
             password: password
         }
         console.log(dataUser)
-        axios.post('https://aqua-qa.sytes.net/api/user/sign-up', newUser, {
+        axios.post('http://localhost:8080/api/user/sign-up', newUser, {
             headers: {
               Authorization: `${accessToken}`,
             },
@@ -298,7 +298,7 @@ export const TableUsers = () => {
                                     <td>{users.id}</td>
                                     <td><a onClick={() => handleClickInfo(users.id)} className='infoSensores'>{users.name} {users.lastname}</a></td>
                                     <td>{users.email}</td>
-                                    <td>{users.phoneNumber}</td>
+                                    <td>{users.phonenumber}</td>
                                     <td className="btns-admin">
                                         <button className="btn-del" onClick={() => handleClickOpen(users.id)}>Eliminar</button>
                                     </td>

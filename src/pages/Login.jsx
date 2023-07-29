@@ -14,28 +14,26 @@ import { Visibility,
 
 import Swal from 'sweetalert2';
 import Logo from '../assets/Images/Logo.svg'
-import { setRol, setTokens } from '../Helpers/auth';
 import "../assets/Styles/Login.css"
 import axios from 'axios';
-import { login } from '../Store/slices/AuthSlice';
-import { useDispatch } from 'react-redux';
 
 import { useNavigate } from "react-router-dom";
-import { setEmail } from '../Helpers/auth';
+import { UserContextUse } from '../assets/context/userProvider';
+import { TokenContext } from '../assets/context/tokenProvider';
 
 export const Login = () => {
+
     const navigate = useNavigate();
 
     const [showPassword, setShowPassword] = useState(false);
-    const dispatch= useDispatch()
     const handleClickShowPassword = () => setShowPassword((show) => !show);
-    const [email, setEmaill]=useState()
+    const [email, setEmail]=useState()
     const [password, setPassword]=useState()
+    const { setUserEmail } = UserContextUse();
+    const { setUserToken } = TokenContext();
 
     const handleChangeEmail=(e)=>{
-        setEmaill(e.target.value)
         setEmail(e.target.value)
-        console.log(setEmail)
     }
 
     const handleChangePass=(e)=>{
@@ -63,22 +61,12 @@ export const Login = () => {
             email: email,
             password: password
         }
-        console.log(dataUser)
-        axios.post("https://aqua-qa.sytes.net/api/user/sign-in", dataUser)
+        axios.post("http://localhost:8080/api/user/sign-in", dataUser)
         .then((resp) => {
             const { data } = resp;
-            console.log(data)
-            setTokens(data.data.token);
-            setRol(data.data.rol)
-            dispatch(
-                login({
-                    token:data.data.token,
-                    currentUser:data.data.rol,
-                    status: resp.success
-                })
-            )
-
-            const rol = data.data.rol; // 'admin' | 'user'
+            setUserEmail(email)
+            setUserToken(data.data.token)
+            const rol = data.data.rol;
             switch (rol){
                 case 'admin':
                     navigate('/users');
@@ -89,15 +77,13 @@ export const Login = () => {
                 default:
                     alert('Somthing went wrong');
             }
-
-            console.log(data.data.rol)
           })
           .catch(({ response }) => {
             console.log(response.message);
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Contraseña o Emaiil incorrectos  ',
+                text: 'Contraseña o Email incorrectos  ',
                 customClass: {
                   container: 'custom-swal',
                 },

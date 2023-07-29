@@ -3,10 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from '../assets/Images/Logo.svg';
 import logoutt from '../assets/Images/Logout.svg';
 import User from '../assets/Images/UserAdmin.svg'
-import { logout } from '../Store/slices/AuthSlice';
 import '../assets/Styles/AdminNavBar.css'
-import { useDispatch } from 'react-redux';
-import { deleteRol, deleteToken } from '../Helpers/auth';
 import { useState } from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -28,12 +25,8 @@ export const AdminNavBar = () => {
 
     const navigate = useNavigate()
 
-    const dispatch = useDispatch()
 
     const HandleLogOut = () => {
-        dispatch(logout())
-        deleteToken()
-        deleteRol()
         navigate('/landing')
     }
 

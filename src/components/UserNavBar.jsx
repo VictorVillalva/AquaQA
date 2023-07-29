@@ -4,10 +4,7 @@ import logoutt from '../assets/Images/Logout.svg';
 //CSS
 import '../assets/Styles/userNavBar.css';
 import {NavLink, useNavigate} from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 
-import { logout } from '../Store/slices/AuthSlice';
-import { deleteRol, deleteToken } from '../Helpers/auth';
 import { useState } from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -27,13 +24,9 @@ const UserNavBar = () => {
         setOpen(false);
     };
 
-    const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const HandleLogOut = () =>{
-        dispatch(logout())
-        deleteToken()
-        deleteRol()
         navigate('/landing')
     }
 

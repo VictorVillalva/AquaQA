@@ -267,7 +267,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .btn-generar button{
     font-family: Poppins;
     font-size: 1.6vh;
-    font-weight: 500;
+    font-weight: 600;
     background: #3CC0C9;
     border-radius: 1vh;
     border: #3CC0C9;
@@ -287,7 +287,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .btn-EnvPronos{
     font-family: Poppins;
     font-size: 1.6vh;
-    font-weight: 500;
+    font-weight: 600;
     border: none;
     background: #3CC0C9;
     border-radius: 1vh;
@@ -345,4 +345,11 @@ td .resultado{
     display: flex;
     justify-content: center;
     padding-top: 10vh;
+}
+
+.divider{
+    background-color: #3CC0C9;
+    width: 4.4vh;
+    height: .8vh;
+    border-radius: 1vh;
 }

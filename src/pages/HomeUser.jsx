@@ -12,6 +12,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 //Imagenes
 import Print from '../assets/Images/Print.svg'
+import { UserContextUse } from "../assets/context/userProvider";
 
 export const HomeUser = () => {
 
@@ -34,9 +35,9 @@ export const HomeUser = () => {
     const [phProns, setPhProns] = useState([])
     const [cordPoints, setCordPoints] = useState([])
     const [tableHeight, setTableHeight] = useState('21%');
+    const { userEmail } = UserContextUse();
 
     //Obtencion de datos del usuario
-
 
     const handleSendEtemp=(e)=>{
         setValueEtemp(e.target.value)
@@ -47,17 +48,16 @@ export const HomeUser = () => {
     }
 
     useEffect(() => {
-        const email = localStorage.getItem('email')
         const dataUser = {
-            email: email
+            email: userEmail
         }
+        console.log(userEmail)
         console.log(dataUser)
-        axios.post("https://aqua-qa.sytes.net/api/user/email", dataUser, {
+        axios.post('http://localhost:8080/api/user/email', dataUser, {
             headers: {
                 'Content-type': 'application/json',
                 'Authorization': localStorage.getItem('token'),
             },
-
         })
             .then((resp) => {
                 const { data } = resp;
@@ -70,6 +70,8 @@ export const HomeUser = () => {
             });
     }, [])
 
+
+
     const handleSensorChange = (event) => {
         setSensor(event.target.value);
     };
@@ -79,7 +81,7 @@ export const HomeUser = () => {
     };
 
     const handleFiltroClick = () => {
-        axios.get(`https://aqua-qa.sytes.net/api/report/${tiempo}/data/${sensor}/${ID}`, {
+        axios.get(`http://localhost:8080/api/report/${tiempo}/data/${sensor}/${ID}`, {
             headers: {
                 'Content-type': 'application/json',
                 'Authorization': localStorage.getItem('token'),
@@ -121,7 +123,7 @@ export const HomeUser = () => {
     }
 
     const CoeficienteRelacional  = () => {
-        axios.get(`https://aqua-qa.sytes.net/api/report/${tiempo}/data/ph/${ID}`, {
+        axios.get(`http://localhost:8080/api/report/${tiempo}/data/ph/${ID}`, {
             headers: {
                 'Content-type': 'application/json',
                 'Authorization': localStorage.getItem('token'),
@@ -130,7 +132,7 @@ export const HomeUser = () => {
         .then((response) => {
             const {data} = response
             setPh(data)
-            axios.get(`https://aqua-qa.sytes.net/api/report/${tiempo}/data/etemp/${ID}`,{
+            axios.get(`http://localhost:8080/api/report/${tiempo}/data/etemp/${ID}`,{
                 headers: {
                     'Content-type': 'application/json',
                     'Authorization': localStorage.getItem('token'),
@@ -204,8 +206,6 @@ export const HomeUser = () => {
 
         for (let i = 0; i < inputElements.length; i++) {
           const input = inputElements[i];
-
-
           const canvas = await html2canvas(input);
           const imgData = canvas.toDataURL('image/png');
 
@@ -214,11 +214,7 @@ export const HomeUser = () => {
            
           pdf.addImage(imgData, 'PNG', 10, yOffset, imgWidth, imgHeight);
           yOffset += imgHeight + 10; // Ajusta la posición vertical para el siguiente componente
-        }  
-
-
-
-      
+        }        
         pdf.save('ReporteGeneral.pdf');
       };
 
@@ -267,7 +263,7 @@ export const HomeUser = () => {
                     <div className="contenido-analisis">
                         <div className="tit">
                             <h2>Análisis general</h2>
-                            <div className="divider" />
+                            <div className="divider"/>
                         </div>
                         <table className="table-frecuencia">
                             <thead>

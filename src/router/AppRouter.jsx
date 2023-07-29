@@ -1,5 +1,3 @@
-import { useEffect } from "react"
-import { useSelector } from "react-redux"
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 // import PublicRoutes from "./PublicRouter";
 import { Login } from "../pages/Login";
@@ -8,12 +6,11 @@ import { UsersAdmin } from "../pages/UsersAdmin";
 import AdminGuard from "../Helpers/AdminGuard.jsx";
 import {HomeUser} from "../pages/HomeUser.jsx";
 import UserGuard from "../Helpers/UserGuard.jsx";
+import { UserProvider } from "../assets/context/userProvider";
+import { TokenProvider } from "../assets/context/tokenProvider";
 
 
 const AppRouter =()=>{
-
-    const authState= useSelector(state=> state.authState)
-    useEffect(()=>{}, [authState]);
 
     //Protected Routes
     //Admin
@@ -25,38 +22,44 @@ const AppRouter =()=>{
 
     return(
         <BrowserRouter>
-            <Routes>
-                {/* Normal Routes */}
-                <Route
-                    path="/login"
-                    element={
-                        <Login/>
-                    }
-                />
-                <Route
-                    path="/landing"
-                    element={
-                        <LandingPage/>
-                    }
-                />
+            <UserProvider>
+                <TokenProvider>
 
-                {/* Admin Routes */}
-                <Route
-                    path="/users"
-                    element={
-                        <UsersAdminProtected />
-                    }
-                />
+                    <Routes>
+                        {/* Normal Routes */}
+                        <Route
+                            path="/login"
+                            element={
+                                <Login />
+                            }
+                        />
+                        <Route
+                            path="/landing"
+                            element={
+                                <LandingPage />
+                            }
+                        />
 
-
-
-                {/* User Routes */}
-                <Route path="/home" element={<HomeUserProtected/>} />
+                        {/* Admin Routes */}
+                        <Route
+                            path="/users"
+                            element={
+                                <UsersAdminProtected />
+                            }
+                        />
 
 
-                {/* Default catch */}
-                <Route path="*" element={<Navigate to={'/landing'}/>}/>
-            </Routes>
+
+                        {/* User Routes */}
+                        <Route path="/home" element={<HomeUserProtected />} />
+
+
+                        {/* Default catch */}
+                        <Route path="*" element={<Navigate to={'/landing'} />} />
+                    </Routes>
+                </TokenProvider>
+                
+            </UserProvider>
         </BrowserRouter>
     )
 }
